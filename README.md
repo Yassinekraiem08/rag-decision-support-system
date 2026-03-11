@@ -1,6 +1,6 @@
-# AI Decision Support System (Retrieval-Augmented Generation)
+# AI Decision Support System (RAG)
 
-A Retrieval-Augmented Generation (RAG) system for document ingestion, semantic search, and citation-grounded AI responses. This project uses Python, FastAPI, and vector search with PostgreSQL + pgvector (with optional Pinecone support) to enable scalable decision support over unstructured documents.
+A RAG system for document ingestion, semantic search, and citation-grounded AI responses. This project uses Python, FastAPI, and vector search with PostgreSQL + pgvector (with optional Pinecone support) to enable scalable decision support over unstructured documents.
 
 ## Features
 
