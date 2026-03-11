@@ -1,0 +1,5 @@
+Retrieval-Augmented Generation (RAG) improves language model responses by retrieving relevant external context before generating an answer.
+
+Chunking splits documents into smaller sections so that embeddings can be created for each piece.
+
+Cosine similarity helps compare the meaning of a user query against stored chunk embeddings to find the most relevant information.
