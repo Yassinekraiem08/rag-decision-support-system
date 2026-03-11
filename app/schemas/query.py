@@ -7,6 +7,7 @@ class QueryRequest(BaseModel):
 
 class RetrievedChunk(BaseModel):
     content: str
+    filename: str
     score: float
 
 

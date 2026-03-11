@@ -1,5 +1,9 @@
-Retrieval-Augmented Generation (RAG) improves language model responses by retrieving relevant external context before generating an answer.
+Retrieval-Augmented Generation (RAG) improves language model responses by retrieving relevant external documents before generating an answer.
 
-Chunking splits documents into smaller sections so that embeddings can be created for each piece.
+Instead of relying only on the model’s internal knowledge, RAG systems search a knowledge base for relevant chunks of information and include them in the prompt.
 
-Cosine similarity helps compare the meaning of a user query against stored chunk embeddings to find the most relevant information.
+Chunking splits documents into smaller sections so that embeddings can be created for each piece of text. These embeddings allow semantic search using vector similarity.
+
+Vector databases like PostgreSQL with the pgvector extension enable efficient storage and retrieval of embeddings.
+
+By combining retrieval with generation, RAG systems can produce more accurate, grounded, and up-to-date answers.

@@ -12,5 +12,12 @@ def generate_embedding(text: str):
         model=os.getenv("EMBEDDING_MODEL"),
         input=text
     )
-
     return response.data[0].embedding
+
+
+def generate_embeddings(texts: list[str]):
+    response = client.embeddings.create(
+        model=os.getenv("EMBEDDING_MODEL"),
+        input=texts
+    )
+    return [item.embedding for item in response.data]
