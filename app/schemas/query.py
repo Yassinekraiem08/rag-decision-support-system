@@ -11,6 +11,12 @@ class RetrievedChunk(BaseModel):
     score: float
 
 
+class VerificationResult(BaseModel):
+    verdict: str
+    reason: str
+
+
 class QueryResponse(BaseModel):
     answer: str
+    verification: VerificationResult
     retrieved_chunks: list[RetrievedChunk]
