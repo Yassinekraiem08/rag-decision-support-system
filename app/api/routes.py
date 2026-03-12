@@ -5,8 +5,8 @@ from app.schemas.ingest import IngestResponse
 from app.services.pgvector_store import (
     search_chunks_in_db,
     store_document_chunks,
-    clear_database,
 )
+from app.services.reranker import rerank_chunks
 from app.services.generation import generate_answer, stream_answer
 from app.services.chunking import chunk_text
 from app.utils.loaders import load_uploaded_text_file, load_uploaded_pdf_file
@@ -24,8 +24,6 @@ async def ingest_document(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="Only .txt and .pdf files are supported for now.")
 
     chunks = chunk_text(text, chunk_size=200, overlap=40)
-
-    clear_database()
     store_document_chunks(file.filename, chunks)
 
     return IngestResponse(
@@ -36,12 +34,14 @@ async def ingest_document(file: UploadFile = File(...)):
 
 @router.post("/query", response_model=QueryResponse)
 def query_rag(request: QueryRequest):
-    retrieved = search_chunks_in_db(request.question, top_k=2)
-    answer = generate_answer(request.question, retrieved)
+    retrieved = search_chunks_in_db(request.question, top_k=6)
+    reranked = rerank_chunks(request.question, retrieved, top_k=3)
+
+    answer = generate_answer(request.question, reranked)
 
     retrieved_chunks = [
         RetrievedChunk(content=chunk, filename=filename, score=score)
-        for chunk, filename, score in retrieved
+        for chunk, filename, score in reranked
     ]
 
     return QueryResponse(answer=answer, retrieved_chunks=retrieved_chunks)
@@ -49,9 +49,10 @@ def query_rag(request: QueryRequest):
 
 @router.post("/query/stream")
 def query_rag_stream(request: QueryRequest):
-    retrieved = search_chunks_in_db(request.question, top_k=2)
+    retrieved = search_chunks_in_db(request.question, top_k=6)
+    reranked = rerank_chunks(request.question, retrieved, top_k=3)
 
     return StreamingResponse(
-        stream_answer(request.question, retrieved),
+        stream_answer(request.question, reranked),
         media_type="text/plain"
     )

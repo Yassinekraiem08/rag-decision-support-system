@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 from sqlalchemy import select, delete
 from app.core.database import SessionLocal
 from app.models.chunk import Chunk
@@ -24,28 +25,40 @@ def store_document_chunks(filename: str, chunks: list[str]):
     db = SessionLocal()
 
     try:
+        existing = db.query(Document).filter_by(filename=filename).first()
+
+        if existing:
+            db.query(Chunk).filter_by(document_id=existing.id).delete()
+            db.delete(existing)
+            db.commit()
+
         document = Document(filename=filename)
         db.add(document)
         db.commit()
         db.refresh(document)
 
-        for chunk_batch in batched(chunks, batch_size=100):
-            embeddings = generate_embeddings(chunk_batch)
+        chunk_batches = list(batched(chunks, batch_size=100))
 
-            for chunk, embedding in zip(chunk_batch, embeddings):
-                db_chunk = Chunk(
-                    document_id=document.id,
-                    content=chunk,
-                    embedding=embedding
-                )
-                db.add(db_chunk)
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            futures = [executor.submit(generate_embeddings, batch) for batch in chunk_batches]
+
+            for chunk_batch, future in zip(chunk_batches, futures):
+                embeddings = future.result()
+
+                for chunk, embedding in zip(chunk_batch, embeddings):
+                    db_chunk = Chunk(
+                        document_id=document.id,
+                        content=chunk,
+                        embedding=embedding
+                    )
+                    db.add(db_chunk)
 
         db.commit()
     finally:
         db.close()
 
 
-def search_chunks_in_db(query: str, top_k: int = 3):
+def search_chunks_in_db(query: str, top_k: int = 4):
     db = SessionLocal()
 
     try:
@@ -59,16 +72,28 @@ def search_chunks_in_db(query: str, top_k: int = 3):
             )
             .join(Document, Chunk.document_id == Document.id)
             .order_by(Chunk.embedding.cosine_distance(query_embedding))
-            .limit(top_k)
+            .limit(10)
         )
 
         rows = db.execute(stmt).all()
 
+        keywords = query.lower().split()
         results = []
-        for content, filename, distance in rows:
-            score = 1 - float(distance)
-            results.append((content, filename, score))
 
-        return results
+        for content, filename, distance in rows:
+            vector_score = 1 - float(distance)
+
+            keyword_score = sum(
+                content.lower().count(word)
+                for word in keywords
+            )
+
+            final_score = vector_score + (0.1 * keyword_score)
+
+            results.append((content, filename, final_score))
+
+        results.sort(key=lambda x: x[2], reverse=True)
+
+        return results[:top_k]
     finally:
         db.close()

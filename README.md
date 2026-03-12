@@ -131,6 +131,15 @@ pip install -r requirements.txt
 
 ```
 
+## Architecture
+
+This project implements a Retrieval-Augmented Generation (RAG) pipeline combining
+semantic vector retrieval and keyword ranking.
+
+See system architecture below.
+
+![RAG Architecture](./rag_architecture.png)
+
 ## Create a .env file:
 
 OPENAI_API_KEY=your_key_here
