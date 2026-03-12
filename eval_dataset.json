@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What is embodied AI?",
+    "expected_sources": ["capa.pdf", "qya.pdf"]
+  },
+  {
+    "question": "Why is embodied intelligence important?",
+    "expected_sources": ["capa.pdf"]
+  },
+  {
+    "question": "What do the papers say about robotics?",
+    "expected_sources": ["capa.pdf", "hrb1.pdf"]
+  }
+]
