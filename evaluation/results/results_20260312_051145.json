@@ -1,0 +1,111 @@
+{
+  "summary": {
+    "timestamp": "2026-03-12T05:11:45.918975",
+    "dataset": "evaluation/datasets/base_eval.json",
+    "total_queries": 3,
+    "successful": 0,
+    "failed": 3,
+    "overall_accuracy": 0.0,
+    "avg_precision_at_3": 0.4444444444444444,
+    "avg_latency_ms": 15994.114637374878,
+    "by_difficulty": {
+      "easy": {
+        "count": 1,
+        "success_rate": 0.0,
+        "avg_precision_at_3": 0.6666666666666666
+      },
+      "medium": {
+        "count": 2,
+        "success_rate": 0.0,
+        "avg_precision_at_3": 0.3333333333333333
+      }
+    },
+    "corpus_size": "18 documents, ~1673 chunks"
+  },
+  "per_query_results": [
+    {
+      "query_id": "Q001",
+      "question": "What is embodied AI?",
+      "difficulty": "easy",
+      "category": "definition",
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 13914.501190185547,
+      "answer": "Embodied AI refers to artificial intelligence systems that are integrated with physical bodies or agents that can interact with the real world through sensory and motor capabilities. It involves intelligence that is not just computational but also physically embodied, allowing interaction with environments in a way that incorporates dexterity, tactile-vision fusion, and operational reliability. In the context of manufacturing, embodied AI enables new paradigms by crossing thresholds in these capabilities, fundamentally transforming how and where production occurs, and restructuring economic geography of manufacturing beyond mere improvements in efficiency [1]. \n\nAdditionally, in artistic contexts, embodied AI systems involve robots or agents capable of physical interaction, such as drawing robots collaborating with humans in co-creative processes, moving beyond passive execution to active, agentic collaboration [3].\n\nEmbodied AI is thus an AI that is physically situated, capable of sensory-motor interactions, and can act as an autonomous or semi-autonomous agent in the physical world, enabling new forms of collaboration, manufacturing, learning, or creativity [1][3]. \n\nNote: While the sources provide insights into embodied AI in manufacturing, education, and art, they do not provide a single concise definition but illustrate its application and implications.",
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources describe embodied AI as AI integrated with physical agents capable of sensory-motor interaction and physical embodiment, enabling new capabilities in manufacturing (capa.pdf) and artistic collaboration (bkbj.pdf). The answer's claims about embodied AI involving physical bodies, sensory and motor capabilities, and applications in manufacturing and art are directly supported by these sources."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "qya.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "success": false,
+      "error": null
+    },
+    {
+      "query_id": "Q002",
+      "question": "Why is embodied intelligence important in manufacturing?",
+      "difficulty": "medium",
+      "category": "explanation",
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 16778.975009918213,
+      "answer": "Embodied intelligence is important in manufacturing because it can fundamentally transform the structural and spatial logic of manufacturing beyond traditional efficiency improvements. Specifically, when embodied AI systems reach critical thresholds in key capabilities such as dexterity, task generalization, operational reliability, and tactile-vision fusion, they trigger significant changes in where factories are built, how supply chains are organized, and what production scales are economically viable. This transformation is not just about reducing costs or making existing factories more efficient but about causing a phase transition in manufacturing economic geography, reshaping the entire topology of production [1], [2].\n\nFor example, many industries like garment manufacturing rely on dexterous manipulation of deformable materials, a task traditionally dependent on human labor located in low-wage geographies. When embodied AI achieves sufficient dexterity, the need to locate production near cheap labor diminishes, potentially reversing decades of geographic concentration driven by labor arbitrage [2].\n\nMoreover, embodied intelligence affects several key dimensions that matter economically: \n\n- Dexterity (\u03b4), enabling complex manipulation.\n- Generalization (\u03b3), reducing reprogramming time and thus lowering switching costs, which enables smaller, more flexible production batches and distributed, demand-proximal manufacturing rather than centralized mass production.\n- Reliability (\u03c1), determining if systems can operate autonomously without on-site human supervision, which uncouples manufacturing location from labor pools.\n- Tactile-Vision Fusion (\u03c4), critical in industries requiring tactile sensing alongside vision for quality and assembly tasks, further diminishing the dependence on low-wage labor regions [3].\n\nThe improvement in these capabilities leads to three transmission pathways: \n1. Site-selection weight inversion, where traditional factors like proximity to labor become less important.\n2. Minimum economic batch collapse, lowering the economic batch size and favoring distributed manufacturing.\n3. Human-infrastructure decoupling, enabling factories to be located based on machine-optimal environmental conditions (\"Machine Climate Advantage\") rather than historic human-centric factors [1], [2], [3].\n\nIn summary, embodied intelligence is important in manufacturing because it triggers a structural shift that redefines manufacturing location, scale, and organization, potentially leading to new geographies of production and more responsive manufacturing systems [1], [2], [3].",
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the key points from the sources, including the importance of embodied intelligence in transforming manufacturing topology beyond efficiency, the critical capability dimensions (dexterity, generalization, reliability, tactile-vision fusion), and the three transmission pathways (site-selection weight inversion, minimum economic batch collapse, human-infrastructure decoupling). The example of garment manufacturing and the concept of Machine Climate Advantage are also directly supported by the retrieved content."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "success": false,
+      "error": null
+    },
+    {
+      "query_id": "Q003",
+      "question": "What do the papers say about robotics and AI collaboration?",
+      "difficulty": "medium",
+      "category": "synthesis",
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 17288.867712020874,
+      "answer": "The papers collectively portray robotics and AI collaboration as evolving towards creative, agentic, and human-centered partnerships rather than mere automation or supervised execution.\n\nSource [1] discusses a conceptual framework where AI scaffolds creativity and action in human-AI-robot interaction, emphasizing that humans remain in meaningful control (\"preserving human agency\"). The paper illustrates scenarios where robots assist in creative processes such as ideation, improvisation, and coordination, with AI mediating between human expression and robotic execution. The authors propose thinking of AI-robot interaction as \"scaffolding\" that supports human creativity over time, rather than autonomous systems replacing humans. This approach fosters creativity, agency, and flow in various contexts including educational and public settings.\n\nSource [3] presents a concrete artistic application where an embodied drawing robot integrated with large language models (LLMs) acts as a playful co-creative partner rather than a passive executor. The system called \"Companion\" engages in bidirectional interaction with the human artist through speech and direct intervention on the drawing. This collaboration enables shared storytelling that leads to unexpected aesthetic outcomes, demonstrating AI as a highly capable artistic collaborator with a distinct aesthetic identity. This further shows the move from automation to agentic collaboration that enhances human presence and creativity in art-making.\n\nSource [2], while more technical and focused on control architectures, supports the notion that AI can enable generalizable, robot-agnostic control systems that interpret high-level human intent through natural language. This AI-based system allows flexible control across diverse robotic platforms without custom engineering for each embodiment. Although not explicitly about collaboration in creative terms, this research enables more fluid human-robot interaction by translating human instructions into robot actions dynamically, which is a foundational layer supporting collaborative scenarios as in [1] and [3].\n\nIn summary, the papers highlight a shift in robotics and AI collaboration towards frameworks and systems that preserve and enhance human agency and creativity, seeing AI not as an autonomous replacement but as a scaffold or partner that supports novel forms of co-creation and interaction [1][3]. Underlying technical advances in AI control systems also help realize this vision by enabling natural, embodied interactions across varied robotic platforms [2].",
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources collectively describe robotics and AI collaboration as evolving towards creative, agentic, and human-centered partnerships. Source [1] presents a framework emphasizing AI scaffolding human creativity while preserving agency. Source [3] demonstrates an embodied drawing robot acting as a playful co-creative partner with bidirectional interaction, highlighting agentic collaboration. Source [2] supports this by providing a technical foundation for flexible, natural language-based control across diverse robots, enabling fluid human-robot interaction that underpins collaborative scenarios. All key claims in the answer are directly supported by the retrieved papers."
+      },
+      "retrieved_filenames": [
+        "rbt.pdf",
+        "cntrlrbt.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "bkbj.pdf",
+        "hrb1.pdf",
+        "capa.pdf"
+      ],
+      "success": false,
+      "error": null
+    }
+  ]
+}

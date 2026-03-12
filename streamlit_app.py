@@ -91,15 +91,37 @@ with tab1:
                         data = response.json()
 
                         answer = data.get("answer", "")
+                        references = data.get("references", [])
+                        confidence = data.get("confidence", 0.0)
+                        confidence_reasoning = data.get("confidence_reasoning", "")
                         verification = data.get("verification", {})
                         retrieved_chunks = data.get("retrieved_chunks", [])
 
                         verdict = verification.get("verdict", "UNKNOWN")
                         reason = verification.get("reason", "No verification reason provided.")
 
+                        # Display answer
                         st.markdown("## Answer")
                         st.write(answer)
 
+                        # Display references
+                        if references:
+                            st.markdown("### References")
+                            for ref in references:
+                                st.caption(ref)
+
+                        # Display confidence score
+                        st.markdown("## Confidence")
+
+                        # Color-code confidence
+                        if confidence >= 0.8:
+                            st.success(f"**{confidence:.2f}** - {confidence_reasoning}")
+                        elif confidence >= 0.6:
+                            st.info(f"**{confidence:.2f}** - {confidence_reasoning}")
+                        else:
+                            st.warning(f"**{confidence:.2f}** - {confidence_reasoning}")
+
+                        # Display verification
                         st.markdown("## Verification")
                         render_verification_badge(verdict)
                         st.write(reason)

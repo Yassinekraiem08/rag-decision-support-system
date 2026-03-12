@@ -1,0 +1,34 @@
+services:
+  # FastAPI Web Service
+  - type: web
+    name: rag-decision-support-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: OPENAI_API_KEY
+        sync: false  # Set this in Render dashboard
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: LLM_MODEL
+        value: gpt-4.1-mini
+      - key: RETRIEVAL_MIN_SCORE
+        value: "0.5"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rag-postgres-db
+          property: connectionString
+    healthCheckPath: /health
+
+# PostgreSQL Database with pgvector
+databases:
+  - name: rag-postgres-db
+    plan: free
+    databaseName: ragdb
+    user: postgres
+    region: oregon
+    ipAllowList: []  # Allow all IPs

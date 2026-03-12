@@ -4,6 +4,10 @@ from app.core.database import SessionLocal
 from app.models.chunk import Chunk
 from app.models.document import Document
 from app.services.embeddings import generate_embedding, generate_embeddings
+import logging
+import os
+
+logger = logging.getLogger(__name__)
 
 
 def batched(items, batch_size=100):
@@ -58,7 +62,21 @@ def store_document_chunks(filename: str, chunks: list[str]):
         db.close()
 
 
-def search_chunks_in_db(query: str, top_k: int = 4):
+def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None):
+    """
+    Search for relevant chunks in the database with optional score filtering.
+
+    Args:
+        query: The search query
+        top_k: Number of top results to return
+        min_score: Minimum score threshold (default from env or 0.5)
+
+    Returns:
+        List of tuples (content, filename, score)
+    """
+    if min_score is None:
+        min_score = float(os.getenv("RETRIEVAL_MIN_SCORE", "0.5"))
+
     db = SessionLocal()
 
     try:
@@ -94,6 +112,18 @@ def search_chunks_in_db(query: str, top_k: int = 4):
 
         results.sort(key=lambda x: x[2], reverse=True)
 
-        return results[:top_k]
+        # Apply score threshold filtering
+        filtered = [r for r in results if r[2] >= min_score]
+
+        # Log if chunks were filtered
+        if len(filtered) < len(results):
+            logger.info(f"Filtered {len(results) - len(filtered)} chunks below min_score={min_score}")
+
+        # Handle edge case: if too few chunks pass threshold, return what we have
+        if len(filtered) < top_k:
+            logger.warning(f"Only {len(filtered)}/{top_k} chunks passed min_score={min_score}. Returning available chunks.")
+            return filtered
+
+        return filtered[:top_k]
     finally:
         db.close()

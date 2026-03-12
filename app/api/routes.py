@@ -10,8 +10,9 @@ from app.schemas.query import (
 from app.schemas.ingest import IngestResponse
 from app.services.pgvector_store import search_chunks_in_db, store_document_chunks
 from app.services.reranker import rerank_chunks
-from app.services.generation import generate_answer, stream_answer
+from app.services.generation import generate_answer, stream_answer, format_answer_with_references
 from app.services.verifier import verify_answer
+from app.services.confidence import calculate_confidence
 from app.services.chunking import chunk_text
 from app.utils.loaders import load_uploaded_text_file, load_uploaded_pdf_file
 
@@ -47,13 +48,22 @@ def query_rag(request: QueryRequest):
     answer = generate_answer(request.question, reranked)
     verification = verify_answer(request.question, answer, reranked)
 
+    # Format answer with references
+    formatted = format_answer_with_references(answer, reranked)
+
+    # Calculate confidence score
+    confidence_result = calculate_confidence(reranked, verification["verdict"])
+
     retrieved_chunks = [
         RetrievedChunk(content=chunk, filename=filename, score=score)
         for chunk, filename, score in reranked
     ]
 
     return QueryResponse(
-        answer=answer,
+        answer=formatted["answer"],
+        references=formatted["references"],
+        confidence=confidence_result["confidence"],
+        confidence_reasoning=confidence_result["reasoning"],
         verification=VerificationResult(
             verdict=verification["verdict"],
             reason=verification["reason"],

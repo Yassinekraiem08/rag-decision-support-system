@@ -18,5 +18,8 @@ class VerificationResult(BaseModel):
 
 class QueryResponse(BaseModel):
     answer: str
+    references: list[str]
+    confidence: float
+    confidence_reasoning: str
     verification: VerificationResult
     retrieved_chunks: list[RetrievedChunk]

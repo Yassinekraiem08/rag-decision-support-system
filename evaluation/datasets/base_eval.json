@@ -1,0 +1,148 @@
+{
+  "queries": [
+    {
+      "id": "Q001",
+      "question": "What is embodied AI?",
+      "difficulty": "easy",
+      "category": "definition",
+      "expected_sources": ["capa.pdf", "qya.pdf"],
+      "ground_truth_answer": "Embodied AI refers to artificial intelligence systems that have a physical form and interact with the real world through sensors and actuators, enabling them to learn from physical experience and engage with their environment.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 2,
+      "tags": ["robotics", "ai-concepts", "definition"]
+    },
+    {
+      "id": "Q002",
+      "question": "Why is embodied intelligence important in manufacturing?",
+      "difficulty": "medium",
+      "category": "explanation",
+      "expected_sources": ["capa.pdf"],
+      "ground_truth_answer": "Embodied intelligence is important in manufacturing because it can trigger profound structural transformations in production systems when capabilities like dexterity, task generalization, and tactile-vision fusion cross certain thresholds. It enables demand-proximal micro-manufacturing and alters traditional factory location logic.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["manufacturing", "robotics", "economic-impact"]
+    },
+    {
+      "id": "Q003",
+      "question": "What do the papers say about robotics and AI collaboration?",
+      "difficulty": "medium",
+      "category": "synthesis",
+      "expected_sources": ["capa.pdf", "hrb1.pdf", "bkbj.pdf"],
+      "ground_truth_answer": "The papers discuss robotics and AI collaboration in multiple contexts: manufacturing automation, artistic co-creation with robotic systems, and human-robot interaction in educational and field settings.",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "expected_num_sources": 3,
+      "tags": ["robotics", "collaboration", "multi-source"]
+    },
+    {
+      "id": "Q004",
+      "question": "How does embodied AI differ from screen-based AI in educational contexts?",
+      "difficulty": "medium",
+      "category": "comparison",
+      "expected_sources": ["qya.pdf"],
+      "ground_truth_answer": "Embodied AI in educational contexts involves physical interaction in place-bound environments where AI acts as an epistemic teammate that facilitates sensemaking through bodily action and sensory experience, rather than just delivering content through screens.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["education", "embodied-cognition", "comparison"]
+    },
+    {
+      "id": "Q005",
+      "question": "What role do tactile sensors play in embodied AI systems?",
+      "difficulty": "easy",
+      "category": "factual",
+      "expected_sources": ["capa.pdf"],
+      "ground_truth_answer": "Tactile sensors in embodied AI systems enable tactile-vision fusion, which is one of the key capabilities that contributes to dexterity and operational reliability in manufacturing contexts.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["sensors", "tactile", "manufacturing"]
+    },
+    {
+      "id": "Q006",
+      "question": "How does quantum computing relate to embodied intelligence?",
+      "difficulty": "hard",
+      "category": "edge-case",
+      "expected_sources": [],
+      "ground_truth_answer": null,
+      "answerable": false,
+      "reason_unanswerable": "Quantum computing is not discussed in the corpus",
+      "requires_multi_hop": false,
+      "expected_num_sources": 0,
+      "tags": ["unanswerable", "edge-case"]
+    },
+    {
+      "id": "Q007",
+      "question": "What are the implications of embodied AI for factory location and supply chains?",
+      "difficulty": "hard",
+      "category": "synthesis",
+      "expected_sources": ["capa.pdf"],
+      "ground_truth_answer": "Embodied AI can restructure economic geography and manufacturing topologies by enabling demand-proximal micro-manufacturing, changing where factories are built, how supply chains are organized, and the scale at which manufacturing is viable.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["manufacturing", "economics", "supply-chain"]
+    },
+    {
+      "id": "Q008",
+      "question": "In what ways do robotic systems act as collaborative partners in artistic creation?",
+      "difficulty": "medium",
+      "category": "explanation",
+      "expected_sources": ["bkbj.pdf"],
+      "ground_truth_answer": "Robotic systems integrated with AI models act as collaborative partners in artistic creation by enabling real-time interaction, bidirectional communication, and co-creation in physical space, transforming AI from a passive executor to an active embodied collaborator.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["arts", "collaboration", "robotics"]
+    },
+    {
+      "id": "Q009",
+      "question": "What is the relationship between embodied cognition and AI in field-based learning?",
+      "difficulty": "hard",
+      "category": "synthesis",
+      "expected_sources": ["qya.pdf"],
+      "ground_truth_answer": "In field-based learning, embodied cognition and AI work together through AI systems that act as epistemic teammates, facilitating sensemaking processes dynamically coupled with learners' embodied interactions in unstructured, place-bound environments.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["education", "cognition", "field-learning"]
+    },
+    {
+      "id": "Q010",
+      "question": "How do deep learning models contribute to path planning in robotics?",
+      "difficulty": "easy",
+      "category": "explanation",
+      "expected_sources": ["hrb1.pdf"],
+      "ground_truth_answer": "Deep learning models contribute to path planning in robotics by enabling robots to learn complex navigation strategies and adapt to dynamic environments.",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "expected_num_sources": 1,
+      "tags": ["path-planning", "deep-learning", "robotics"]
+    }
+  ],
+  "metadata": {
+    "created_date": "2026-03-12",
+    "version": "1.0",
+    "corpus_size": "18 documents, ~1673 chunks",
+    "total_queries": 10,
+    "difficulty_distribution": {
+      "easy": 3,
+      "medium": 4,
+      "hard": 3
+    },
+    "category_distribution": {
+      "definition": 1,
+      "explanation": 3,
+      "comparison": 1,
+      "synthesis": 3,
+      "factual": 1,
+      "edge-case": 1
+    },
+    "answerability": {
+      "answerable": 9,
+      "unanswerable": 1
+    }
+  }
+}
