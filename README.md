@@ -2,7 +2,6 @@
 
 A **production-grade Retrieval-Augmented Generation (RAG)** system built with rigorous evaluation methodology, demonstrating research depth and engineering maturity for AI engineering roles at frontier labs.
 
-**🎯 Built for:** OpenAI, Anthropic, and top-tier AI engineering positions
 **📊 Evaluation Coverage:** 10 diverse queries, 9+ metrics, systematic failure analysis
 **🚀 Deployment:** Dockerized, CI/CD-ready, hosted demo available
 
@@ -640,7 +639,7 @@ MIT License - feel free to use for your own projects!
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 Built with:
 - **OpenAI API** for embeddings and generation
@@ -653,9 +652,7 @@ Built with:
 ## 📧 Contact
 
 **Yassine Kraiem**
-[GitHub](https://github.com/Yassinekraiem08) | [LinkedIn](https://linkedin.com/in/your-profile)
-
-*Looking for AI engineering roles at frontier labs. Open to discussing RAG systems, evaluation methodology, and ML infrastructure!*
+[GitHub](https://github.com/Yassinekraiem08) | [LinkedIn](https://linkedin.com/in/yassinekraiem)
 
 ---
 
