@@ -1,0 +1,141 @@
+name: RAG Evaluation CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ragdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install plotly tabulate
+
+      - name: Initialize database
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ragdb
+        run: |
+          python init_db.py
+
+      - name: Ingest test documents
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ragdb
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          EMBEDDING_MODEL: text-embedding-3-small
+          LLM_MODEL: gpt-4.1-mini
+        run: |
+          python ingest_folder.py
+
+      - name: Run quick evaluation
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ragdb
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          EMBEDDING_MODEL: text-embedding-3-small
+          LLM_MODEL: gpt-4.1-mini
+        run: |
+          python evaluation/pipelines/run_evaluation.py --quick
+
+      - name: Upload evaluation results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: evaluation-results
+          path: evaluation/results/
+
+      - name: Check for regressions
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ -f evaluation/results/baseline_summary.json ]; then
+            python evaluation/scripts/check_regression.py \
+              --current evaluation/results/latest_summary.json \
+              --baseline evaluation/results/baseline_summary.json \
+              --threshold 0.05
+          else
+            echo "No baseline found - skipping regression check"
+            echo "Run evaluation on main branch to establish baseline"
+          fi
+
+      - name: Comment evaluation results on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+
+            // Read evaluation results
+            let summary;
+            try {
+              const data = fs.readFileSync('evaluation/results/latest_summary.json', 'utf8');
+              summary = JSON.parse(data);
+            } catch (error) {
+              console.log('Could not read evaluation results');
+              return;
+            }
+
+            // Format comment
+            const comment = `## 📊 Evaluation Results
+
+            **Overall Performance:**
+            - Accuracy: ${(summary.overall_accuracy * 100).toFixed(1)}%
+            - Avg Precision@3: ${summary.avg_precision_at_3.toFixed(3)}
+            - Avg Latency: ${summary.avg_latency_ms.toFixed(0)}ms
+            - Queries: ${summary.successful}/${summary.total_queries} passed
+
+            **Performance by Difficulty:**
+            ${Object.entries(summary.by_difficulty || {}).map(([diff, stats]) =>
+              `- **${diff}**: ${(stats.success_rate * 100).toFixed(0)}% success, P@3=${stats.avg_precision_at_3.toFixed(3)}`
+            ).join('\n')}
+
+            <details>
+            <summary>View detailed results</summary>
+
+            Download artifacts from the Actions tab to see full evaluation report.
+
+            </details>
+            `;
+
+            // Post comment
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
