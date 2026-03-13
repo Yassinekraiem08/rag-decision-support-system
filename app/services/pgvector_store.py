@@ -4,10 +4,14 @@ from app.core.database import SessionLocal
 from app.models.chunk import Chunk
 from app.models.document import Document
 from app.services.embeddings import generate_embedding, generate_embeddings
+from app.services.cache import TTLCache
 import logging
 import os
 
 logger = logging.getLogger(__name__)
+
+# Cache full retrieval results to eliminate redundant DB+embedding calls for repeated queries
+_retrieval_cache = TTLCache(ttl_seconds=600)
 
 
 def batched(items, batch_size=100):
@@ -62,7 +66,7 @@ def store_document_chunks(filename: str, chunks: list[str]):
         db.close()
 
 
-def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None):
+def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use_cache: bool = True):
     """
     Search for relevant chunks in the database with optional score filtering.
 
@@ -76,6 +80,14 @@ def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None):
     """
     if min_score is None:
         min_score = float(os.getenv("RETRIEVAL_MIN_SCORE", "0.5"))
+
+    # Check retrieval cache before hitting DB
+    cache_key = f"{query}::{top_k}::{min_score}"
+    if use_cache:
+        cached = _retrieval_cache.get(cache_key)
+        if cached is not None:
+            logger.info(f"Retrieval cache hit for query: {query[:50]}")
+            return cached
 
     db = SessionLocal()
 
@@ -122,8 +134,13 @@ def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None):
         # Handle edge case: if too few chunks pass threshold, return what we have
         if len(filtered) < top_k:
             logger.warning(f"Only {len(filtered)}/{top_k} chunks passed min_score={min_score}. Returning available chunks.")
-            return filtered
+            result = filtered
+        else:
+            result = filtered[:top_k]
 
-        return filtered[:top_k]
+        if use_cache:
+            _retrieval_cache.set(cache_key, result)
+
+        return result
     finally:
         db.close()

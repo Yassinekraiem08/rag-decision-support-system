@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-03-13T01:10:53.057032",
+  "queries": 5,
+  "per_query": [
+    {
+      "embedding_ms": 419.248104095459,
+      "retrieval_ms": 113.52705955505371,
+      "reranking_ms": 3862.4229431152344,
+      "generation_ms": 4739.086866378784,
+      "total_ms": 9134.284973144531,
+      "query": "What is embodied AI?",
+      "embedding_pct": 4.5898294757398,
+      "retrieval_pct": 1.2428675029171041,
+      "reranking_pct": 42.28489645846436,
+      "generation_pct": 51.882406562878735
+    },
+    {
+      "embedding_ms": 383.2688331604004,
+      "retrieval_ms": 58.06303024291992,
+      "reranking_ms": 3468.989133834839,
+      "generation_ms": 2206.2809467315674,
+      "total_ms": 6116.601943969727,
+      "query": "How do tactile sensors improve robot dexterity?",
+      "embedding_pct": 6.2660417773018535,
+      "retrieval_pct": 0.9492693945886647,
+      "reranking_pct": 56.714318924331295,
+      "generation_pct": 36.07036990377818
+    },
+    {
+      "embedding_ms": 360.734224319458,
+      "retrieval_ms": 33.2949161529541,
+      "reranking_ms": 3189.054012298584,
+      "generation_ms": 7530.279874801636,
+      "total_ms": 11113.363027572632,
+      "query": "What are the implications of embodied AI for manufacturing supply chains?",
+      "embedding_pct": 3.245950154102445,
+      "retrieval_pct": 0.2995935260132174,
+      "reranking_pct": 28.69567028798063,
+      "generation_pct": 67.75878603190371
+    },
+    {
+      "embedding_ms": 214.7660255432129,
+      "retrieval_ms": 49.857139587402344,
+      "reranking_ms": 3162.2960567474365,
+      "generation_ms": 8915.43197631836,
+      "total_ms": 12342.351198196411,
+      "query": "Compare approaches to human-robot collaboration across the papers.",
+      "embedding_pct": 1.7400738489324195,
+      "retrieval_pct": 0.40395171703336374,
+      "reranking_pct": 25.621504411651674,
+      "generation_pct": 72.23447002238255
+    },
+    {
+      "embedding_ms": 502.122163772583,
+      "retrieval_ms": 52.51574516296387,
+      "reranking_ms": 3836.0021114349365,
+      "generation_ms": 5227.8101444244385,
+      "total_ms": 9618.450164794922,
+      "query": "What do all papers say about generalization in AI systems?",
+      "embedding_pct": 5.2204061482839625,
+      "retrieval_pct": 0.545989678827676,
+      "reranking_pct": 39.881706987216326,
+      "generation_pct": 54.35189718567204
+    }
+  ],
+  "bottleneck_stage": "generation_ms",
+  "avg_total_ms": 9665.010261535645
+}

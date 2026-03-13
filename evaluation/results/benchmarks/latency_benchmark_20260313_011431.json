@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-03-13T01:14:31.577639",
+  "optimizations": [
+    "parallel_reranking",
+    "retrieval_cache"
+  ],
+  "cache_miss_results": [
+    {
+      "retrieval_ms": 525.6128311157227,
+      "reranking_ms": 1022.819995880127,
+      "generation_ms": 7789.018869400024,
+      "total_ms": 9337.451696395874,
+      "query": "What is embodied AI?",
+      "cache_hit": false
+    },
+    {
+      "retrieval_ms": 403.32603454589844,
+      "reranking_ms": 616.6749000549316,
+      "generation_ms": 1633.2569122314453,
+      "total_ms": 2653.2578468322754,
+      "query": "How do tactile sensors improve robot dexterity?",
+      "cache_hit": false
+    },
+    {
+      "retrieval_ms": 137.61377334594727,
+      "reranking_ms": 506.2730312347412,
+      "generation_ms": 10810.258865356445,
+      "total_ms": 11454.145669937134,
+      "query": "What are the implications of embodied AI for manufacturing?",
+      "cache_hit": false
+    },
+    {
+      "retrieval_ms": 566.5271282196045,
+      "reranking_ms": 1023.94700050354,
+      "generation_ms": 11337.991952896118,
+      "total_ms": 12928.466081619263,
+      "query": "How does deep learning contribute to robot path planning?",
+      "cache_hit": false
+    },
+    {
+      "retrieval_ms": 545.22705078125,
+      "reranking_ms": 1072.1099376678467,
+      "generation_ms": 11698.668003082275,
+      "total_ms": 13316.004991531372,
+      "query": "What do the papers say about human-robot collaboration?",
+      "cache_hit": false
+    }
+  ],
+  "cache_hit_results": [
+    {
+      "retrieval_ms": 0.36978721618652344,
+      "reranking_ms": 529.3979644775391,
+      "generation_ms": 5393.157005310059,
+      "total_ms": 5922.924757003784,
+      "query": "What is embodied AI?",
+      "cache_hit": true
+    },
+    {
+      "retrieval_ms": 0.04291534423828125,
+      "reranking_ms": 1024.2681503295898,
+      "generation_ms": 1537.4557971954346,
+      "total_ms": 2561.7668628692627,
+      "query": "How do tactile sensors improve robot dexterity?",
+      "cache_hit": true
+    }
+  ],
+  "summary": {
+    "avg_total_ms_miss": 9937.865257263184,
+    "p95_total_ms_miss": 12928.466081619263,
+    "avg_reranking_ms": 848.3649730682373,
+    "avg_retrieval_ms_miss": 435.66136360168457,
+    "avg_retrieval_ms_hit": 0.20635128021240234
+  }
+}
