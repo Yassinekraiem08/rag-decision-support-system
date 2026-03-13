@@ -14,10 +14,20 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from sqlalchemy import text
-from app.core.database import engine
+from app.core.database import engine, Base
+import app.models.document  # noqa: ensure models are registered
+import app.models.chunk      # noqa: ensure models are registered
 
 
 def run():
+    # Enable pgvector extension (required before creating tables with Vector columns)
+    with engine.connect() as conn:
+        conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+        conn.commit()
+
+    # Create tables if they don't exist yet (fresh database)
+    Base.metadata.create_all(bind=engine)
+
     with engine.connect() as conn:
         # Add column if it doesn't exist yet
         conn.execute(text(
