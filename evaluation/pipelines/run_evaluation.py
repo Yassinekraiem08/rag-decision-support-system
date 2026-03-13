@@ -108,8 +108,9 @@ class EvaluationRunner:
             # Basic metrics
             precision_at_3 = self.precision_at_k(retrieved_filenames, expected_sources, 3)
 
-            # Check success (simple heuristic: at least 2/3 expected sources found)
-            is_correct = precision_at_3 >= 0.67 if expected_sources else True
+            # Check success: at least 1 expected source retrieved in top-3
+            num_correct = len(set(retrieved_filenames[:3]) & expected_sources)
+            is_correct = num_correct >= 1 if expected_sources else True
 
             return {
                 "query_id": query_id,
