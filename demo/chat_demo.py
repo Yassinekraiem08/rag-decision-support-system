@@ -149,13 +149,13 @@ with st.sidebar:
     ]
 
     st.markdown("**On-topic (will answer):**")
-    for q in example_questions:
-        if st.button(q[:50] + ("..." if len(q) > 50 else ""), key=f"ex_{q[:20]}", use_container_width=True):
+    for i, q in enumerate(example_questions):
+        if st.button(q[:50] + ("..." if len(q) > 50 else ""), key=f"ex_{i}", use_container_width=True):
             st.session_state["pending_question"] = q
 
     st.markdown("**Off-topic (will refuse):**")
-    for q in example_unanswerable:
-        if st.button(q, key=f"un_{q[:20]}", use_container_width=True):
+    for i, q in enumerate(example_unanswerable):
+        if st.button(q, key=f"un_{i}", use_container_width=True):
             st.session_state["pending_question"] = q
 
     st.divider()
