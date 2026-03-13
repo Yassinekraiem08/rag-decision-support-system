@@ -1,0 +1,450 @@
+{
+  "timestamp": "2026-03-13T02:34:41.554571",
+  "corpus": {
+    "technical_docs": 14,
+    "literary_docs": 4,
+    "technical_chunks": 267,
+    "literary_chunks": 1455,
+    "literary_corpus_pct": 0.8449477351916377
+  },
+  "contamination": {
+    "hybrid_contamination_rate": 0.0,
+    "vector_contamination_rate": 0.06666666666666667,
+    "keyword_boost_causes_contamination_rate": 0.0
+  },
+  "precision_impact": {
+    "avg_p3_hybrid": 0.24444444444444444,
+    "avg_p3_vector_only": 0.2,
+    "p3_improvement_from_removing_boost": -0.044444444444444425
+  },
+  "score_inflation": {
+    "avg_inflation": 0,
+    "max_inflation": 0
+  },
+  "per_query": [
+    {
+      "query": "What is embodied AI?",
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "capa.pdf",
+          "qya.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "qya.pdf",
+          "qya.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "How do tactile sensors improve robot dexterity?",
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "hrb1.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "pg35398.txt",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [
+          "pg35398.txt"
+        ],
+        "contaminated": true
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What does the robotic control paper say about sensor fusion?",
+      "expected_sources": [
+        "cntrlrbt.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "hrb1.pdf",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "How does deep learning contribute to path planning?",
+      "expected_sources": [
+        "hrb1.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "rags.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "rags.pdf",
+          "rags.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What are the implications of embodied AI for manufacturing?",
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "How do RAG systems handle multi-hop questions?",
+      "expected_sources": [
+        "rags.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What is the main contribution of the embodied intelligence labs paper?",
+      "expected_sources": [
+        "embodiedintelligencelabs.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "capa.pdf",
+          "capa.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What do papers say about human-robot collaboration?",
+      "expected_sources": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "hrb1.pdf",
+          "hrb1.pdf",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "rbt.pdf",
+          "rbt.pdf",
+          "rbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "How does embodied AI differ from screen-based AI in education?",
+      "expected_sources": [
+        "qya.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "rbt.pdf",
+          "rbt.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "qya.pdf",
+          "qya.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What carbon pathfinding algorithms are discussed?",
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What attention mechanisms are described in the deep learning paper?",
+      "expected_sources": [
+        "ailadeep.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "triangulang.pdf",
+          "rags.pdf",
+          "rags.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "rags.pdf",
+          "triangulang.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What are the safety considerations for robotic systems?",
+      "expected_sources": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "How do robotic systems act as collaborative partners in art?",
+      "expected_sources": [
+        "bkbj.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "rbt.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What datasets are used in the language triangulation paper?",
+      "expected_sources": [
+        "triangulang.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "triangulang.pdf",
+          "triangulang.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "triangulang.pdf",
+          "triangulang.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    },
+    {
+      "query": "What does probing reveal about neural network representations?",
+      "expected_sources": [
+        "probing more.pdf"
+      ],
+      "hybrid": {
+        "top3": [
+          "qya.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "vector_only": {
+        "top3": [
+          "triangulang.pdf",
+          "embodiedai1.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "literary_in_top3": [],
+        "contaminated": false
+      },
+      "keyword_boost_causes_contamination": false,
+      "inflation_data": {}
+    }
+  ]
+}
