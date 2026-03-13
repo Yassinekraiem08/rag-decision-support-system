@@ -11,28 +11,41 @@ A **production-grade Retrieval-Augmented Generation (RAG)** system built with ri
 
 This project goes beyond typical RAG demos by implementing:
 
-- **Comprehensive Evaluation Framework** - 9 metrics (P@K, R@K, MRR, nDCG, answer correctness, cost, latency)
-- **Systematic Failure Analysis** - Root cause taxonomy with 10+ failure modes and recommended fixes
-- **Multi-Factor Confidence Scoring** - Combines retrieval quality, verification, and source consistency
-- **Interactive Evaluation Dashboard** - Explore failures, track trends, generate reports
-- **Ablation Study Framework** - Quantify impact of reranking, chunk size, top-K settings
-- **Production-Ready Architecture** - Dockerized, score filtering, inline citations, streaming responses
+- **50-Query Failure Analysis** — Stress-tested across 6 categories (hallucination, domain confusion, multi-hop reasoning, cross-document synthesis) with root cause taxonomy
+- **Iterative Multi-Document Retrieval** — Two-pass retrieval with key-term extraction for synthesis queries (+4.2% success rate, 0 regressions)
+- **Hallucination Prevention** — Raw cosine similarity threshold blocks generation on out-of-corpus queries (80% → 0% hallucination rate)
+- **Parallel Reranking** — Concurrent LLM scoring via ThreadPoolExecutor (-76% reranking latency)
+- **Query Retrieval Cache** — TTL-based cache eliminates redundant DB+embedding calls (-57% latency on repeated queries)
+- **CI/CD Regression Detection** — GitHub Actions pipeline runs evaluation on every push, fails build if accuracy drops below threshold
+- **Groundedness Verification** — LLM verifier classifies answers as SUPPORTED / PARTIALLY_SUPPORTED / UNSUPPORTED
 
-**This isn't just a RAG demo - it's a systematic approach to building trustworthy knowledge systems.**
+**This isn't just a RAG demo — it's a systematic approach to building and measuring trustworthy knowledge systems.**
 
 ---
 
-## 📈 Current Performance
+## 📈 Performance Benchmarks
 
-**Baseline Metrics (18 documents, ~1673 chunks):**
+Results from systematic evaluation across 50 queries and 6 failure categories. Full report in [`FINDINGS.md`](FINDINGS.md).
 
-| Metric | Value | Target |
-|--------|-------|--------|
-| Precision@3 | 0.444 | > 0.80 |
-| Avg Latency | ~16s | < 3s |
-| Cost/Query | ~$0.005 | < $0.05 |
+### Latency Optimization (measured)
+| Optimization | Before | After | Improvement |
+|-------------|--------|-------|------------|
+| Parallel reranking | ~3,504ms | 848ms | **-76%** |
+| Query retrieval cache (repeated) | 9,938ms | 4,242ms | **-57%** |
+| pgvector retrieval | — | 61ms | Always fast |
 
-These baseline results demonstrate **real evaluation** - showing both strengths and areas for improvement, which is critical for iterative development.
+### Retrieval Quality
+| Pipeline | Success Rate | Avg P@3 | Unique Docs/Query |
+|---------|-------------|---------|------------------|
+| Standard RAG | 58.3% | 0.250 | 1.9 |
+| Iterative Multi-Doc RAG | 62.5% | 0.264 | 2.2 |
+
+### Hallucination Prevention
+| | Before fix | After fix |
+|-|-----------|----------|
+| Hallucination rate (unanswerable queries) | **80%** | **0%** |
+
+Confidence threshold (raw cosine similarity = 0.43) blocks generation when no relevant documents exist — calibrated to correctly refuse all out-of-corpus queries while passing all valid queries.
 
 ---
 
