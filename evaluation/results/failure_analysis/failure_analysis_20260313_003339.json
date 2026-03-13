@@ -1,0 +1,404 @@
+{
+  "summary": {
+    "timestamp": "2026-03-13T00:33:39.517418",
+    "total_queries": 10,
+    "successful": 5,
+    "failed": 5,
+    "overall_success_rate": 0.5,
+    "avg_precision_at_3": 0.26666666666666666,
+    "avg_latency_ms": 12117.799353599548,
+    "by_category": {
+      "specificity_stress": {
+        "total": 5,
+        "success": 2,
+        "success_rate": 0.4,
+        "failed_query_ids": [
+          "FA002",
+          "FA003",
+          "FA005"
+        ],
+        "failure_reasons": {
+          "insufficient_specificity_in_retrieval": 3
+        },
+        "avg_precision_at_3": 0.2,
+        "avg_latency_ms": 12185.382318496704,
+        "description": "Very specific questions requiring precise chunk retrieval"
+      },
+      "comparative_analysis": {
+        "total": 5,
+        "success": 3,
+        "success_rate": 0.6,
+        "failed_query_ids": [
+          "FA006",
+          "FA010"
+        ],
+        "failure_reasons": {
+          "missing_sources_for_comparison": 2
+        },
+        "avg_precision_at_3": 0.3333333333333333,
+        "avg_latency_ms": 12050.216388702393,
+        "description": "Requires comparing two or more concepts/papers side by side"
+      }
+    }
+  },
+  "results": [
+    {
+      "query_id": "FA001",
+      "question": "What is embodied AI?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "baseline",
+        "easy"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 14835.641860961914,
+      "answer": "Embodied AI refers to artificial intelligence systems that integrate physical embodiment, allowing them to interact with and perceive the physical world. This embodiment involves capabilities such as dexterity, task generalization, operational reliability, and tactile-vision fusion. Embodied AI differs from traditional AI by being physically situated, enabling new forms of interaction with the environment and humans.\n\nFor example, in manufacturing, embodied AI (termed embodied intelligence) can trigger fundamental shifts in how and where factories operate, beyond merely increasing efficiency. It enables micro-manufacturing close to demand, changes supply chain organization, and can lead to a new geography of production optimized for machines rather than human labor conditions. This is part of a broader framework called Embodied Intelligence Economics, which studies how physical AI capabilities reshape economic and spatial logic in production [1].\n\nIn artistic contexts, embodied AI systems can collaborate physically with humans, such as drawing robots integrated with language models that participate in co-creative processes with artists, moving beyond being passive tools to becoming playful, interactive partners [3].\n\nAdditionally, from a cognitive and educational perspective, embodiment links AI and cognition through sensorimotor interaction with the physical environment. Embodied AI approaches emphasize how bodily action and sensory experiences shape understanding and learning processes in unstructured, physical settings [2].\n\nIn summary, embodied AI involves AI systems with physical form and sensory-motor capacities that allow them to operate and collaborate in the physical world, leading to new possibilities across manufacturing, art, education, and beyond. \n\nSources: [1], [2], [3]",
+      "answer_length": 244,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the concept of embodied AI as AI systems with physical embodiment enabling interaction with the physical world, supported by source [1] which discusses embodied intelligence in manufacturing with capabilities like dexterity and tactile-vision fusion. The artistic collaboration example aligns with source [3] describing embodied AI as interactive co-creative partners in art. The cognitive and educational perspective on embodiment and sensorimotor interaction is supported by source [2], which links embodiment to cognition and learning in physical environments."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "qya.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA002",
+      "question": "What role do tactile sensors play in embodied AI systems?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "sensors",
+        "tactile"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 8926.86676979065,
+      "answer": "The provided sources do not explicitly discuss the role of tactile sensors in embodied AI systems. However, from the general discussion of embodied AI, we know that embodied AI involves sensorimotor interaction with the physical world, where sensory experiences and bodily actions shape cognition [1]. Tactile sensors, as a form of sensory input, would play a crucial role in providing physical environmental feedback, enabling embodied AI systems to engage in meaningful interactions and sensemaking within unstructured, physical environments.\n\nIn embodied AI systems used for artistic collaboration, such as the Embodied Companion for Visual Storytelling, the integration of sensory inputs allows the AI agent to interact bidirectionally with humans through speech and physical interventions (e.g., drawing) [2]. Although tactile sensors are not specifically mentioned, physical interaction implies the possible use of such sensors to perceive and respond to human touch or manipulation.\n\nIn summary, tactile sensors in embodied AI systems are important for providing sensory feedback that supports sensorimotor interaction and embodied cognition, which underpin the AI's ability to act as a teammate or collaborator in physical environments [1], [2]. However, the sources do not provide detailed or explicit information about tactile sensors specifically.",
+      "answer_length": 193,
+      "verification": {
+        "verdict": "PARTIALLY_SUPPORTED",
+        "reason": "The sources discuss embodied AI involving sensorimotor interaction and physical engagement, and mention AI systems interacting physically and collaboratively with humans, but they do not explicitly mention tactile sensors or detail their specific role in embodied AI systems. The answer reasonably infers the importance of tactile sensors based on the general discussion of embodied AI and physical interaction, but this is not directly supported by the retrieved texts."
+      },
+      "retrieved_filenames": [
+        "qya.pdf",
+        "bkbj.pdf",
+        "qya.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA003",
+      "question": "How does deep learning contribute to robot path planning?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "path-planning",
+        "deep-learning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 13344.491004943848,
+      "answer": "Deep learning contributes to robot path planning primarily through the use of large language models (LLMs) and vision-language models (VLMs) that serve as high-level planners for robotic control. These models enable the system to reason about robot API libraries and bridge the gap between high-level intent and low-level motor commands. For example, frameworks like RACAS utilize a cooperative multi-module agentic architecture with LLM/VLM-based modules communicating via natural language to control diverse robot platforms without needing retraining or modification of source code or model weights. This allows zero-training generalization across heterogeneous robots differing in morphology, dynamics, and environment, effectively enabling robot-agnostic closed-loop control [1], [2].\n\nAdditionally, recent approaches such as SayCan pair pre-trained LLMs with learned value functions to score the feasibility of candidate actions, enabling the execution of long-horizon instructions. Other methods generate executable code dynamically to directly call robot APIs or incorporate perceptual feedback for dynamic re-planning upon failure. Multi-agent architectures further decompose robot control into specialized LLM agents for planning, coding, and supervision, enhancing robustness and flexibility [2].\n\nIn sum, deep learning advances robot path planning by allowing natural language-based high-level reasoning that can adapt across different robot platforms, supporting long-horizon planning and real-time feedback-driven re-planning without heavy retraining or engineering effort [1], [2].",
+      "answer_length": 206,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources describe how deep learning, specifically large language models (LLMs) and vision-language models (VLMs), are used as high-level planners in robot path planning. They explain the RACAS framework that uses LLM/VLM modules communicating via natural language to control diverse robots without retraining or modifying source code, enabling zero-training generalization across heterogeneous platforms. The sources also mention approaches like SayCan that pair LLMs with learned value functions for long-horizon planning, and multi-agent architectures that improve robustness and flexibility, all aligning with the answer's claims."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "hrb1.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA004",
+      "question": "What are the key findings about carbon pathfinding optimization?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "carbon",
+        "optimization"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 13976.254940032959,
+      "answer": "The key findings about carbon pathfinding optimization from the provided sources are:\n\n1. **Decomposition of Carbon Footprint**: The total carbon footprint (CFP) of a heterogeneous integration (HI) system is decomposed into embodied CFP and operational CFP.  \n   - **Embodied CFP** involves emissions from material mining, manufacturing, packaging, and transport. It depends heavily on packaging technology complexity, technology node (e.g., 5nm, 3nm), and manufacturing yield. Lower yields result in wasted embodied carbon due to scrapped silicon. Hence, optimizing embodied CFP requires balancing chiplet granularity, process node selection, and integration yield. The total embodied CFP is computed as a sum of manufacturing, design, and packaging carbon footprints across chiplets [1].  \n   - **Operational CFP** refers to emissions during the active use phase, driven by system power consumption and energy grid carbon intensity. Energy overhead for die-to-die communication in chiplet systems also increases operational CFP. Minimizing operational CFP requires optimizing low-power architectures and efficient interconnect protocols [1].\n\n2. **Performance Sustainability Index (Perf-SI)**: A metric defined as performance (system latency) divided by total CFP (embodied + operational) is used to analyze the tradeoff between performance and carbon footprint. This helps in designing systems balancing latency and sustainability [1].\n\n3. **Lack of Simple Correlation**: There is no direct or linear correlation between cost and embodied CFP. Different packaging and protocol choices yield diverse tradeoffs between cost and carbon emissions. For example, EMIB packages yield significantly higher CFP due to dense silicon bridges but have higher cost; 2.5D packages tend to be cheaper but do not always yield the lowest CFP; 3D packages generally have mid-to-high CFP ranges [2].\n\n4. **Optimization Framework - CarbonPATH**:  \n   - CarbonPATH is a framework that employs analytical models and simulated annealing (SA) to find optimized heterogeneous integration systems for varying workloads, considering energy, latency, area, cost, embodied and operational CFP [2][3].  \n   - CarbonPATH reveals that strict sustainability considerations shift the selection towards mature, lower emission packaging technologies instead of complex, high emission ones, unless bandwidth demands justify advanced integration. This shows workload-dependent optimization results, with some workloads favoring hybrid bonding and others preferring 2.5D or monolithic designs [3].  \n   - Compared to baselines (e.g., ChipletGym), CarbonPATH produces more sustainable system architectures with optimized trade-offs between performance and carbon emissions, sometimes using more but smaller chiplets for better sustainability and cost-effectiveness [3].  \n   - The SA-based optimization converges within about two hours with simulation caching, ensuring practical runtime for design space exploration [3].\n\nIn summary, carbon pathfinding optimization involves carefully modeling embodied and operational carbon emissions, understanding their complex relationship with design choices and cost, and using holistic optimization frameworks like CarbonPATH to find sustainable heterogeneous system architectures tailored to specific workloads [1][2][3].",
+      "answer_length": 437,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes key findings from the sources, including the decomposition of carbon footprint into embodied and operational components, the definition and use of the Performance Sustainability Index, the lack of simple correlation between cost and embodied CFP, and the description of the CarbonPATH optimization framework with its workload-dependent results and practical runtime."
+      },
+      "retrieved_filenames": [
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA005",
+      "question": "What is the main contribution of the embodied intelligence labs paper?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "embodied-intelligence",
+        "research"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 9843.65701675415,
+      "answer": "The main contribution of the embodied intelligence labs paper, titled \"An Embodied Companion for Visual Storytelling,\" is the development of the Companion system: an artistic apparatus that integrates a drawing robot with Large Language Models (LLMs) to create a co-creative partner for artists. This system enables bidirectional interaction with the artist through speech and sketching, transforming a robot from a passive executor into a playful collaborator capable of driving shared visual storytelling into unexpected aesthetic territories. The paper presents the development, system architecture, and evaluation of this prototype, demonstrating through expert assessment that the system produces artwork with a distinct aesthetic identity and professional merit. The work emphasizes re-centering human-machine presence, moving from autonomous drawing to a cooperative process that involves the artist\u2019s hand and action during creation, thus countering habitual artistic patterns and enabling new narrative explorations. The use of an embodied robotic system, including its physical drawing mechanics, is highlighted as essential to shaping the artwork's style as a record of joint computational and physical forces rather than mere digital reproduction [1][2].",
+      "answer_length": 174,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources clearly describe the main contribution as the development of the Companion system, an embodied drawing robot integrated with LLMs enabling bidirectional interaction with artists, transforming the robot into a co-creative partner. The paper details the system architecture, evaluation by art experts, and emphasizes the shift from autonomous drawing to cooperative creation involving the artist's hand, highlighting the importance of the physical drawing mechanics in shaping the artwork's style."
+      },
+      "retrieved_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "qya.pdf"
+      ],
+      "expected_sources": [
+        "embodiedintelligencelabs.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA006",
+      "question": "How do the two embodied AI papers differ in their approach to robot learning?",
+      "difficulty": "medium",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "robot-learning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 13604.704141616821,
+      "answer": "The two embodied AI papers differ significantly in their approaches to robot learning:\n\n1. The first paper (RACAS system described in [1] and further elaborated in [3]) focuses on robot-agnostic control through an agentic AI architecture that does not require embodiment-specific training or retraining. It uses large language models (LLMs) and vision-language models (VLMs) in a modular setup (controller, monitors, memory curator) that communicate via natural language. This approach leverages only programmatic robot interfaces and natural language descriptions of the robot and task, avoiding changes to source code, model weights, or reward functions. Its key claim is zero-training generalization across radically heterogeneous robotic platforms (different morphology, dynamics, and environments), demonstrated on diverse real robots such as a wheeled ground robot, a novel robotic limb, and a remotely operated underwater vehicle. The learning happens through a memory curator that helps the controller adapt by querying monitors, exemplifying an agentic closed-loop system [1][3].\n\n2. The second paper ([2]) addresses AI in embodied field learning contexts, emphasizing AI as an epistemic teammate rather than just an instruction or information delivery tool. This work critiques traditional AI in education for assuming a sedentary learner and introduces the Field Atlas framework aimed at supporting learning trajectories in unstructured, place-bound physical environments like museums or archaeological sites. Their approach is grounded in embodied, embedded, enactive, and extended (4E) cognition, active inference, and dual coding theory. It integrates volitional photography, immediate voice reflection, Socratic questioning by AI (provocation instead of answer delivery), and models learning as an epistemic trajectory bound to body, place, and time. The focus here is less on robot motor control or policy learning and more on dialogic, embodied human-AI interaction for sensemaking and process-based assessment of learning in the wild [2].\n\nIn summary, the first paper presents a generalizable robot control system using large AI models that work with various robots without retraining, emphasizing task execution and control. The second paper proposes a cognitive and educational framework where AI acts as a reflective, dialogic partner in embodied field learning environments, emphasizing human-AI co-sensemaking and learning trajectories rather than direct robot action control.\n\nThus, one paper develops an agentic AI system for robot control and cross-embodiment generalization, while the other reimagines AI's role as an epistemic teammate for embodied human learning in real-world physical spaces. Their goals, methods, and settings are quite distinct [1][2][3].",
+      "answer_length": 390,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The first paper describes the RACAS system focusing on robot-agnostic control using LLMs and VLMs with zero-training generalization across diverse robots, emphasizing task execution and control. The second paper presents the Field Atlas framework for embodied field learning, emphasizing AI as an epistemic teammate supporting human learning trajectories in physical environments, focusing on dialogic interaction rather than robot control. These distinctions and details are directly supported by the retrieved sources."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "qya.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "embodiedai2.pdf"
+      ],
+      "success": false,
+      "failure_reason": "missing_sources_for_comparison",
+      "error": null
+    },
+    {
+      "query_id": "FA007",
+      "question": "Compare the approaches to AI collaboration described in the robotics papers versus the artistic creation paper.",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "collaboration"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 11878.445863723755,
+      "answer": "The approaches to AI collaboration in the robotics papers, particularly in artistic robotics such as drawing, emphasize a shift from autonomous robot execution toward a co-creative partnership with the human artist. These works, including the Companion project, focus on integrating embodied robotics with large language models (LLMs) to enable bidirectional interaction between artist and AI, involving speech and physical interventions on the drawing. This approach transforms the robot from a passive tool into an active, playful collaborator that can direct shared storytelling and aesthetic exploration in unexpected directions. The collaboration aims to recapture the artist's direct presence, turning sketching into an adventurous, exploratory process and allowing style to emerge both from the robot\u2019s physical embodiment and the AI's cognitive contributions. The physicality of the robot, such as the friction of pen on paper, is deliberately embraced as part of the creative style, fostering immediacy and memory of the process rather than mere digital replication. The system encourages narrative visual exploration inspired by children's drawings and prehistoric cave art, leveraging LLMs for interpreting and responding to the artist\u2019s verbal and visual inputs in a sequential, context-sensitive manner [1], [2], [3].\n\nIn contrast, while the sources do not provide explicit details about AI collaboration approaches in other types of robotics papers unrelated to artistic creation, the described robotics papers highlight the significance of reintroducing human artistic intent and playfulness alongside AI, moving beyond purely autonomous or tool-like roles.\n\nThus, the key difference in the artistic creation paper (the Companion project) is the emphasis on synergistic co-creation and lived presence, using embodied robotics combined with LLMs to foster storytelling dialogues and emergent styles through mutual influence between human and machine. This contrasts with prior robotic art systems that focused more on automation and independence from the artist\u2019s ongoing involvement [1], [2], [3].\n\nIf a comparison with other non-artistic robotics papers was intended, the sources do not provide sufficient information on AI collaboration approaches from other robotics domains beyond artistic applications to allow a detailed comparison.",
+      "answer_length": 332,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the sources' description of the Companion project emphasizing co-creative partnership, embodied robotics combined with LLMs, bidirectional interaction, and the shift from autonomous execution to playful collaboration with the artist. The sources also note the lack of detailed information on AI collaboration in other robotics domains, supporting the answer's claim about insufficient data for broader comparison."
+      },
+      "retrieved_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "bkbj.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA008",
+      "question": "How does embodied AI in manufacturing compare to embodied AI in education?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "manufacturing",
+        "education"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 11363.995790481567,
+      "answer": "Embodied AI in manufacturing fundamentally differs from embodied AI in education in terms of their structural impact and application focus.\n\nIn manufacturing, embodied AI is poised to trigger a paradigm-level transformation by overcoming critical capability thresholds in dexterity, task generalization, reliability, and tactile-vision fusion. This advancement goes beyond merely making existing factories more efficient (a \"drop-in substitute\" role); it can cause phase transitions in manufacturing economic geography itself. Such transitions include restructuring where factories are built, reorganizing supply chains, and altering production scales. Moreover, embodied AI in manufacturing leads to new considerations for factory location\u2014optimal sites may shift based on machine-optimal environmental conditions rather than traditional human labor factors\u2014an effect termed \"Machine Climate Advantage\" [1][2]. Overall, embodied AI has the potential to dissolve historic manufacturing topologies centered on human labor constraints and reshape economic geography of production.\n\nIn contrast, embodied AI in education focuses more on enabling embodied sensemaking and trajectory-aware learning design. For example, in field-based learning scenarios like museum visits, embodied AI captures and visualizes learners\u2019 epistemic trajectories\u2014i.e., their understanding evolving through bodily engagement with physical environments\u2014thereby repositioning AI in education from content optimization toward supporting embodied inquiry and knowledge construction. This approach emphasizes the irreducibility of embodied experience and the importance of physical context in learning processes [3]. Challenges in education include privacy concerns, equity regarding access to mobility and devices, and the need for empirical validation of embodied learning metrics.\n\nIn summary:\n- Embodied AI in manufacturing primarily aims at structural economic and geographic transformation by surpassing capability thresholds that redefine production systems and factory siting [1][2].\n- Embodied AI in education primarily supports the learner\u2019s embodied experience, enhancing understanding through physical interaction with environments and focusing on epistemic trajectories rather than just information delivery [3].\n\nThese differences highlight that embodied AI in manufacturing drives systemic economic and spatial changes, whereas in education it fosters embodied inquiry and learning process visibility within physical learning contexts.\n\nReferences:  \n[1], [2] - Manufacturing topology and embodied AI capability thresholds  \n[3] - Embodied AI in education and epistemic trajectory-based learning",
+      "answer_length": 340,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources explicitly describe embodied AI in manufacturing as triggering paradigm-level transformations in manufacturing topology, economic geography, and factory siting logic, including the concept of Machine Climate Advantage. The educational application is supported by the description of embodied AI capturing and visualizing learners' epistemic trajectories in physical environments, emphasizing embodied sensemaking and trajectory-aware learning design, along with challenges such as privacy and equity. Thus, all key claims in the answer are directly supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "qya.pdf"
+      ],
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA009",
+      "question": "What are the similarities between carbon pathfinding and robot path planning algorithms?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "comparison",
+        "algorithms"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 11062.273979187012,
+      "answer": "The sources provided do not explicitly discuss or compare the similarities between carbon pathfinding (as described in CarbonPATH) and robot path planning algorithms. However, based on the information available:\n\n- CarbonPATH is a framework for carbon-aware pathfinding and architecture optimization for chiplet-based AI systems. It uses simulated annealing to explore a high-dimensional design space that includes workload mapping, architectural parameters, and packaging technologies to balance performance, cost, and carbon footprint [3].\n\n- Robot path planning algorithms, as discussed in the context of socially-aware navigation, involve perception modules that detect and localize humans and objects in the environment, followed by reasoning modules that interpret contextual information to replan the robot\u2019s path accordingly [1]. Robot planning relies on real-time sensory input, environment understanding, and reactivity to dynamic contexts.\n\nSimilarities that can be inferred include:\n\n1. Both involve searching a high-dimensional space for an optimal or near-optimal path/solution:\n   - CarbonPATH searches design and technology space for optimized chip architectures considering multiple objectives including carbon footprint [3].\n   - Robot path planning searches for feasible and safe paths in spatial environments considering obstacles and human presence [1].\n\n2. Both approaches integrate multiple parameters and constraints:\n   - CarbonPATH integrates performance, cost, packaging, and carbon footprint constraints [3].\n   - Robot path planning integrates physical obstacles, human social context, and safety constraints [1].\n\n3. Both require reasoning about complex contexts and trade-offs to generate an optimized output (robot path or system design).\n\nHowever, carbon pathfinding in chip architecture deals with system-level design optimization considering environmental sustainability, whereas robot path planning deals with spatial navigation in physical environments, particularly shared human-robot spaces.\n\nIn summary, while the specific domains differ, both carbon pathfinding and robot path planning involve complex multi-objective optimization in high-dimensional spaces that account for multiple constraints and contextual considerations. The sources provided do not elaborate further on direct algorithmic similarities [1][3].",
+      "answer_length": 304,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the key points from the sources: CarbonPATH involves multi-objective optimization in a high-dimensional design space for chiplet-based AI systems using simulated annealing, while robot path planning involves perception and reasoning modules for socially-aware navigation in dynamic environments. Both involve searching complex spaces with multiple constraints and contextual reasoning, as supported by the details in sources [1] and [3]. The answer correctly notes the differences in domain and the lack of explicit direct comparison in the sources."
+      },
+      "retrieved_filenames": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [
+        "hrb1.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA010",
+      "question": "How do the RAG-related papers position their work relative to each other?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "rag"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 12341.662168502808,
+      "answer": "The RAG-related papers position their work relative to each other primarily by focusing on their distinct application domains and stages of development, as well as their approaches to generalization and automation.\n\n1. Paper [1] (cntrlrbt.pdf) introduces RACAS (Robot-Agnostic Control via Agentic Systems), which provides a unified agentic AI-based control system leveraging LLMs and VLMs for zero-training generalization across radically heterogeneous robotic platforms differing in morphology, dynamics, and environments. RACAS uses declarative prompt configurations without modifying source code or model weights and is evaluated on diverse robots (wheeled ground robot, novel robotic limb, underwater ROV). The key positioning here is overcoming embodiment-specific engineering and achieving closed-loop robot-agnostic control across fundamentally different robots, emphasizing minimal adaptation effort and generalizability [1].\n\n2. Paper [2] (hrb1.pdf) discusses a two-stage model for human-aware robot behavior in automated chemistry labs. It notes that future work will involve generalization of their approach to wider laboratory scenarios through adversarial training and Retrieval-Augmented Generation (RAG), focusing on enhancing operational efficiency in lab automation environments. This paper positions its work as an initial model design and validation, with plans for further implementation, experimental evaluation, and scalability studies in real-world autonomous labs [2].\n\n3. Paper [3] (cntrlrbt.pdf - continuation of [1]) provides performance evaluation of RACAS, demonstrating its efficacy and generalization in navigation tasks across different robotic platforms without retraining. It highlights that RACAS is, to their knowledge, the first unified control framework to achieve zero-training generalization across such diverse robots. This positions RACAS as an advancement over traditional robot-specific training and engineering methods [3].\n\nIn summary, the papers highlight different focuses: RACAS ([1],[3]) emphasizes a generalist, zero-training, cross-platform agentic AI approach for robotic control, while the work in [2] focuses on laboratory automation and plans to leverage RAG for broader generalization in that specific domain. The positioning shows complementary applications of RAG and language-model-based systems, with RACAS addressing cross-robot control and [2] addressing human-aware autonomy and generalization in robotic chemistry labs. However, there is no explicit direct comparison or critical positioning between RACAS and the lab automation system; rather, they represent advances in different subfields using related AI methods like LLMs and RAG [1],[2],[3].",
+      "answer_length": 354,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the positioning of the RAG-related papers based on the retrieved sources: Paper [1] and [3] (cntrlrbt.pdf) focus on RACAS as a zero-training, robot-agnostic control system evaluated on diverse robots, emphasizing generalization and minimal adaptation; Paper [2] (hrb1.pdf) presents a two-stage model for human-aware robot behavior in chemistry labs with plans to generalize via RAG. The answer correctly notes the complementary focus and lack of direct comparison between the works, all supported by the source content."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "probing more.pdf",
+        "rags.pdf"
+      ],
+      "success": false,
+      "failure_reason": "missing_sources_for_comparison",
+      "error": null
+    }
+  ]
+}

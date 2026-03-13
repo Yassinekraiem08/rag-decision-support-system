@@ -1,0 +1,1895 @@
+{
+  "summary": {
+    "timestamp": "2026-03-13T00:44:17.755857",
+    "total_queries": 50,
+    "successful": 27,
+    "failed": 23,
+    "overall_success_rate": 0.54,
+    "avg_precision_at_3": 0.4,
+    "avg_latency_ms": 12463.851699829102,
+    "by_category": {
+      "specificity_stress": {
+        "total": 13,
+        "success": 8,
+        "success_rate": 0.6153846153846154,
+        "failed_query_ids": [
+          "FA002",
+          "FA003",
+          "FA005",
+          "FA027",
+          "FA029"
+        ],
+        "failure_reasons": {
+          "insufficient_specificity_in_retrieval": 5
+        },
+        "avg_precision_at_3": 0.23076923076923078,
+        "avg_latency_ms": 11653.44315308791,
+        "description": "Very specific questions requiring precise chunk retrieval"
+      },
+      "comparative_analysis": {
+        "total": 7,
+        "success": 4,
+        "success_rate": 0.5714285714285714,
+        "failed_query_ids": [
+          "FA006",
+          "FA010",
+          "FA036"
+        ],
+        "failure_reasons": {
+          "missing_sources_for_comparison": 3
+        },
+        "avg_precision_at_3": 0.2857142857142857,
+        "avg_latency_ms": 11938.943658556256,
+        "description": "Requires comparing two or more concepts/papers side by side"
+      },
+      "cross_document_synthesis": {
+        "total": 9,
+        "success": 5,
+        "success_rate": 0.5555555555555556,
+        "failed_query_ids": [
+          "FA012",
+          "FA013",
+          "FA014",
+          "FA050"
+        ],
+        "failure_reasons": {
+          "complete_retrieval_miss": 4
+        },
+        "avg_precision_at_3": 0.25925925925925924,
+        "avg_latency_ms": 12364.659097459582,
+        "description": "Requires combining information from 3+ documents"
+      },
+      "multi_hop_reasoning": {
+        "total": 8,
+        "success": 5,
+        "success_rate": 0.625,
+        "failed_query_ids": [
+          "FA016",
+          "FA019",
+          "FA020"
+        ],
+        "failure_reasons": {
+          "first_hop_retrieval_failed": 3
+        },
+        "avg_precision_at_3": 0.20833333333333331,
+        "avg_latency_ms": 18866.185009479523,
+        "description": "Requires chaining facts across multiple retrieval steps"
+      },
+      "unanswerable_handling": {
+        "total": 7,
+        "success": 2,
+        "success_rate": 0.2857142857142857,
+        "failed_query_ids": [
+          "FA021",
+          "FA023",
+          "FA024",
+          "FA025",
+          "FA049"
+        ],
+        "failure_reasons": {
+          "hallucination_on_unanswerable": 5
+        },
+        "avg_precision_at_3": 1.0,
+        "avg_latency_ms": 8806.712184633527,
+        "description": "No answer in corpus \u2014 tests hallucination resistance"
+      },
+      "domain_confusion": {
+        "total": 6,
+        "success": 3,
+        "success_rate": 0.5,
+        "failed_query_ids": [
+          "FA033",
+          "FA034",
+          "FA035"
+        ],
+        "failure_reasons": {
+          "hallucination_on_unanswerable": 3
+        },
+        "avg_precision_at_3": 0.6666666666666666,
+        "avg_latency_ms": 10711.136857668558,
+        "description": "Risk of retrieving irrelevant off-topic chunks (e.g. Gutenberg texts)"
+      }
+    }
+  },
+  "results": [
+    {
+      "query_id": "FA001",
+      "question": "What is embodied AI?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "baseline",
+        "easy"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 10422.33395576477,
+      "answer": "Embodied AI refers to artificial intelligence systems whose cognition and interaction are fundamentally shaped by bodily action, sensory experience, and coupling with the physical environment. This concept aligns with over three decades of embodiment research and the embodied, embedded, enactive, and extended (4E) cognition framework, which establish that understanding and cognition are constituted through sensorimotor interaction with the physical world. In educational contexts, embodied AI can function as an epistemic teammate, engaging learners in unstructured, place-bound field inquiry and modeling and assessing their embodied sensemaking journeys, rather than merely delivering content [1].\n\nAdditionally, embodied intelligence in AI also pertains to physical AI capabilities crossing critical thresholds in dexterity, task generalization, operational reliability, and tactile-vision fusion, which have transformative effects beyond efficiency improvements. These capabilities can fundamentally restructure manufacturing systems, supply chains, and production geography, illustrating the wider economic and structural implications of embodied AI [2].\n\nIn artistic domains, embodied AI involves integrating AI systems with physical agents, such as robots, enabling collaborative creation processes where AI acts as a co-creative partner alongside humans, interacting physically and through various modalities like speech and sketching to produce artworks [3].\n\nThus, embodied AI broadly encompasses AI systems integrated with bodily and physical interactions that influence cognition, collaboration, learning, production, or artistic creation, emphasizing the inseparability of AI intelligence from embodied action and sensory experience in the real world. \n\nReferences:  \n[1] qya.pdf  \n[2] capa.pdf  \n[3] bkbj.pdf",
+      "answer_length": 232,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the content of the sources: qya.pdf supports the definition of embodied AI as AI cognition shaped by bodily action, sensory experience, and physical environment coupling, especially in educational contexts as epistemic teammates; capa.pdf discusses embodied AI's physical capabilities impacting manufacturing and economic geography; bkbj.pdf describes embodied AI in artistic collaboration with physical agents like robots. All key claims in the answer are directly supported by these sources."
+      },
+      "retrieved_filenames": [
+        "qya.pdf",
+        "capa.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA002",
+      "question": "What role do tactile sensors play in embodied AI systems?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "sensors",
+        "tactile"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 7219.056129455566,
+      "answer": "The provided sources do not contain specific information about the role of tactile sensors in embodied AI systems. They discuss embodied AI in the context of cognition shaped by sensorimotor interaction with the physical world [1,3] and describe embodied AI systems in artistic collaborations [2], but do not explicitly mention tactile sensors or their role.\n\nTherefore, based on the given sources, there is not enough information to determine the role tactile sensors play in embodied AI systems.",
+      "answer_length": 77,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources discuss embodied AI systems in the context of sensorimotor interaction with the physical world and cognition shaped by bodily action and sensory experience, which implies the importance of tactile and other sensory inputs in embodied AI, but do not explicitly mention tactile sensors or their specific role."
+      },
+      "retrieved_filenames": [
+        "qya.pdf",
+        "bkbj.pdf",
+        "qya.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA003",
+      "question": "How does deep learning contribute to robot path planning?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "path-planning",
+        "deep-learning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 9881.703853607178,
+      "answer": "Deep learning contributes to robot path planning primarily through the use of large language models (LLMs) and vision-language models (VLMs) which serve as core components in robotic control pipelines. These models enable high-level planning by reasoning over robot API libraries and natural language, thereby bridging the gap between high-level intent and low-level motor commands. \n\nOne approach involves training end-to-end policies on robot-specific demonstration data; however, these require retraining for each new robot embodiment. Alternatively, using LLMs and VLMs allows for a more general and adaptable framework where natural language serves as a common interface, reducing the need for embodiment-specific engineering [1].\n\nFor example, RACAS (Robot-Agnostic Control via Agentic Systems) is a system that utilizes cooperative LLM/VLM-based modules communicating exclusively through natural language to control diverse robotic platforms. It confines all embodiment-specific and task-specific knowledge to declarative prompt configurations without modifying source code or model weights. This agentic AI-based system has demonstrated zero-training generalization across radically heterogeneous robots with different morphologies and environments, effectively performing closed-loop control purely based on programmatic APIs exposed by the robots [1], [2].\n\nFurthermore, recent frameworks utilize LLMs as high-level planners whose outputs are grounded through low-level skill libraries or affordance models, enabling execution of long-horizon instructions. These models can generate executable code that directly calls robot APIs, incorporate perceptual feedback for dynamic replanning, and coordinate multiple robotic agents using natural language dialogues. Such architectural designs improve interpretability, allow reactive feedback loops, and facilitate modular integration across different robot types [2].\n\nTherefore, deep learning, particularly through the application of LLMs and VLMs, contributes to robot path planning by providing flexible, scalable, and generalizable control architectures that can be adapted to various robotic platforms and tasks without extensive retraining, enabling more efficient and robust planning and control. \n\nReferences: [1], [2]",
+      "answer_length": 293,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the retrieved sources, which describe how deep learning, particularly through LLMs and VLMs, enables robot path planning by bridging high-level intent and low-level commands, reducing embodiment-specific engineering, and supporting zero-training generalization across heterogeneous robots as demonstrated by RACAS and other frameworks."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "rags.pdf"
+      ],
+      "expected_sources": [
+        "hrb1.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA004",
+      "question": "What are the key findings about carbon pathfinding optimization?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "carbon",
+        "optimization"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 11468.524694442749,
+      "answer": "Key findings about carbon pathfinding optimization from the CarbonPATH framework are:\n\n1. **No Direct Correlation Between Cost and Carbon Footprint**: There is no direct or linear relationship between monetary cost and embodied carbon footprint (CFP). Packaging types and protocols influence cost and CFP in complex ways, and no single package-protocol combination is optimal across all metrics. For example, EMIB packages show higher total CFP due to their dense silicon bridges, while 2.5D packages tend to have lower cost but do not consistently yield the lowest CFP. The variation depends on packaging, protocols, yields, workloads, mapping styles, and chiplet configurations [1].\n\n2. **Embodied and Operational CFP Modeling**: The total system CFP is the sum of embodied CFP (emissions from manufacturing, packaging, and transport) and operational CFP (emissions during active system usage). Embodied CFP depends on factors such as chiplet process nodes, packaging technology complexity, and manufacturing yield. Operational CFP is influenced by system energy use, energy source carbon intensity, system lifetime, production volume, and usage time [2].\n\n3. **Performance Sustainability Index (Perf-SI)**: CarbonPATH uses a performance sustainability index defined as the ratio of performance to total CFP (embodied plus operational) to analyze and optimize the tradeoff between system latency and carbon footprint [2].\n\n4. **Optimization Improvements**: Compared with prior approaches such as ChipletGym, CarbonPATH consistently achieves lower total CFP across all tested workloads by directly incorporating CFP metrics into optimization. Quantitatively, CarbonPATH delivers approximately 1.9X average embodied CFP improvement, with gains up to 3.16X depending on the profile, over versions that do not consider carbon footprint in the objective function [3].\n\n5. **Comparison With Other Optimization Flows**: CarbonPATH optimization yields better energy, latency, monetary cost, area, embodied CFP, and operational CFP metrics compared to ChipletGym and a CarbonPATH variant that excludes carbon considerations, demonstrating the benefit of carbon-aware optimization [3].\n\nIn summary, CarbonPATH enables systematic exploration and optimization of chiplet and packaging configurations for heterogeneous integration systems, balancing performance, cost, and sustainability by incorporating detailed carbon footprint models into the design space exploration and simulated annealing-based optimization engine [1][2][3].",
+      "answer_length": 338,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes key findings from the CarbonPATH framework as detailed in the sources, including the lack of direct correlation between cost and carbon footprint, the modeling of embodied and operational CFP, the use of the performance sustainability index, and the demonstrated optimization improvements over prior approaches like ChipletGym."
+      },
+      "retrieved_filenames": [
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA005",
+      "question": "What is the main contribution of the embodied intelligence labs paper?",
+      "difficulty": "easy",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "embodied-intelligence",
+        "research"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 10340.50703048706,
+      "answer": "The main contribution of the Embodied Intelligence Labs paper, specifically the \"Companion for Storytelling Exploration,\" is the development and evaluation of an embodied AI system that integrates a drawing robot with Large Language Models (LLMs) to facilitate a bidirectional, co-creative interaction with human artists. Unlike previous robotic systems that operated autonomously and distanced the artist's hand from the artwork, this system re-centers the human presence by allowing the artist to collaborate playfully with the AI through speech and direct physical interventions on the drawing. This approach transforms the robot from a passive executor into a co-creative partner capable of driving shared visual storytelling into unexpected aesthetic territories. The system leverages in-context learning, real-time tool use, and physical drawing's unique characteristics (such as the friction of pen on paper) to shape a distinct emergent artistic style. The paper also validates this collaborative shift by using the Consensual Assessment Technique (CAT) with art experts, confirming that the system produces artworks with professional exhibition merit and a unique aesthetic identity. Overall, the paper advances AI as a highly capable artistic collaborator rather than a mere tool or autonomous agent, supporting a playful, synergistic co-creation process with humans [1], [2].",
+      "answer_length": 196,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources describe the Embodied Intelligence Labs paper's main contribution as developing and evaluating an embodied AI drawing system that integrates a robot with LLMs to enable bidirectional, co-creative interaction with human artists. The system re-centers the human artist's presence through speech and physical interaction, transforming the robot into a playful co-creative partner. The paper also validates this approach using the Consensual Assessment Technique (CAT) with art experts, confirming the system produces artworks with a unique aesthetic identity and professional merit. These points directly support the answer's claims."
+      },
+      "retrieved_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "qya.pdf"
+      ],
+      "expected_sources": [
+        "embodiedintelligencelabs.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA006",
+      "question": "How do the two embodied AI papers differ in their approach to robot learning?",
+      "difficulty": "medium",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "robot-learning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 11783.08892250061,
+      "answer": "The two embodied AI papers differ significantly in their approach to robot learning:\n\n1. The first paper ([1], [3]) focuses on robot-agnostic control systems that leverage large language models (LLMs) and vision-language models (VLMs) to achieve cross-embodiment generalization without task-specific retraining. It introduces RACAS, an agentic AI system that decomposes robot control into modules communicating through natural language and requires only natural language descriptions, structured action definitions, and task descriptions. This approach reduces the need for embodiment-specific data collection or retraining and has been validated on radically heterogeneous robotic platforms (different morphologies, dynamics, and environments) such as wheeled robots, novel robotic limbs, and underwater vehicles. Learning occurs through a memory curator module that helps the controller learn to query monitors, enabling closed-loop control that is robot-agnostic [1], [3].\n\n2. The second paper ([2]) addresses embodied AI from the perspective of AI as epistemic teammates in unstructured field learning environments (e.g., museums, archaeological sites). It critiques the traditional AI in education (AIED) assumption of stationary learners interacting via screens and proposes a framework called Field Atlas, grounded in embodied cognition and active inference. Instead of focusing on robot control, it aims to enhance human learning by pairing volitional photography with voice reflection and constraining AI to Socratic questioning rather than answer delivery. The emphasis is on the process of sensemaking as a continuous trajectory in physical-epistemic space rather than product-based assessment. This approach reorients AI toward embodied, dialogic human-AI sensemaking in the wild rather than controlling robotic embodiments [2].\n\nIn summary, the first paper researches embodied AI in the context of zero-shot robot control across diverse physical robots by integrating LLMs/VLMs with robot APIs, emphasizing minimal embodiment-specific engineering and learning from experience in the robot's operation. The second paper considers embodied AI more from a human learning and interaction standpoint in physical spaces, focusing on AI as a collaborative epistemic partner aiding learners in situated field environments, rather than on robot learning or control [1], [2], [3].",
+      "answer_length": 326,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The first paper focuses on robot-agnostic control using LLMs/VLMs and a modular agentic system (RACAS) validated on diverse robots, while the second paper addresses embodied AI as AI epistemic teammates in field learning environments, emphasizing human learning and sensemaking rather than robot control. These distinctions are clearly supported by the retrieved sources."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "qya.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "embodiedai2.pdf"
+      ],
+      "success": false,
+      "failure_reason": "missing_sources_for_comparison",
+      "error": null
+    },
+    {
+      "query_id": "FA007",
+      "question": "Compare the approaches to AI collaboration described in the robotics papers versus the artistic creation paper.",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "collaboration"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 17700.026035308838,
+      "answer": "The approaches to AI collaboration in the robotics papers, particularly in the Companion project, focus on a direct, embodied interaction between the artist and the AI system, emphasizing a shared creative process grounded in physical drawing and storytelling. The Companion system integrates Large Language Models (LLMs), In-Context Learning (ICL), conversational interaction (speech), and direct physical interventions on the drawing surface, enabling a visual and verbal dialogue that promotes collaborative imagination and exploration of figurative visual narratives [1][3]. This approach intentionally moves away from total autonomy to reintroduce the artist's presence, allowing the AI to pull the artist in unexpected directions and fostering playful involvement rather than detached control [1]. The physicality of the robot\u2014its mechanics, actuators, sensors, and the friction of pen on paper\u2014shapes an emergent style that records the process over time, thus making the artwork a memory of the collaborative interaction rather than a mere digital replication [1][3].\n\nIn terms of evaluation, experts acknowledged the system's aesthetic identity, originality, and global quality, noting a distinct, cohesive style and a shared authorship feeling between artist and machine, despite lower scores in conscious presence or intentionality of the AI [2]. The collaboration thus fosters an intimate relationship, positioning the AI agent as a partner or observer learning to \"see,\" rather than an autonomous creator.\n\nIn contrast, traditional robotics and autonomous art systems often pursued independent drawing once the process began and focused on simulating autonomy or observational drawing, without significant direct involvement of the artist during the creation [3].\n\nRegarding AI collaboration in artistic creation as described in the Companion project, the emphasis is on a co-creative partnership blending human and machine contributions in an embodied, interactive manner integrated with storytelling. This differs from earlier robotics approaches mainly focusing on autonomous output.\n\nThe sources provided focus exclusively on the Companion system in the artistic domain. They briefly mention earlier robotics art systems but do not describe other robotics collaboration approaches in depth, nor do they provide comparable detailed information about AI collaboration approaches in purely robotic papers unrelated to artistic creation. Therefore, a broader comparison to other robotics papers on AI collaboration approaches outside the context of artistic co-creation is not available from the provided documents.\n\nIn summary:\n- Robotics/Artistic Creation (Companion system): Embodied, interactive, collaborative dialogue between artist and AI involving speech and physical drawing; shared authorship; emphasis on emergent style shaped by physical robot characteristics; exploration of narrative storytelling; AI supports playful involvement rather than full autonomy [1][2][3].\n- Earlier Robotics Art Approaches (briefly mentioned): More autonomous drawing or observational sketching with less or no ongoing artist involvement once drawing starts [3].\n- No further details about AI collaboration approaches in robotics papers other than those related to the artistic creation in the Companion project are available in the provided sources.\n\nThus, the key difference is that the Companion system embraces a partnership model emphasizing co-creation through embodied interaction and narrative exploration, contrasting with prior robotics approaches that emphasized autonomy or observational capabilities without continuing artist collaboration [1][3].",
+      "answer_length": 500,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the Companion system's approach to AI collaboration as an embodied, interactive, co-creative partnership involving speech and physical drawing, supported by the sources. It correctly contrasts this with earlier robotics art systems that focused on autonomous or observational drawing with less artist involvement. The sources do not provide broader robotics AI collaboration approaches outside artistic creation, which the answer acknowledges. Thus, all key claims are directly supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "bkbj.pdf",
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA008",
+      "question": "How does embodied AI in manufacturing compare to embodied AI in education?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "manufacturing",
+        "education"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 13496.733903884888,
+      "answer": "Embodied AI in manufacturing and embodied AI in education serve fundamentally different roles and bring different transformative potentials as described in the provided sources.\n\nIn manufacturing, embodied AI is positioned not merely as a tool for efficiency improvements within existing systems, but as a catalyst for deep structural transformations in the economic geography and topology of production. Embodied AI capabilities\u2014specifically in dexterity, generalization, reliability, and tactile-vision fusion\u2014can cross critical capability thresholds that trigger phase transitions, changing where factories are located, how supply chains are organized, and the scale at which production is economically viable. For example, if embodied AI reaches sufficient dexterity in manipulating deformable objects, it can dissolve reliance on low-wage labor geographies and reshape global manufacturing geography. This shift includes the emergence of new siting logics, such as selection based on machine-optimal environmental conditions (low humidity, high solar irradiance, thermal stability), rather than traditional workforce-related factors. This represents a paradigm shift beyond mere efficiency gains toward an entirely new geography and structure of manufacturing [1][3].\n\nIn contrast, embodied AI in education focuses on supporting embodied human learning and sensemaking through trajectory-aware learning design. Here, embodied AI acts as an epistemic partner and cartographer that captures, connects, and visualizes embodied trajectories of understanding as learners physically engage with real environments (e.g., museums, field sites). Such AI supports making the learning process visible to both teacher and learner, emphasizing embodied experience as critical and irreducible. However, the challenge lies in privacy, equity, and maintaining metric validity. The educational application is less about displacing existing structures and more about expanding the scope of AI-enhanced learning to include embodied field inquiry outside traditional classrooms, emphasizing the unique and situated nature of embodied learning experiences [2].\n\nIn summary, embodied AI in manufacturing drives fundamentally new economic geographies and production topologies by altering physical capabilities and operational logics, resulting in systemic structural change. Embodied AI in education, conversely, enhances learning processes by making embodied experience visible and tractable, supporting situated sensemaking without overturning educational system structures. Thus, while both utilize embodied interaction, in manufacturing embodied AI challenges and redefines industrial paradigms, whereas in education it augments the epistemic process within existing or expanded learning contexts.\n\nReferences:  \n[1] Xinmin Fang et al., \"Capability Thresholds and Manufacturing Topology\u2026\"  \n[2] qya.pdf, \"The Empty Quadrant: AI Teammates for Embodied Field Learning\"  \n[3] Additional excerpts from capa.pdf related to manufacturing embodiment",
+      "answer_length": 392,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the sources: embodied AI in manufacturing triggers structural transformations in economic geography and production topology by crossing capability thresholds, as detailed in capa.pdf. Embodied AI in education supports embodied human learning through trajectory-aware design and epistemic partnership, emphasizing embodied experience and addressing challenges like privacy and equity, as described in qya.pdf. The answer correctly contrasts the systemic industrial paradigm shifts in manufacturing with the augmentation of learning processes in education."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA009",
+      "question": "What are the similarities between carbon pathfinding and robot path planning algorithms?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "comparison",
+        "algorithms"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 2,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 12058.902025222778,
+      "answer": "The provided sources do not explicitly discuss the similarities between carbon pathfinding and robot path planning algorithms. However, based on the descriptions of CarbonPATH (a carbon-aware pathfinding framework for chiplet-based AI systems) and robot path planning (involving real-time person-tracking, perception, and reasoning for navigation in shared environments), some general parallels can be inferred:\n\n1. Both involve searching a large and complex space for an optimal or feasible path or solution.\n   - CarbonPATH explores a high-dimensional design space involving workload mapping, architecture parameters, and packaging technologies to identify systems balancing performance, cost, and carbon footprint [3].\n   - Robot path planning involves perceiving the environment, detecting objects and humans, and planning navigation paths accordingly [1].\n\n2. Both systems incorporate multiple types of constraints and objectives in their pathfinding.\n   - CarbonPATH balances traditional performance metrics against environmental impact as first-class constraints [3].\n   - Robot navigation considers safety, social context, human intentions, and physical obstacles to plan socially-aware and safe paths [1].\n\n3. Both frameworks rely on sensing and data input to inform their decision-making.\n   - Robot path planning uses multimodal perception modules (vision, depth, LiDAR) to detect objects and humans in real-time [1].\n   - CarbonPATH uses simulation-driven design space exploration (e.g., simulated annealing) to evaluate configurations involving many interdependent factors [3].\n\n4. Both approaches perform optimization within a constrained and complex environment:\n   - CarbonPATH searches for optimal chiplet and packaging configurations that minimize environmental footprint while meeting performance goals [3].\n   - Robot path planning involves real-time adjustments based on dynamic environmental factors and human presence [1].\n\nOverall, while the contexts and domains differ significantly (hardware system design vs. robotic navigation), both carbon pathfinding and robot path planning involve multi-objective optimization within high-dimensional, constrained spaces informed by sensing or simulation data. The sources do not explicitly analyze these similarities, so this synthesis is based on inferred parallels from the available information.\n\nIf you need more detailed or explicit comparisons, the sources do not provide further information.",
+      "answer_length": 322,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately synthesizes information from the sources, highlighting that both carbon pathfinding (CarbonPATH) and robot path planning involve searching complex spaces with multiple constraints and objectives, rely on sensing or simulation data, and perform optimization in constrained environments. These parallels are inferred from the detailed descriptions in the sources, which do not explicitly compare the two but provide sufficient information to support the claims."
+      },
+      "retrieved_filenames": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [
+        "hrb1.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA010",
+      "question": "How do the RAG-related papers position their work relative to each other?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "comparison",
+        "rag"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 12719.598770141602,
+      "answer": "The RAG-related papers position their work in different but complementary contexts related to robotics and autonomous systems:\n\n1. The first paper ([1] and expanded in [3]) introduces RACAS (Robot-Agnostic Control via Agentic Systems), which is designed as a general agentic AI system for robot-agnostic closed-loop control. It distinguishes itself by enabling zero-training generalization across radically heterogeneous robotic platforms with different morphologies, dynamics, and operating environments. RACAS uses cooperative LLM/VLM modules communicating through natural language and requires only declarative prompt configurations rather than modifications to source code or reward functions. This approach contrasts with prior work that either involves end-to-end policies trained on robot-specific data (which do not generalize well to different embodiments) or LLM/VLM reasoning over robot APIs that has been validated only on structurally similar robot platforms in controlled labs. The RACAS work claims to be the first to provide such unified, zero-shot control across fundamentally different robots ([1], [3]).\n\n2. The second paper ([2]) discusses a related but distinct domain of autonomous chemical experimentation in laboratory environments. While it does not focus on robot embodiments directly, it mentions plans to use Retrieval-Augmented Generation (RAG) in future work to enable generalization of their model across broader laboratory scenarios through adversarial training and RAG. This work is positioned as improving operational efficiency in robotic chemists, aiming at broadening the autonomy and adaptability of robots in laboratory workflows rather than the zero-shot cross-robot morphologies focus of RACAS. The paper identifies future work involving RAG to evaluate scalability, robustness, and workflow impact ([2]).\n\nIn summary, RACAS-related papers position their work as pioneering zero-training generalization of agentic control frameworks across highly heterogeneous robotic platforms by leveraging large AI models and natural language interfaces, sidestepping traditional training and data collection barriers ([1], [3]). In contrast, the work in laboratory robotic chemistry automation sees RAG as a future method to generalize across diverse lab scenarios but is currently focused on model design and validation within constrained environments ([2]). Thus, the papers complement each other by applying large language and retrieval-based models to different robotic application domains and stages of generalization.",
+      "answer_length": 345,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the content of the sources: RACAS is positioned as a novel, zero-training generalization system for heterogeneous robots using LLM/VLM modules and natural language prompts ([1], [3]), while the second paper focuses on autonomous chemical experimentation with plans to use RAG for future generalization across lab scenarios ([2]). The complementary positioning of the works in different robotic domains and stages of generalization is supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "probing more.pdf"
+      ],
+      "success": false,
+      "failure_reason": "missing_sources_for_comparison",
+      "error": null
+    },
+    {
+      "query_id": "FA011",
+      "question": "What do all the robotics papers collectively say about the future of human-robot collaboration?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "synthesis",
+        "human-robot",
+        "future"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 4,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 12415.836811065674,
+      "answer": "All the robotics papers collectively envision a future of human-robot collaboration that emphasizes close integration and dynamic interaction, prioritizing human agency, creativity, and interpretive control over mere efficiency and autonomy.\n\nKey points from the sources include:\n\n1. **Human Agency and Scaffolding**: Rather than robots operating autonomously or humans simply supervising, the future frames humans as \"executive directors\" who define intent and steer iterative collaboration, with AI and robots acting as expressive extensions or performers of human ideas. Interactive AI scaffolds collaboration by mediating between human expression and robotic execution, supporting thinking, decision-making, and creative flow [1].\n\n2. **Responsiveness over Optimization**: Human-robot collaboration should prioritize responsiveness to evolving inputs and sustaining creative flow, especially in dynamic or complex settings like performative arts or multi-robot systems. Robots function more as expressive tools than independent actors, and AI supports coordination responsive to human direction rather than fixed pre-scripted autonomy [2].\n\n3. **Evaluation Metrics Focused on Human Experience**: Traditional metrics centered on efficiency or task completion are inadequate. Instead, success should be measured by factors such as users' sense of authorship, creative flow, perceived agency, and sustained engagement, reflecting how well the system scaffolds human creativity and control [2].\n\n4. **Challenges in Physical and Social Interaction**: Close human-robot collaboration raises issues of ambiguous boundaries of control and consent, especially when direction is conveyed through naturalistic gestures or movement. Also, scaling interaction from single to multiple robots involves complex distribution and preservation of human intent, with risks of diluting interpretive control [2].\n\n5. **Context-Aware and Proactive Interaction**: In shared environments, such as laboratories, robots must perceive, predict, and respond proactively to human intent to enable fluent, safe interaction and cooperative task sharing. This requires embodied AI that combines multimodal perception, context awareness, and proactive communication to improve workflow and safety [3].\n\nIn summary, the future of human-robot collaboration envisaged by these papers is one of partnership that maintains and foregrounds human creative intent and agency, supported by AI that scaffolds interaction responsively and proactively, dealing effectively with the complexities of physical proximity and multi-agent coordination. The vision moves beyond automation to an ongoing, co-creative process emphasizing fluid and expressive collaboration [1][2][3].",
+      "answer_length": 356,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes key themes from the sources, including the emphasis on human agency and scaffolding, prioritizing responsiveness over optimization, evaluation metrics focused on human experience, challenges in physical and social interaction, and the need for context-aware, proactive interaction. All these points are directly supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "rbt.pdf",
+        "rbt.pdf",
+        "hrb1.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "embodiedai1.pdf",
+        "rbt.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA012",
+      "question": "Synthesize the key themes across all embodied AI research in the corpus.",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "synthesis",
+        "themes"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 4,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 13824.83720779419,
+      "answer": "The key themes across the embodied AI research in the provided corpus revolve around human-AI collaboration, interpretability, interactivity, and the preservation of human agency within embodied and interactive contexts.\n\n1. **Human-Centered Control and Collaboration**:  \n   A central theme is that AI systems, particularly embodied or interactive agents, are designed to augment human capabilities without displacing human authority or control. AI agents serve as collaborators or scaffolds that operate under explicit human direction and oversight. For example, in scientific workflows, AI acts as a reasoning collaborator that translates human intent into executable workflows, with human researchers retaining the role of strategist, curator, and ultimate decision-maker. This approach ensures traceability, interpretability, and human accountability [1]. Similarly, in human-drone or multi-robot interaction, AI agents support human direction in real time, emphasizing responsiveness over rigid optimization, so that users can maintain creative flow and authorship over interaction outcomes [3].\n\n2. **Interpretability and Transparent Workflow Execution**:  \n   Another key theme is the emphasis on clear, precise communication between humans and AI through formal or semi-formal languages (such as DSLs) that act as contracts bridging human intent and machine execution. AI agents document decision processes, maintain logs, and preserve provenance to ensure that outputs remain interpretable and modifiable. This transparency supports iterative feedback loops where humans review and refine objectives, reinforcing trust and comprehension [1].\n\n3. **Embodied and Multimodal Interaction**:  \n   Embodied AI research highlights the importance of sensorimotor engagement with physical environments and the use of rich, multimodal data to support learning and reasoning. For instance, Field Atlas employs simultaneous visual and verbal processing (dual coding) to anchor cognitive content in spatial-temporal contexts, supporting richer memory formation and meaning-making in unstructured physical environments [2]. In interactive robotic systems, embodiment is leveraged for expressive storytelling and improvisational performance, enhancing imagination and user engagement [3].\n\n4. **Support for Epistemic Sensemaking and Creative Flow**:  \n   AI is framed not merely as knowledge transmitters or automatic answer generators but as epistemic provocateurs that scaffold human sensemaking, helping users construct meaning from unstructured experience rather than just delivering fixed answers [2]. Likewise, interactive AI aims to sustain creative flow by allowing dynamic re-interpretation and intervention in evolving inputs, emphasizing agency and authorship as primary evaluation metrics over efficiency or error rates [3].\n\n5. **Scaffolding Rather than Replacement**:  \n   A recurring theme is the rejection of AI as a replacement or autonomous authority, instead focusing on AI as a scaffold to extend human reasoning and creativity while ensuring humans remain \"in the driver\u2019s seat.\" This involves designing systems that enhance human agency, allowing human collaborators to reinterpret, intervene, and steer AI behavior through naturalistic and expressive cues such as gestures or voice [1,3].\n\n6. **Challenges in Social Interaction and Scalability**:  \n   Some open challenges include designing AI that can mediate social interactions and maintain clear boundaries of control and consent during close human-robot collaboration. Scaling from single to multiple robots introduces complexity in preserving and distributing human intent without diluting interpretive control [3].\n\nIn summary, the key themes in embodied AI research as reflected in these sources emphasize AI as a human-centered collaborator that supports interpretation, creative engagement, and embodied sensemaking while ensuring transparency, accountability, and sustained human agency across diverse physical and interactive contexts [1][2][3].",
+      "answer_length": 529,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately synthesizes key themes from the sources, including human-centered control and collaboration, interpretability, embodied and multimodal interaction, epistemic sensemaking, scaffolding rather than replacement, and challenges in social interaction and scalability, all of which are directly supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "ailadeep.pdf",
+        "qya.pdf",
+        "rbt.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf",
+        "embodiedintelligencelabs.pdf",
+        "embodiedai1.pdf",
+        "embodiedai2.pdf"
+      ],
+      "success": false,
+      "failure_reason": "complete_retrieval_miss",
+      "error": null
+    },
+    {
+      "query_id": "FA013",
+      "question": "What are the common evaluation methodologies used across the AI papers in the corpus?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "evaluation",
+        "methodology"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 3,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 10547.85704612732,
+      "answer": "The common evaluation methodologies used across the AI papers in the corpus include:\n\n1. **Trajectory Quality Evaluation:** One paper uses a verification metric called the Vision-Language Verifier (VLV) to assess trajectory quality in embodied AI tasks. The VLV differentiates between failed, regular quality, and high-quality trajectories, aligning well with human judgment, and driving high-quality self-evolution in models [1].\n\n2. **Question-Answering Benchmarks:** Another approach involves constructing a comprehensive benchmark called MA-EgoQA, which includes 1.7k questions for evaluating multimodal reasoning in egocentric multi-agent scenarios. The evaluation covers diverse question types across categories such as social interaction, task coordination, theory-of-mind, temporal reasoning, and environmental interaction. This benchmark employs GPT-based generation for QA pairs, LLM filtering, and manual verification for quality control [2][3].\n\n3. **Baseline Models and Comprehensive Testing:** A simple baseline model called EgoMAS is proposed for evaluating on MA-EgoQA, leveraging shared memory and dynamic retrieval across agents. Evaluations show that current models struggle with interpreting multiple egocentric streams, indicating the need for advances in system-level understanding [3].\n\nIn summary, evaluation methodologies involve careful design of automatic verification metrics for trajectory quality, construction of large and diverse question-answering benchmarks combined with filtering and manual validation, and comprehensive testing of baseline and state-of-the-art models on these benchmarks to gauge performance across multiple tasks and modalities.\n\nReferences: [1], [2], [3].",
+      "answer_length": 215,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the evaluation methodologies described in the sources: the Vision-Language Verifier (VLV) for trajectory quality evaluation, the MA-EgoQA benchmark with diverse question types and GPT-based generation plus filtering and manual verification, and the baseline model EgoMAS tested on MA-EgoQA. All these points are directly supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "embodiedintelligencelabs.pdf",
+        "embodiedai1.pdf",
+        "embodiedai1.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "ailadeep.pdf",
+        "probing more.pdf"
+      ],
+      "success": false,
+      "failure_reason": "complete_retrieval_miss",
+      "error": null
+    },
+    {
+      "query_id": "FA014",
+      "question": "How do the papers collectively address the challenge of generalization in AI systems?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "generalization",
+        "synthesis"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 3,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 11970.300912857056,
+      "answer": "The papers collectively address the challenge of generalization in AI systems by proposing agentic AI architectures that combine large language models (LLMs) and multimodal models with human supervision, modular design, and declarative interfaces to handle complexity, diversity, and heterogeneity in data and platforms.\n\n1. In scientific research contexts [1][2], AI agents operate under explicit human instruction and oversight, where humans define objectives and constraints, and AI systems translate these into executable workflows. This human-AI collaboration, facilitated by domain-specific languages (DSLs) that precisely express requirements, enables AI systems to generalize across complex and evolving scientific workflows without losing interpretability or accountability. The modular multi-agent architecture allows specialized agents to address distinct tasks (data preparation, model selection, uncertainty estimation, visualization, code review), enabling adaptability and reusability. Thus, generalization is achieved by scaling cognitive reach and reasoning rather than merely processing larger datasets, with humans supervising flexibility and correctness.\n\n2. In robotics [3], the RACAS system epitomizes a general agentic architecture for zero-training generalization across heterogeneous robot platforms with fundamentally different morphologies, dynamics, and environments. RACAS uses three cooperative LLM/VLM-based modules (controller, monitors, memory curator) that communicate through natural language and rely on declarative prompt configurations describing the robot, its APIs, and task considerations. No model retraining, source code changes, or reward function engineering are required for new platforms. The system achieves robot-agnostic closed-loop control by learning through interaction and memory curation, demonstrating generalization across structurally distinct robots from wheeled ground vehicles to underwater ROVs.\n\nIn summary, these works highlight generalization as emerging from:\n\n- Human-in-the-loop frameworks enabling intent-driven, interpretable AI cooperation.\n- Modular, multi-agent architectures specializing in subtasks.\n- Declarative, language-based interfaces bridging high-level goals and low-level execution.\n- Learning through interaction and memory rather than end-to-end retraining.\n- Applied across data-intensive sciences and robotics with heterogeneous conditions.\n\nThis approach collectively shifts generalization challenges from raw data/model scaling to orchestrated reasoning, planning, and execution under human supervision and explicit descriptive contracts [1][2][3].",
+      "answer_length": 320,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the key points from the sources: human-in-the-loop supervision, modular multi-agent architectures, declarative language interfaces, and learning through interaction are all described in the scientific research context (sources [1][2]) and robotics context (source [3]) as means to achieve generalization in AI systems without retraining or extensive engineering."
+      },
+      "retrieved_filenames": [
+        "ailadeep.pdf",
+        "ailadeep.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "capa.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": false,
+      "failure_reason": "complete_retrieval_miss",
+      "error": null
+    },
+    {
+      "query_id": "FA015",
+      "question": "What safety considerations appear across multiple papers in the corpus?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "safety",
+        "synthesis"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 11312.215089797974,
+      "answer": "The safety considerations that appear across multiple papers in the provided corpus primarily relate to the interaction between robots and humans in laboratory environments, focusing on avoiding obstructions and ensuring smooth collaboration.\n\n1. Human Obstruction and Interaction Detection: A key safety concern is detecting when humans obstruct the robot\u2019s path or interact with equipment the robot needs to access. The models described in the papers classify images into cases such as a human obstructing the robot\u2019s path while interacting with equipment, obstructing without interacting, or neither obstructing nor interacting. This classification helps the robot safely navigate the environment without interfering with human activities or causing accidents [1].\n\n2. Model Performance and Contextual Awareness: The effectiveness of safety-related models depends heavily on contextual information and real-time data such as distance measurements between humans, equipment, and robots. Sufficient contextual awareness is essential for the robot to infer human intent and react appropriately, which is important to maintain safety in dynamic environments [1],[2].\n\n3. Real-time Topology Information and Generalisation: The need for real-time understanding of the laboratory topology and conditions is highlighted as critical for robust generalisation and safe operation across broader scenarios. This ensures the robot can adapt its behaviour safely as the environment changes [2].\n\n4. Minimising Idle Time to Improve Operational Efficiency and Safety: By enhancing the robot\u2019s understanding of human intent and environment, operational idle time is reduced, leading to fewer potential conflicts or unsafe interactions between humans and robots [2].\n\nOverall, the dominant safety considerations are detecting human presence and obstruction, inferring human intent, maintaining real-time situational awareness, and ensuring that robotic motion planning respects human activities to avoid collisions or interruptions in lab workflows [1],[2].\n\nNo further specific safety considerations are detailed in the provided sources. \n\nReferences:\n[1], [2]",
+      "answer_length": 292,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes safety considerations found in the sources, including human obstruction and interaction detection, the importance of contextual awareness and real-time data, the need for real-time topology information for generalization, and minimizing idle time to improve safety and efficiency. These points are directly supported by the detailed descriptions and results in the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "hrb1.pdf",
+        "hrb1.pdf",
+        "hrb1.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "capa.pdf",
+        "hrb1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA016",
+      "question": "What does the corpus say about transformer architectures in robotics?",
+      "difficulty": "medium",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "transformers",
+        "robotics"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 14399.477005004883,
+      "answer": "The corpus provides extensive insight into the use of transformer architectures, particularly large language models (LLMs) and vision-language models (VLMs), in robotics control systems.\n\n1. Transformer-based LLMs and VLMs serve as high-level reasoning and planning modules that bridge the gap between low-level motor commands and high-level control logic. These models are commonly integrated into robotic control pipelines to enable natural language interfaces and task generalization [1], [3].\n\n2. A key architectural approach mentioned is the RACAS system, which uses a cooperative multi-module agentic framework where LLM/VLM-based modules communicate exclusively through natural language. This architecture allows embodiment-specific and task-specific knowledge to be represented purely as declarative prompt configurations, enabling zero-training generalization across heterogeneous robot platforms with radically different morphology and dynamics [1], [3].\n\n3. Prior approaches mostly required either robot-specific training data or fine-tuning (e.g., RT-1, RT-2, RoboCat), and were validated only across structurally similar platforms (e.g., different manipulator arms). In contrast, RACAS demonstrates the potential to generalize across very diverse platforms without retraining or data collection, including a wheeled robot, a novel robotic limb unknown to the LLM, and an underwater remotely operated vehicle [1], [2], [3].\n\n4. The works also highlight the trend of decomposing robotic control into multiple transformer-based agents or modules (e.g., Planner, Coder, Supervisor in MALMM; linguistic coordination in LLM2Swarm), which may improve modularity, interpretability, and emergent collective behavior [2], [3].\n\n5. Vision-language models enhance perception by tightly grounding object recognition and task verification in visual input, enabling dynamic replanning and sub-task management informed by vision [2], [3].\n\n6. While transformer-based methods improve semantic reasoning, adaptability, and language-based interfacing in robotics, most frameworks still face challenges with cross-embodiment generalization and often require some form of embodiment-specific training data or fine-tuning. The RACAS approach offers an innovative solution by combining transformer models with a structured memory and natural language API abstraction to achieve zero-shot robot-agnostic control [1], [2], [3].\n\nIn summary, transformer architectures in robotics are leveraged primarily through large LLMs and VLMs that act as high-level planners, perception modules, and multi-agent collaborators. Innovations such as the RACAS system showcase that these architectures can achieve zero-shot generalization to diverse robot platforms by using natural language-based declarative configuration, bypassing the need for retraining on new embodiments. This represents a significant advance toward more general, flexible robotic control frameworks [1], [2], [3].",
+      "answer_length": 383,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the corpus content about transformer architectures in robotics, including the use of LLMs and VLMs as high-level planners and perception modules, the RACAS system's multi-module agentic architecture enabling zero-shot generalization across diverse robot platforms, and the comparison to prior approaches requiring embodiment-specific training. The cited sources provide detailed evidence supporting all key claims."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "rbt.pdf"
+      ],
+      "success": false,
+      "failure_reason": "first_hop_retrieval_failed",
+      "error": null
+    },
+    {
+      "query_id": "FA017",
+      "question": "Given what the papers say about embodied AI capabilities, what manufacturing tasks could be automated first?",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "manufacturing",
+        "reasoning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 12596.041917800903,
+      "answer": "The papers indicate that the manufacturing tasks most likely to be automated first by embodied AI systems are those involving rigid object manipulation and other tasks with high current automation success rates, while tasks requiring dexterous handling of deformable, fragile, or complex objects remain challenging but are progressively approaching feasibility.\n\nSpecifically, traditional industrial robots currently excel at pick-and-place of rigid components, with a high dexterity index for rigid objects (~0.95), for example in electronics assembly [2]. These tasks are already widely automated and represent the lowest hanging fruit for further automation improvements.\n\nHowever, the \"last 30%\" of manufacturing tasks\u2014those requiring dexterous manipulation of deformable or fragile materials, such as flexible cables or force-sensitive insertion with fine tolerances\u2014have been historically human-exclusive but are becoming automated due to advances in dexterous manipulation, tactile sensing, and sim-to-real transfer [1][2]. These advances are enabling automation of more complex, delicate tasks that were previously not automatable and have large shares of manual labor in industries like electronics and garment manufacturing [2][3].\n\nThus, tasks involving rigid, well-defined components and repetitive assembly steps can be automated earliest and most reliably, followed by increasingly complex and dexterous tasks involving deformable materials as embodied AI capabilities improve.\n\nFurthermore, the convergence of three capabilities\u2014foundation models enabling task generalization, dexterous manipulation for handling complex parts, and very high reliability (99.9%+ autonomously)\u2014is critical to fully automating these tasks and removing the need for human workers and associated infrastructure [1].\n\nIn summary, the first manufacturing tasks to be automated with embodied AI will be:\n\n- Rigid component pick-and-place and assembly tasks with high repetition and low variation [2].\n- Tasks progressively incorporating more dexterous handling of deformable and fragile parts, such as cable assembly, connector insertion with sub-millimeter tolerances, and multi-step force-sensitive assembly sequences [1][2].\n- Quality-critical inspection and manipulation tasks achievable through integrated tactile and visual sensing as tactile-vision fusion improves [2].\n\nThis staged progression towards automating increasingly complex manipulation tasks reflects the incremental crossing of capability thresholds along the dimensions of dexterity, generalization, reliability, and tactile-vision fusion, enabling a transformative shift in manufacturing automation [1][2][3].\n\nReferences:  \n[1], [2], [3]",
+      "answer_length": 348,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources explicitly discuss that tasks involving rigid object manipulation, such as pick-and-place of rigid components, are already highly automated and represent the easiest manufacturing tasks to automate further. They also confirm that the 'last 30%' of tasks involving dexterous handling of deformable or fragile objects remain challenging but are becoming feasible due to advances in dexterous manipulation, tactile sensing, and sim-to-real transfer. The convergence of foundation models, dexterity, and high reliability is identified as critical for full automation, matching the answer's claims."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA018",
+      "question": "Based on the robotic control paper, what sensors would be needed for the tasks described in the embodied AI papers?",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "sensors",
+        "multi-hop"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 12797.899961471558,
+      "answer": "Based on the robotic control paper, the sensors needed for the tasks described in the embodied AI papers across the three different robot platforms are primarily cameras providing visual feedback:\n\n1. **Alhakami et al. Limb (multi-jointed manipulator)**:\n   - Equipped with six onboard cameras (four used in experiments), operating at low resolution (100\u00d7100 px) which are then upscaled to higher resolution (768\u00d7768 px) via a super-resolution pipeline before vision-language model (VLM) inference.\n   - Cameras provide multi-view visual information to locate a target object (fire extinguisher) in a cluttered workspace.\n   \n2. **Clearpath Dingo (wheeled ground robot)**:\n   - In simulation: three cameras (forward, left, right) at 640\u00d7480 px.\n   - In the real-world setup: a single forward-facing camera at 1280\u00d7800 px.\n   - Uses visual feedback only to navigate toward a target object (fire extinguisher).\n   \n3. **BlueROV2 (underwater vehicle)**:\n   - A single forward-facing camera providing 1920\u00d71080 px visual feedback over UDP.\n   - Visual sensor input used for underwater navigation tasks.\n\nNo other sensing modalities such as proximity sensors, LIDAR, or inertial measurement units are mentioned as necessary in the described tasks; the system primarily leverages visual data through the cameras to perform object localization and target approach tasks.\n\nIn summary, the sensors needed for the embodied AI tasks as per the discussed robotic control framework are primarily multiple cameras providing visual input adapted to each platform's morphology and operating environment [1], [2], [3].",
+      "answer_length": 228,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources explicitly describe the sensor configurations for each robot platform, confirming the use of multiple cameras with specified resolutions and views as the primary sensors for the tasks. No other sensor modalities are mentioned as necessary, matching the answer's claims."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA019",
+      "question": "What learning algorithms mentioned in the deep learning paper are most applicable to the robot tasks in other papers?",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "algorithms",
+        "multi-hop"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 14643.319129943848,
+      "answer": "The deep learning paper (source [1]) discusses several learning algorithms and techniques in the context of multi-task model-based reinforcement learning (MBRL) applicable for robotic control tasks. The key learning components mentioned in that paper include:\n\n1. **Model-Based Reinforcement Learning (MBRL)**: The work emphasizes the efficacy of model-based RL for scaling online multi-task robotic control. The paper illustrates how shared world models can bridge distinct behaviors and improve sample efficiency over model-free baselines.\n\n2. **Independent Experience Replay (IER)**: Identified as a critical component in the EZ-M framework, IER helps mitigate data imbalance across tasks.\n\n3. **Path Consistency (PC) Loss**: This loss enforces alignment between reward and value predictions, providing gains in training.\n\n4. **Task Embeddings**: Task embeddings are essential for conditioning dynamics and reward models to capture task-specific physics and objectives.\n\nThe paper also mentions planning methods such as tree search for control, although it notes computational overhead challenges.\n\nIn terms of applicability to robot tasks in other papers (e.g., the agentic AI system RACAS in source [2]), these learning algorithms from the deep learning paper are relevant especially because they provide mechanisms for handling multiple tasks and heterogeneous behaviors sharing some physical embodiment or dynamics. The multi-task model-based RL approach with proper conditioning and experience replay enables learning robust representations that can transfer across various robotic tasks.\n\nHowever, the RACAS system ([2]) takes a different approach by decomposing control via LLM/VLM-based modules communicating in natural language, focusing on robot-agnostic control across structurally very different platforms. This system emphasizes declarative prompt configurations and memory-based learning rather than the model-based RL and multi-task training described in [1].\n\nTo summarize:\n\n- The most applicable learning algorithms from the deep learning paper [1] to the robot tasks discussed in other papers are multi-task model-based reinforcement learning techniques incorporating components like independent experience replay, path consistency loss, and task embeddings to handle diverse control tasks efficiently.\n\n- These algorithms are particularly relevant for settings where tasks share a physical embodiment but vary in objectives or dynamics.\n\n- For radically heterogeneous platforms addressed in [2], agentic AI systems relying on LLM/VLM reasoning around robot APIs are used, which differ in paradigm from the deep learning model-based RL approach.\n\nTherefore, the core learning algorithms from the deep learning paper applicable to robotic control tasks are multi-task model-based reinforcement learning with mechanisms for task conditioning and experience replay [1]. Other robot control approaches using agentic AI and language models as in [2] represent complementary strategies rather than direct applications of the deep RL algorithms described.\n\nIf you would like more specific details on particular algorithms or their implementation, the sources do not provide further information.",
+      "answer_length": 437,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes key learning algorithms from the deep learning paper [1], including multi-task model-based reinforcement learning, independent experience replay, path consistency loss, and task embeddings, all supported by the ablation studies and discussions in the source. It also correctly contrasts these with the agentic AI approach using LLM/VLM modules in [2], which is described as a complementary but different paradigm. The answer's claims are directly supported by the retrieved sources."
+      },
+      "retrieved_filenames": [
+        "rags.pdf",
+        "cntrlrbt.pdf",
+        "rags.pdf"
+      ],
+      "expected_sources": [
+        "hrb1.pdf",
+        "ailadeep.pdf"
+      ],
+      "success": false,
+      "failure_reason": "first_hop_retrieval_failed",
+      "error": null
+    },
+    {
+      "query_id": "FA020",
+      "question": "How would the RAG techniques described apply to improving robot decision-making?",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "rag",
+        "robotics",
+        "multi-hop"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 13532.618999481201,
+      "answer": "The Retrieval-Augmented Generation (RAG) techniques described in the RACAS system apply to improving robot decision-making by enabling robot-agnostic closed-loop control that leverages large language models (LLMs) and vision language models (VLMs) in a modular, natural language-based framework. Specifically:\n\n1. **Robot-Agnostic Control via Agentic Systems**: RACAS decomposes robot control into three cooperative LLM/VLM-based modules\u2014the Controller, Monitors, and Memory Curator\u2014that communicate exclusively through natural language. This design abstracts away low-level embodiment specifics, allowing a single system to control drastically different robots without retraining or code changes. The robot's morphology, action space, and environment are described declaratively in natural language prompts, which the system uses to generate appropriate commands and interpret observations [1], [2].\n\n2. **Closed-Loop Perception and Reasoning**: The Controller generates task-specific visual queries each step, which the Monitor modules answer by analyzing camera images and returning natural language scene descriptions. The Controller then reasons over this information along with the environment memory (maintained by the Memory Curator) and the task specification to select the next action. This natural language-based interaction and memory integration enable dynamic, context-aware decision-making [2].\n\n3. **Zero-Training Generalization and Adaptability**: Because the system requires only natural language descriptions of the robot and its API (action definitions), it can generalize zero-shot across robots that differ fundamentally in morphology, dynamics, and operating environment. This includes wheeled robots, multi-joint limbs, and underwater vehicles. No source code or model weights are modified, and all embodiment-specific knowledge is confined to the prompt configurations. This facilitates rapid adaptation and deployment to new robots without data collection or retraining [1], [2], [3].\n\n4. **Improved Task Completion Efficiency and Robustness**: In experiments, RACAS outperformed baseline methods significantly, completing tasks in fewer steps despite environmental challenges and morphological diversity. The system\u2019s ability to direct robots efficiently once objects are located illustrates improved decision-making grounded on perceptual queries and memory [3].\n\nIn summary, the RAG techniques in RACAS improve robot decision-making by enabling natural language-based, modular, and memory-augmented reasoning across heterogeneous platforms with zero training, thus overcoming traditional barriers like data collection, custom representation engineering, and embodiment-specific policy training [1], [2], [3].",
+      "answer_length": 344,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the RACAS system described in the sources, including its robot-agnostic modular architecture using LLM/VLM modules communicating via natural language, closed-loop perception and reasoning, zero-training generalization across heterogeneous robots, and improved task completion efficiency demonstrated in experiments."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "hrb1.pdf"
+      ],
+      "success": false,
+      "failure_reason": "first_hop_retrieval_failed",
+      "error": null
+    },
+    {
+      "query_id": "FA021",
+      "question": "What is the current price of NVIDIA stock?",
+      "difficulty": "easy",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "hallucination-test"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 6228.747844696045,
+      "answer": "The provided sources do not contain any information about the current price of NVIDIA stock. Therefore, I am unable to provide the current price of NVIDIA stock based on the given sources.",
+      "answer_length": 32,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer correctly states that the provided sources do not contain any information about the current price of NVIDIA stock."
+      },
+      "retrieved_filenames": [
+        "pg38304.txt",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA022",
+      "question": "Who won the 2025 Nobel Prize in Physics?",
+      "difficulty": "easy",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "hallucination-test"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 6349.734306335449,
+      "answer": "The provided sources do not contain any information about the winner of the 2025 Nobel Prize in Physics. They focus on topics related to human\u2013AI collaboration in particle physics, collider experiments, and the development of AI systems like Dr. Sai for high-energy physics analysis but do not mention Nobel Prize recipients or awards. Therefore, I cannot answer who won the 2025 Nobel Prize in Physics based on the given sources.",
+      "answer_length": 70,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer correctly states that the retrieved sources do not contain any information about the winner of the 2025 Nobel Prize in Physics, and the sources focus on human\u2013AI collaboration in particle physics and collider experiments without mentioning Nobel Prize recipients."
+      },
+      "retrieved_filenames": [
+        "ailadeep.pdf",
+        "ailadeep.pdf",
+        "ailadeep.pdf"
+      ],
+      "expected_sources": [],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA023",
+      "question": "What is the recipe for making sourdough bread?",
+      "difficulty": "easy",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "off-topic"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 6821.696043014526,
+      "answer": "The provided sources do not contain any information or recipe for making sourdough bread. They focus mainly on topics related to gunpowder, ergot (a fungus affecting rye), and related chemical and historical details, but there is no mention of sourdough bread or its preparation.\n\nTherefore, I am unable to provide the recipe for making sourdough bread based on the given sources.",
+      "answer_length": 61,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer correctly states that the retrieved sources do not contain any information or recipe for making sourdough bread, focusing instead on gunpowder and ergot-related topics."
+      },
+      "retrieved_filenames": [
+        "pg38304.txt",
+        "pg35398.txt",
+        "pg38304.txt"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA024",
+      "question": "How does quantum entanglement relate to robot locomotion?",
+      "difficulty": "medium",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "hallucination-test"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 6801.774024963379,
+      "answer": "The provided sources do not contain any information relating quantum entanglement to robot locomotion. The discussed materials focus primarily on AI-based control systems for diverse robotic platforms, such as RACAS, which uses large language and vision models to enable robot-agnostic control across various robot morphologies and operating environments [1], [2]. There is no mention or discussion of quantum entanglement or its relationship to robot locomotion in these texts.\n\nTherefore, based on the provided sources, no connection between quantum entanglement and robot locomotion can be established.",
+      "answer_length": 85,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources focus on AI-based control systems for diverse robotic platforms and do not mention quantum entanglement or its relation to robot locomotion, supporting the answer's claim that no connection can be established based on the provided materials."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "hrb1.pdf"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA025",
+      "question": "What does GPT-5 say about embodied intelligence?",
+      "difficulty": "medium",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "hallucination-test"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 10438.723087310791,
+      "answer": "GPT-5 discusses embodied intelligence primarily in the context of manufacturing and economic geography. It argues that embodied intelligence is poised to trigger structural transformations in manufacturing beyond mere efficiency improvements. Specifically, when embodied AI capabilities surpass critical thresholds in dexterity, task generalization, operational reliability, and tactile-vision fusion, they can cause phase transitions that change where factories are located, how supply chains are organized, and the economically viable scale of production. This breaks the century-long paradigm of centralized mega-factories near labor pools, enabling demand-proximal micro-manufacturing and potentially reversing geographic concentration driven by labor arbitrage. Moreover, the optimal location for factories would shift towards machine-optimal environmental conditions (so-called Machine Climate Advantage), which is a fundamentally new manufacturing geography with no historical precedent.\n\nThis perspective is formalized through a multi-dimensional Capability Space and three transmission pathways showing how embodied AI propagates structural economic change. The framework, termed \"Embodied Intelligence Economics,\" provides a principled basis for answering new kinds of questions about the topology of global production that neither robotics nor economics alone can address.\n\nIn summary, GPT-5 sees embodied intelligence not just as improving factory efficiency but as a transformative force reshaping the spatial and structural logic of production worldwide [1], [2].\n\nNo direct statements about embodied intelligence outside the manufacturing or economic geography context are present in these sources. \n\nReferences:  \n[1] capa.pdf (arXiv:2603.04457v1, 2026)  \n[2] capa.pdf (Conclusion section)",
+      "answer_length": 226,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the key points from the capa.pdf sources, which describe GPT-5's view of embodied intelligence as a transformative force in manufacturing and economic geography, emphasizing capability thresholds, phase transitions, and new manufacturing geographies. The answer's claims are directly supported by the detailed arguments and framework presented in the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "qya.pdf"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA026",
+      "question": "What specific dataset sizes were used in the triangulation paper experiments?",
+      "difficulty": "hard",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "specificity",
+        "datasets"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 11058.680772781372,
+      "answer": "The specific dataset sizes used in the TrianguLang paper experiments are as follows:\n\n1. **ScanNet++**: \n   - Training on the nvs_sem_train split consisting of 230 scenes.\n   - Evaluation on a separate held-out nvs_sem_val split of 50 scenes.\n   - Each scene contains approximately 500 images at 1752\u00d71168 resolution.\n   - Training samples 4-8 views per iteration at 1008\u00d71008 resolution [1], [3].\n\n2. **uCO3D**:\n   - Training on 8,000 scenes (object-centric 360\u00b0 captures across 1,000 categories) [1].\n\nOther datasets mentioned but with no dataset size specifics given are LERF-OVS (4 tabletop scenes), NVOS (6 multi-view object selection scenes), and SPIn-NeRF (10 real-world multi-view scenes) [1].\n\nThus, the primary experimental training dataset sizes are:\n- 230 scenes on ScanNet++ for training.\n- 8,000 scenes on uCO3D for training.\n\nEvaluation typically uses 100 frames per scene with 5 randomly sampled objects [1].\n\nReferences: [1], [3].",
+      "answer_length": 138,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reflects the dataset sizes and splits used in the TrianguLang paper experiments as detailed in the sources: 230 scenes for training and 50 scenes for evaluation on ScanNet++ (nvs_sem_train and nvs_sem_val splits), approximately 500 images per scene, sampling 4-8 views per iteration at 1008\u00d71008 resolution, and training on 8,000 uCO3D scenes. Other datasets are mentioned with their scene counts but without training size specifics, consistent with the answer."
+      },
+      "retrieved_filenames": [
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf"
+      ],
+      "expected_sources": [
+        "triangulang.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA027",
+      "question": "What exact accuracy numbers does the probing paper report?",
+      "difficulty": "hard",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "specificity",
+        "metrics"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 21812.719106674194,
+      "answer": "The probing paper reports the following exact accuracy numbers:\n\n1. On ScanNet++:\n   - TrianguLang achieves a predicted mean Intersection-over-Union (mIoU) of 62.4% with an oracle mIoU of 63.4%, resulting in a 1.0 point gap between oracle and predicted performance [1], [3].\n   - SAM3, by comparison, achieves a predicted mIoU of 49.8% and an oracle mIoU of 79.9%, leading to a large 30.1 point gap due to its difficulty in selecting the best mask from many candidates [1], [3].\n\n2. On uCO3D:\n   - TrianguLang trained in-domain achieves 94.6% mIoU, surpassing MV-SAM's 87.7% [3].\n   - TrianguLang trained on ScanNet++ achieves 75.7% mIoU on uCO3D (cross-dataset transfer), more than doubling MV-SAM's 32.2% [3].\n\n3. On the LERF-OVS benchmark:\n   - TrianguLang achieves 58.1% mIoU and 83.5% localization accuracy with zero-shot transfer (no training on LERF data), closely matching LangSplat-V2\u2019s 59.9% mIoU and 84.1% localization accuracy but running orders of magnitude faster [2], [3].\n\n4. On NVOS and SPIn-NeRF benchmarks:\n   - TrianguLang achieves 93.5% and 91.4% mIoU respectively, surpassing MV-SAM\u2019s 92.1% and 92.5% among feed-forward methods [3].\n\nAdditional details:\n- Increasing the number of queries beyond 10 causes a drop in performance on ScanNet++, with 10 queries yielding 38.5% mIoU, 50 queries dropping to 37.5%, and 100 queries collapsing to 0.0% mIoU in a 20-scene evaluation [1].\n\nThese numbers highlight TrianguLang's effectiveness in accurate mask selection and geometric cross-view reasoning while maintaining high efficiency across datasets and benchmarks.\n\nReferences:\n[1] triangulang.pdf (sections on Oracle vs Predicted IoU, query ablations)\n[2] triangulang.pdf (Table 3 and 4 on LERF-OVS and ScanNet++)\n[3] triangulang.pdf (accuracy comparisons across datasets and methods)",
+      "answer_length": 262,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately reports exact accuracy numbers and comparisons from the probing paper triangulang.pdf, including mIoU values on ScanNet++, uCO3D, LERF-OVS, NVOS, and SPIn-NeRF benchmarks, as well as query ablation results. All figures and claims are directly supported by the detailed data and tables in the retrieved sources."
+      },
+      "retrieved_filenames": [
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf"
+      ],
+      "expected_sources": [
+        "probing more.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA028",
+      "question": "What specific robot hardware platforms are mentioned in the control robotics paper?",
+      "difficulty": "medium",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "hardware",
+        "specificity"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 7582.297801971436,
+      "answer": "The specific robot hardware platforms mentioned in the control robotics paper are:\n\n1. Clearpath Dingo \u2014 a wheeled ground robot (used both in simulation and real world) [1], [2], [3].\n2. A recently published novel multi-jointed robotic limb by Alhakami et al. [1], [2], [3].\n3. BlueRobotics BlueROV2 \u2014 an underwater remotely operated vehicle [1], [2], [3].\n\nThese three diverse platforms demonstrate the application of the RACAS (Robot-Agnostic Control via Agentic Systems) architecture across radically heterogeneous robots [1], [2], [3].",
+      "answer_length": 80,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources explicitly mention the Clearpath Dingo wheeled ground robot, the novel multi-jointed robotic limb by Alhakami et al., and the BlueRobotics BlueROV2 underwater vehicle as the three specific robot hardware platforms used to evaluate the RACAS system."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA029",
+      "question": "What are the exact threshold values or hyperparameters mentioned in the deep learning paper?",
+      "difficulty": "hard",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "hyperparameters",
+        "specificity"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 1,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 17932.008743286133,
+      "answer": "The exact threshold values or hyperparameters mentioned in the deep learning paper \"TrianguLang\" are as follows:\n\nTraining Hyperparameters (from Table 7):\n- Data:\n  - Scenes: 230\n  - Views per sample: 8\n  - Image resolution: 1008\n  - DA3 resolution: 1008\n- Optimization:\n  - Optimizer: AdamW\n  - Learning rate: 1\u00d710^(-4)\n  - Weight decay: 0.01\n  - LR scheduler: Cosine annealing\n  - Warmup epochs: 2\n  - Batch size (per GPU): 8\n  - Effective batch size: 64\n  - GPUs: 8\u00d7A100 80GB\n  - Epochs: 100\n- Architecture:\n  - Model dimension D: 256\n  - Attention heads: 8\n  - Decoder layers: 6\n  - Number of queries: 10\n  - FFN dimension: 2048\n  - GASA \u03b2 init: 1.0 (initial value of learnable scalar \u03b2 in geometric bias)\n  - GASA kernel dim: 32\n  - Centroid head: True (enabled) [3]\n\nLoss Function Parameters:\n- Segmentation Loss:\n  - Focal loss weight \u03bbf = 2.0\n  - Dice loss weight \u03bbd = 0.5\n  - Focal loss parameters: \u03b1=0.75 (foreground weight), \u03b3=2.0 (focusing parameter) [3]\n  \n- Ranking Loss (Align + Contrastive):\n  - \u03bba = 1.0 (Align loss weight)\n  - \u03bbc = 0.3 (Contrastive loss weight)\n  - Align loss parameters:\n    - \u03b1=0.5\n    - \u03c4=2.0 (temperature) [3]\n  - Contrastive loss margin m=0.5 [3]\n\n- Localization Loss:\n  - \u03bb3d = 0.5 (centroid regression loss weight)\n  - \u03bbp = 0.5 (presence loss weight) [3]\n\n- Sheaf Consistency Loss:\n  - \u03bbs = 0.1 (weight)\n  - Corresponding pixels considered with 3D distance < 5cm [3]\n\nSpatial Qualifier Augmentation:\n- Augmentation probability p = 0.3 for selecting one valid qualifier to prepend to text prompt during training [1]\n\nOther thresholds:\n- For spatial qualifier validity \"nearest\": d_target \u2264 min(d_others) + \u03f5 (epsilon) [1]. The exact value of \u03f5 is not specified.\n\n- The margin m=0.5 used in the contrastive ranking loss [3].\n\nGeometric bias parameters:\n- \u03b2 is a learnable scalar initialized at 1.0 [2]\n- Distance kernel \u03d5 is a learned 2-layer MLP with hidden dim 32 [2]\n\nThese hyperparameters are detailed in the training details and loss function sections and include optimizer settings, model architecture parameters, and weights for different components of the loss function used in training TrianguLang [1][2][3].",
+      "answer_length": 349,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately lists the exact threshold values and hyperparameters as detailed in the retrieved paper sections, including training hyperparameters from Table 7, loss function weights and parameters, spatial qualifier augmentation probability, geometric bias parameters, and other thresholds explicitly mentioned in the sources."
+      },
+      "retrieved_filenames": [
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf"
+      ],
+      "expected_sources": [
+        "ailadeep.pdf"
+      ],
+      "success": false,
+      "failure_reason": "insufficient_specificity_in_retrieval",
+      "error": null
+    },
+    {
+      "query_id": "FA030",
+      "question": "What specific cities or geographic locations are mentioned in the carbon pathfinding paper?",
+      "difficulty": "medium",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "geography",
+        "specificity"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 8669.530153274536,
+      "answer": "The specific cities and geographic locations mentioned in the carbon pathfinding paper (as referenced in the provided sources) include:\n\n1. Denver and the Colorado Springs corridor (Colorado Front Range) in the United States. This region is highlighted as an example of Machine Climate Advantage due to its climate and logistics benefits for autonomous manufacturing [1], [2].\n\n2. Other geographic regions noted for their potential in autonomous manufacturing include:\n   - The Atacama\u2013Altiplano region (Chile/Argentina)\n   - Interior Australia\n   - The Arabian Peninsula interior, including Saudi Arabia\u2019s NEOM project\n   - Iceland and Greenland [1]\n\n3. Comparative mentions of cities with different precipitation rates for context include Shanghai and Ho Chi Minh City [1].\n\nNo other specific cities or geographic locations are mentioned in relation to the carbon pathfinding framework within the provided sources [3]. \n\nTherefore, the key geographic locations referenced for the context of manufacturing and industrial strategy in the carbon pathfinding-related discussion are Denver, Colorado Springs, the Atacama\u2013Altiplano region, interior Australia, the Arabian Peninsula interior, Iceland, and Greenland [1], [2].",
+      "answer_length": 168,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately lists the specific cities and geographic locations mentioned in the carbon pathfinding paper, including Denver, Colorado Springs, the Atacama\u2013Altiplano region, interior Australia, the Arabian Peninsula interior (including Saudi Arabia\u2019s NEOM project), Iceland, and Greenland, as well as comparative mentions of Shanghai and Ho Chi Minh City, all of which are directly supported by the retrieved sources."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA031",
+      "question": "What do the AI papers say about attention mechanisms in neural networks?",
+      "difficulty": "medium",
+      "failure_category": "domain_confusion",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "attention",
+        "domain-confusion-risk"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 6980.209112167358,
+      "answer": "The provided sources do not contain explicit information or detailed discussion about attention mechanisms in neural networks. They mainly cover topics such as reinforcement learning, robotics control, model-based learning, multi-task learning, and AI in education, but do not specifically address attention mechanisms.\n\nTherefore, based on the given documents, there is no direct commentary or findings about attention mechanisms in neural networks. If you have other sources or more specific documents related to attention mechanisms, I could help analyze those. \n\nReferences: [1], [2], [3]",
+      "answer_length": 83,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources do not mention or discuss attention mechanisms in neural networks, and the answer correctly states that no explicit information on this topic is found in the provided documents."
+      },
+      "retrieved_filenames": [
+        "rags.pdf",
+        "qya.pdf",
+        "rags.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "ailadeep.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA032",
+      "question": "What does the corpus say about language and communication?",
+      "difficulty": "hard",
+      "failure_category": "domain_confusion",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "language",
+        "domain-confusion-risk"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 11978.87372970581,
+      "answer": "The corpus provides several insights about language and communication, particularly in the context of interaction with non-human agents and AI systems:\n\n1. Voice and Conversational Qualities in Representation:\n   - Voice is central to how plausibly an agent can represent a non-human perspective. Participants in one study perceived a female-coded, American-accented voice with a conversational style as making the agent less like the non-human (a koala) and more like a generic chatbot. Vocal delivery affected engagement; a monotonous or lecture-like tone reduced attentiveness, and repeated responses contributed to a static perception of the voice rather than a dynamic, situational one.\n   - Voice-based interaction also shaped group dynamics by centralizing interaction on the agent and inhibiting peer-to-peer exchanges, as participants hesitated to speak while the agent was responding.\n   - Simple language and explanatory tones were suitable for educational purposes but were seen as insufficient for advocacy, which requires stronger positioning, context responsiveness, and the ability to challenge human assumptions [1].\n\n2. Embodiment and Communication Modalities:\n   - The concept of companionship involves communication, trust, empathy, and shared goals. Vocal communication can remove distance and interfaces like writing, enabling a more personal connection.\n   - Adding accents to text-to-speech voices can give individuality and reduce perceived social distance, making communication feel more authentic.\n   - Physical actions (such as touching the agent's arm or camera motor) can also serve as communication methods, enhancing perceived autonomy of the agent beyond keyboard or mouse input [2].\n\n3. Language-Driven Control in Robotics:\n   - Language is used as a unifying interface for controlling heterogeneous robot embodiments by decomposing control into perception, decision, and memory pipelines, all connected through natural language.\n   - This approach enables reasoning about robot morphology and capabilities solely through natural language descriptions, avoiding retraining or code modification.\n   - Narration of sensory experience as natural language can improve human situational awareness, though such descriptions often serve only informational purposes without feeding back into control loops for future decision-making [3].\n\nOverall, language and communication serve as crucial modalities for representing non-human perspectives, mediating interaction between humans and artificial or non-human agents, and enabling control and reasoning in robotic systems. Vocal qualities, conversational style, embodiment, and narrative framing significantly influence the legitimacy, engagement, and perceived authenticity of such communication [1][2][3].",
+      "answer_length": 370,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes key points from the retrieved sources about language and communication, including voice qualities affecting agent representation and engagement, embodiment and communication modalities enhancing authenticity and connection, and language-driven control in robotics using natural language interfaces. All major claims are directly supported by the cited excerpts."
+      },
+      "retrieved_filenames": [
+        "probing more.pdf",
+        "bkbj.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "triangulang.pdf",
+        "probing more.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA033",
+      "question": "Tell me about love and human relationships.",
+      "difficulty": "medium",
+      "failure_category": "domain_confusion",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "domain-confusion",
+        "gutenberg-risk"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 10141.84308052063,
+      "answer": "The sources provided contain limited direct information specifically about \"love and human relationships.\" However, some relevant insights can be drawn, particularly from source [1].\n\nAccording to [1], Hugo of St Victor argued that all love necessarily involves a desire for union with the beloved. He connects this desire ultimately to God, suggesting that eternal happiness consists in union with God and that true desire for love cannot be apart from God. Bernard of Clairvaux elaborates four stages of love: starting from self-regarding desire for God's aid, moving to love for His kindness, then for His absolute goodness, and finally culminating in a pure love for God Himself as the sole affection.\n\nThomas Aquinas integrates Aristotelian philosophy with Christian dogma, stating that all actions and movements aim at some good, ultimately God, the highest good. For humans, this highest good is grounded in a loving vision of God's perfections, leading to ultimate happiness. He acknowledges a lower form of happiness achievable in human life through virtue, friendship, and well-being of mind and body.\n\nIn this framework, human relationships and love are linked to virtue and the ordered pursuit of good, implying that human friendships and love are part of a moral life oriented towards a greater divine good.\n\nEthics is defined as a philosophical investigation into human character and conduct concerning concepts such as good, bad, right, and wrong, especially as they relate to moral principles governing human actions and relationships [2].\n\nNo other sources provided discuss love and human relationships directly.\n\nIn summary, love and human relationships, from the perspectives reflected here, are deeply connected to ethical and spiritual considerations, with love encompassing both natural human friendship and a higher, divine-oriented relationship culminating in ultimate happiness and union with God [1][2].\n\nIf you need more detailed or contemporary views on love and human relationships beyond this classical and ethical framework, the sources do not contain such information.",
+      "answer_length": 317,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the key points from the sources, particularly source [1], regarding the philosophical and theological perspectives on love and human relationships, including the views of Hugo of St Victor, Bernard of Clairvaux, and Thomas Aquinas. It also correctly notes the definition of ethics from source [2] and the connection of love and relationships to virtue and moral life. No unsupported claims are made."
+      },
+      "retrieved_filenames": [
+        "pg35398.txt",
+        "pg35398.txt",
+        "probing more.pdf"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA034",
+      "question": "What stories or narratives are discussed in the corpus?",
+      "difficulty": "medium",
+      "failure_category": "domain_confusion",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "domain-confusion",
+        "gutenberg-risk"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 10850.265264511108,
+      "answer": "The corpus discusses several stories or narratives primarily in the context of collaborative visual storytelling using an AI-driven drawing agent called the \"Companion.\" The narratives illustrated and created include:\n\n1. **Fables**: The Companion demonstrated competence in illustrating fables, specifically mentioned in sections 5.2.1 and 5.2.2 of the corpus. For example, the interaction involving the \"Crow/Fox\" [1][2].\n\n2. **Song Lyrics**: The Companion also illustrated narratives derived from song lyrics (section 5.2.4) [1][2].\n\n3. **The Turtle\u2019s Steady Progress**: This narrative is described as being depicted through sequential repetition of characters across space, showing passage of time [2].\n\n4. **Cheese Moving From Beak to Mouth**: Positional cues in the drawings depicted the cheese moving through the narrative sequence [2].\n\n5. **Symbolic or Figurative Representation**: The Companion sometimes added or modified elements symbolically, such as an \u201celongated arm suggesting action without repositioning\u201d [2].\n\nThe narratives are represented visually using different strategies like sequential representation, positional cues, and figurative representation, demonstrating the AI agent's ability to translate narrative concepts into drawing actions [1][2]. \n\nAdditionally, there is discussion around the emergent stories and depictions that arise from collaborative drawing with the Companion, including unexpected interpretations like a \"floating car\" and deviations from instructions, highlighting the system's emergent agency and potential for exploratory and surprising creative outputs [1].\n\nNo other explicit story themes or narratives are detailed in the other source [3], which focuses on representation of more-than-human perspectives and voice-based AI agents in environmental and crisis resilience contexts rather than storytelling narratives.\n\n**In summary:**\n- Fables (including the Crow/Fox story)\n- Song lyrics as narrative sources\n- The turtle\u2019s journey (sequential)\n- Cheese moving in narrative sequence\n- Symbolic or figurative illustrative elements\n\nThese stories and narratives serve as key examples in demonstrating the Companion agent\u2019s visual storytelling capabilities [1][2].",
+      "answer_length": 294,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the narratives discussed in the corpus, including fables (Crow/Fox), song lyrics, the turtle's steady progress, cheese moving from beak to mouth, and symbolic/figurative representations. These are explicitly mentioned in sections 5.2.1, 5.2.2, 5.2.4, and related parts of the retrieved sources, which describe the Companion's visual storytelling strategies and emergent narrative agency. The third source does not discuss storytelling narratives, consistent with the answer."
+      },
+      "retrieved_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "probing more.pdf"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA035",
+      "question": "What are the moral and ethical themes discussed?",
+      "difficulty": "hard",
+      "failure_category": "domain_confusion",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "domain-confusion",
+        "gutenberg-risk",
+        "ethics"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 13528.985023498535,
+      "answer": "The moral and ethical themes discussed in the provided sources revolve around the nature and authority of the moral consciousness, the challenges in establishing universal criteria for morality, and the evolution of ethical theory in response to social and scientific developments.\n\n1. **Moral Consciousness and its Authority:**  \n   A key theme is the moral consciousness as the ultimate authority in distinguishing right from wrong. Attempts to find a superior universal criterion of morality beyond the moral consciousness are seen as flawed because such attempts must rely on moral distinctions already inherent in the moral consciousness itself. Ethics is thus described as a reflective process centered on understanding the nature of the moral consciousness and critiquing mistaken efforts to supplant it [1].\n\n2. **Criticism and Justification of Moral Judgments:**  \n   There is a recognition that different individuals give varying answers to similar moral problems. This leads to a dual response: either undermining the authority of the moral consciousness to justify immoral actions or justifying particular moral judgments by analyzing the universal moral principles involved or deducing them from a conception of the Supreme Good or Final End [1].\n\n3. **Philosophical Approaches to Ethics:**  \n   Various philosophical perspectives are highlighted, including idealism, utilitarianism (especially through the work of Sidgwick), hedonism, pragmatism (or \"humanism\" as proposed by F.C.S. Schiller), and the relationship between ethics and other fields like political economy and anthropology. These frameworks explore the nature of moral conduct, the role of pleasure and happiness as motives or ends in morality, and the need for social considerations in ethical theory [2].\n\n4. **Social Character of Morality and Ethical Progress:**  \n   Both evolutionary and idealistic ethics reject narrow individualism and emphasize the social nature of the self. Moral progress is linked to the realization of a perfect society. There is also a noted shift away from hedonistic ethics and egoistic individualism, in part due to their failure to produce common prosperity and happiness. Instead, there is a move toward recognizing reason as the ultimate court of appeal in morality, religion, politics, and economics, reaffirming moral principles implicit in ordinary moral consciousness [3].\n\n5. **The Impact of Science and Darwinism:**  \n   While there is some dissatisfaction with current morality and attempts to base new morality on scientific observation, Darwin himself did not question the absolute character of moral obligation. His primary interest lay in the development of morality in its early stages rather than denying moral absolutes [3].\n\nIn summary, the themes discussed include the primacy and nature of moral consciousness, the challenge of universalizing moral principles, the influence of various philosophical schools on ethics, the social dimension of morality, critiques of hedonism and individualism, and the relationship between morality and scientific understandings such as evolution [1][2][3].",
+      "answer_length": 448,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the moral and ethical themes discussed in the sources, including the authority of moral consciousness, challenges in universalizing morality, various philosophical approaches, social character of morality, critiques of hedonism and individualism, and the impact of scientific views such as Darwinism, all of which are directly supported by the retrieved texts."
+      },
+      "retrieved_filenames": [
+        "pg35398.txt",
+        "pg35398.txt",
+        "pg35398.txt"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA036",
+      "question": "How does imitation learning differ from reinforcement learning in robotics?",
+      "difficulty": "medium",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "imitation-learning",
+        "rl"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 2,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 5880.820989608765,
+      "answer": "The provided sources do not explicitly discuss or compare imitation learning and reinforcement learning in robotics. Therefore, there is insufficient information in the sources to explain how imitation learning differs from reinforcement learning in robotics. \n\nIf you would like, I can provide a general explanation based on common knowledge, but according to the instructions, I can only use the provided sources.",
+      "answer_length": 61,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources do not contain any explicit discussion or comparison of imitation learning and reinforcement learning in robotics, supporting the answer's claim of insufficient information."
+      },
+      "retrieved_filenames": [
+        "rags.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "hrb1.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": false,
+      "failure_reason": "missing_sources_for_comparison",
+      "error": null
+    },
+    {
+      "query_id": "FA037",
+      "question": "What are the limitations acknowledged by the authors across the robotics papers?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "limitations",
+        "synthesis"
+      ],
+      "metrics": {
+        "precision_at_3": 0.6666666666666666,
+        "num_expected": 3,
+        "num_retrieved_correct": 2
+      },
+      "latency_ms": 10367.390871047974,
+      "answer": "The authors across the robotics papers acknowledge several limitations:\n\n1. In the robotics control context, one significant limitation is that existing approaches to bridging the gap between low-level motor commands and high-level control algorithms either require retraining for every new robot embodiment or have only been validated on structurally similar platforms. End-to-end policies require data collection and retraining for every new robot, and performance degrades when applied to platforms structurally different from the training set. Approaches using large language or vision language models (LLM/VLM) have been validated mostly on structurally similar platforms in controlled laboratory settings, with no prior demonstrations of zero-training generalization across radically heterogeneous platforms differing in morphology, dynamics, and operating environments [1], [3].\n\n2. The new RACAS system introduced aims to address these limitations by requiring only a natural language description of the robot, an action definition, and a task specification, without needing to modify source code, model weights, or reward functions. However, it is implied that production-grade deployment would still require custom engineering due to the stochastic nature of alternative approaches [1].\n\n3. In the context of robotic systems applied in laboratory automation, one limitation mentioned is that models require real-time topology information to generalize across broader laboratory scenarios. The current work is limited to design, scenario identification, data collection, and validation stages, with future work needed on implementation, generalization via adversarial training and retrieval-augmented generation (RAG), experimental evaluation, and user studies to assess scalability, robustness, and workflow impact in real-world environments [2].\n\nIn summary, main limitations relate to (a) the need for retraining or limited validation scope for prior robot control methods, (b) the lack of demonstrations across highly heterogeneous robotic platforms, and (c) the current scope of laboratory robotic systems being limited with further future work needed to validate and generalize the approaches [1], [2], [3].",
+      "answer_length": 302,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the limitations described in the sources: the need for retraining or limited validation scope for prior robot control methods, the lack of demonstrations across highly heterogeneous robotic platforms, and the limited scope of laboratory robotic systems with future work needed for generalization and real-world validation."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "rbt.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA038",
+      "question": "What future research directions are proposed across all AI papers?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "future-work",
+        "synthesis"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 4,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 12409.887075424194,
+      "answer": "The future research directions proposed across the AI papers include:\n\n1. In interactive AI and human-robot interaction, future research should prioritize responsiveness over optimization, focusing on sustaining creative flow under evolving input rather than fixed optimal solutions. This is particularly relevant for multi-robot interaction and performative settings where human direction is crucial. Evaluation methods should move beyond traditional metrics like efficiency and error rate to emphasize users' sense of agency, authorship, and creative flow, using metrics like the Creativity Support Index. Challenges include managing social interaction and physical proximity in close collaboration, clarifying boundaries of control and consent, and scaling intent direction from a single robot to multiple robots without diluting human control. Designing interactive AI that makes agency legible while supporting expressive human direction remains an open problem [1].\n\n2. In the area of AI for embodied learning and education, a major future research direction involves addressing the \"Sedentary Assumption\"\u2014the prevailing model of a stationary learner interacting with AI through screen-based interfaces. The gap identified is AI serving as an epistemic teammate during unstructured, place-bound field inquiry and learning, assessed by learning trajectories rather than final products. The proposed framework, exemplified by the Field Atlas, shifts the model from instruction delivery to dialogic sensemaking grounded in embodied, embedded cognition. This suggests future work on AI systems that support active, mobile, and context-aware learning as partners in real-world environments, emphasizing process-based assessment resistant to fabrication [2].\n\n3. In scientific research workflows, future directions suggest developing AI agents as collaborators under explicit human instruction and oversight, transforming researchers' roles from executors to strategists and curators. Essential to this is expressing research requirements precisely in a dual-human-machine-friendly manner, e.g., via a Domain-Specific Language (DSL) for science that records purpose, logic, and accountability. The architecture should be multi-agent and modular, with specialized agents for tasks like data preparation, model selection, uncertainty estimation, and verification, all overseen by humans in iterative loops. This approach promises to improve throughput, reproducibility, and adaptability in varied scientific domains, emphasizing human supervision, safety, and interpretability. Research should continue to explore these human-AI collaborative workflows that extend human reasoning capacity without relinquishing control [3].\n\nIn summary, these papers collectively propose future AI research focusing on:\n- Interactive AI that scaffolds human creativity and agency in dynamic, embodied contexts with new evaluation frameworks [1],\n- AI as epistemic teammates in embodied, context-rich learning environments emphasizing process and trajectory over product [2],\n- Human-centered AI agents that collaborate with scientists through precise, interpretable workflows, enabling scalable and accountable research [3].\n\nThese directions share common themes of enhancing human-AI collaboration, preserving human control and agency, and rethinking evaluation toward processes and creative engagement rather than fixed outcomes.",
+      "answer_length": 445,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes future research directions from the three retrieved sources: prioritizing responsiveness and agency in interactive AI and human-robot interaction (rbt.pdf), addressing the Sedentary Assumption and promoting AI as epistemic teammates in embodied learning environments (qya.pdf), and developing human-centered, interpretable AI agents collaborating with scientists via modular workflows and DSLs (ailadeep.pdf). All key claims are directly supported by the sources."
+      },
+      "retrieved_filenames": [
+        "rbt.pdf",
+        "qya.pdf",
+        "ailadeep.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "probing more.pdf",
+        "ailadeep.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA039",
+      "question": "What datasets are referenced across all papers in the corpus?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "datasets",
+        "synthesis"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 12288.665771484375,
+      "answer": "The datasets referenced across the papers in the corpus include:\n\n1. SPIn-NeRF dataset, used for multi-view segmentation and evaluation in [1].\n2. NVOS T-Rex scene, used for spatial disambiguation demonstration in [1].\n3. EgoLife dataset, which contains 266 hours of egocentric videos from six people covering daily activities and environments, mentioned in [3].\n4. MA-EgoQA, which is based solely on the EgoLife dataset, also mentioned in [3].\n5. DL3DV-10K: A large-scale scene dataset for deep learning-based 3D vision referenced in [2].\n6. Other datasets mentioned in [2] include:\n   - Nerf dataset [25]\n   - SPIn-NeRF dataset [26]\n   - Other datasets or benchmarks are implied from references but without explicit dataset names.\n\nThus, the datasets explicitly referenced in the corpus are primarily SPIn-NeRF, NVOS T-Rex scene, EgoLife, MA-EgoQA, and DL3DV-10K [1][2][3].",
+      "answer_length": 129,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer lists datasets explicitly mentioned in the sources: SPIn-NeRF and NVOS T-Rex scene are detailed in triangulang.pdf; EgoLife and MA-EgoQA are described in embodiedai1.pdf; DL3DV-10K and Nerf dataset are referenced in triangulang.pdf. All key datasets in the answer are directly supported by the retrieved documents."
+      },
+      "retrieved_filenames": [
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "embodiedai1.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "triangulang.pdf",
+        "ailadeep.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA040",
+      "question": "Which paper provides the most actionable framework for deploying AI in industrial settings?",
+      "difficulty": "hard",
+      "failure_category": "comparative_analysis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "industrial",
+        "comparison"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 9933.434963226318,
+      "answer": "The paper \"ailadeep.pdf\" [1] provides the most actionable framework for deploying AI in industrial settings. It presents a clear architecture involving human-AI collaboration where humans remain in control while AI agents carry out technical work under explicit human instruction and oversight. This framework includes defining objectives, posing questions, setting constraints, and interpreting outcomes by humans, with AI agents translating high-level intent into executable workflows that are traceable, interpretable, and modifiable.\n\nThe system is modular and multi-agent, with specialized agents handling tasks such as data preparation, model selection, uncertainty estimation, and visualization, all supervised iteratively by humans. The use of a Domain-Specific Language (DSL) acts as the contract between human intention and machine execution, ensuring accountability and precise requirements expression.\n\nThis approach enables AI to improve throughput, support reproducible analytics pipelines, and adapt experimental design while preserving human oversight and safety constraints. It scales cognitive capacities rather than just human labor and facilitates sustainable redistribution of operational loads in industrial research and production contexts. This makes it highly actionable for actual deployment scenarios in industry [1]. \n\nThe other papers focus more on high-level economic transformations due to embodied AI in manufacturing [3], or on interactive AI in human-robot collaborations emphasizing responsiveness and creativity rather than optimization [2], but do not provide as concrete or modular a framework for AI deployment as [1]. \n\nTherefore, for an actionable framework for deploying AI in industrial settings, source [1] is the best fit.",
+      "answer_length": 238,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer's detailed description of the framework in 'ailadeep.pdf' matches the source content, which outlines a modular, multi-agent human-AI collaboration system with human oversight, use of DSL, and actionable deployment in industrial research contexts. The distinctions made with other papers are also consistent with the retrieved source summaries."
+      },
+      "retrieved_filenames": [
+        "ailadeep.pdf",
+        "rbt.pdf",
+        "capa.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf",
+        "hrb1.pdf",
+        "embodiedintelligencelabs.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA041",
+      "question": "What is the capital of France?",
+      "difficulty": "easy",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "hallucination-test",
+        "general-knowledge"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 5737.14017868042,
+      "answer": "The provided sources do not contain information about the capital of France. Therefore, I cannot answer the question based on the given texts.",
+      "answer_length": 23,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer correctly states that the retrieved sources do not contain information about the capital of France."
+      },
+      "retrieved_filenames": [
+        "pg35398.txt",
+        "pg38304.txt",
+        "pg38304.txt"
+      ],
+      "expected_sources": [],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA042",
+      "question": "What programming language is most used in the implementations described?",
+      "difficulty": "medium",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "implementation",
+        "specificity"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 9693.50814819336,
+      "answer": "The programming language most used in the implementations described is Python. Specifically, one framework mentioned, Code-as-Policies, has the large language model generate executable Python code that directly calls robot APIs, improving interpretability and enabling reactive feedback loops within the generated programs [1]. \n\nNo other programming languages are explicitly mentioned in the provided sources. \n\nTherefore, based on the given information, Python is the primary language referenced in the robotic control implementations discussed [1].",
+      "answer_length": 72,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources explicitly mention that the Code-as-Policies framework uses executable Python code to call robot APIs, and no other programming languages are mentioned, supporting the claim that Python is the primary language used."
+      },
+      "retrieved_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA043",
+      "question": "What is the relationship between the robotic art paper and classical aesthetics?",
+      "difficulty": "hard",
+      "failure_category": "domain_confusion",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "art",
+        "domain-confusion-risk"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 10786.64493560791,
+      "answer": "The relationship between the robotic art paper (the Companion system) and classical aesthetics is nuanced. The system's drawings exhibit a distinct, cohesive style that experts describe as possessing a traditional aesthetic and stylization, despite being produced by a robotic system. Specifically, experts comparing the aesthetic mentioned influences like \"Pre-historic petroglyphs,\" \"Paul Klee,\" and \"Basquiat,\" describing the style as \"primitive\" and \"bold,\" which suggests a link to classical forms and styles in art history while maintaining uniqueness due to the machine's \"visual language\" [1].\n\nMoreover, the paper highlights that the robotic art process incorporates the physicality and mechanics of the robotic system (such as the friction of pen on paper, actuators, and sensors), which shape an emergent style that is a record of the process rather than merely a replication of digital images. This emphasizes a connection to classical aesthetics through the preservation of mark-making immediacy and the temporal unfolding of drawing in time and space, reminiscent of traditional artistic methods [2][3].\n\nIn summary, while the Companion system introduces contemporary AI and robotic elements, its aesthetic identity reflects and is influenced by traditional art forms and classical aesthetics through its emergent style, resemblance to historical artistic styles, and a focus on the direct physical act of drawing [1][2][3].",
+      "answer_length": 207,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources describe the Companion system's drawings as having a distinct, cohesive style with traditional aesthetic influences such as prehistoric petroglyphs and artists like Paul Klee and Basquiat, supporting the claim of a link to classical aesthetics. They also emphasize the physicality and mechanics of the robotic drawing process shaping an emergent style that preserves the immediacy of mark-making and temporal unfolding, aligning with traditional artistic methods. Thus, the answer's claims about the nuanced relationship between the robotic art paper and classical aesthetics are directly supported."
+      },
+      "retrieved_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "bkbj.pdf"
+      ],
+      "expected_sources": [
+        "bkbj.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA044",
+      "question": "How many parameters do the neural network models in the corpus use?",
+      "difficulty": "hard",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "model-size",
+        "specificity"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 8358.41679573059,
+      "answer": "The neural network models in the corpus use the following number of parameters:\n\n1. The TrianguLang model has a total of 2.54 billion parameters, with 13.7 million being trainable (0.54%) [1]. This includes:\n   - SAM3 Backbone: 848 million (frozen)\n   - DA3 Depth (NESTED-GIANT-LARGE): 1.4 billion (frozen)\n   - GASA Decoder and related components: approximately 13.7 million trainable parameters.\n\n2. The EZ-M model used in HumanoidBench experiments has a total of 16 million parameters, which is emphasized as being parameter-efficient compared to other baselines with 1 billion scale models [2].\n\nThere is no specific parameter count information for models discussed in the third source [3].\n\nTherefore, the models in the corpus use parameters ranging from 16 million (EZ-M) to 2.54 billion (TrianguLang with large frozen backbones) depending on the architecture and application context. \n\nReferences:\n- TrianguLang: 2.54B total, 13.7M trainable parameters [1].\n- EZ-M model: 16M total parameters [2].",
+      "answer_length": 147,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The parameter counts for the TrianguLang model (2.54 billion total, 13.7 million trainable) and the EZ-M model (16 million total) are explicitly stated and detailed in the first two sources, matching the answer's claims. No parameter information is provided for other models, consistent with the answer."
+      },
+      "retrieved_filenames": [
+        "triangulang.pdf",
+        "rags.pdf",
+        "embodiedai1.pdf"
+      ],
+      "expected_sources": [
+        "ailadeep.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA045",
+      "question": "What does the corpus say about energy consumption in AI systems?",
+      "difficulty": "medium",
+      "failure_category": "specificity_stress",
+      "answerable": true,
+      "requires_multi_hop": false,
+      "tags": [
+        "energy",
+        "sustainability"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 17055.473804473877,
+      "answer": "The corpus discusses energy consumption in AI systems primarily from the perspective of the carbon footprint associated with AI hardware, particularly chiplet-based AI accelerators. The key points are:\n\n1. AI systems require executing trillions of operations and moving huge amounts of data, necessitating large, high-performance hardware accelerators. Designing such hardware increasingly challenges both performance and environmental sustainability due to high energy use and carbon emissions [1].\n\n2. Traditional monolithic chips to support large AI models are becoming impractical and unsustainable because of manufacturing complexities, low yields, and high embodied carbon footprint (CFP). This increases environmental impact by raising silicon waste and operational energy needs [1].\n\n3. To address this, the industry is shifting towards heterogeneous integration (HI) with chiplets \u2014 multiple specialized dies assembled in one package. This approach can reduce carbon footprint by improving manufacturability and reuse while maintaining high performance [1], [2].\n\n4. Energy consumption and carbon footprint are considered both operational (during use) and embodied (manufacturing and packaging) CFP. Designing AI systems involves trade-offs between performance, cost, and CFP [1], [2].\n\n5. The CarbonPATH framework has been introduced to optimize these trade-offs, jointly exploring workload mapping, chiplet architectures, and packaging technologies to minimize both operational energy consumption and embodied carbon footprint. It models system-level parameters including compute sizes, communication protocols, integration styles (2D, 2.5D, 3D), and their impact on energy and carbon [1], [2].\n\n6. Analytical models developed capture how chiplet geometry, interconnect type, packaging technology, and communication overhead affect bandwidth, latency, and energy consumption, thus influencing overall system CFP [2].\n\nIn summary, the corpus shows that energy consumption in AI systems is significant and tightly coupled with hardware design choices. Managing and optimizing energy use and carbon footprint requires holistic system-level approaches, considering not only computational workload but also architectural and packaging aspects to achieve sustainable AI hardware [1], [2].\n\nNo detailed quantitative energy consumption data or broader AI system energy usage statistics beyond chiplet-based accelerator design considerations are provided in the sources [1], [2]. Source [3] does not discuss energy consumption in AI systems.",
+      "answer_length": 339,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately summarizes the key points from sources [1] and [2] regarding energy consumption and carbon footprint in AI systems, focusing on chiplet-based accelerators, the challenges of monolithic chips, the shift to heterogeneous integration, and the CarbonPATH framework for optimizing trade-offs. Source [3] does not discuss energy consumption, as stated."
+      },
+      "retrieved_filenames": [
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "ailadeep.pdf"
+      ],
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA046",
+      "question": "Given the papers on robotic control and embodied AI, design a system architecture for a warehouse robot.",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "system-design",
+        "reasoning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 3,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 33794.37613487244,
+      "answer": "Based on the provided papers on robotic control and embodied AI, a system architecture for a warehouse robot can be designed leveraging insights primarily from the RACAS architecture described in [2] and concepts of human-robot collaboration and high-level control discussed in [3] and multitasking and autonomous task execution from [1].\n\n### Proposed Warehouse Robot System Architecture\n\n**1. Robot-Agnostic Control Layer (from RACAS [2]):**  \n- **Description Module:** Takes a natural language description of the warehouse robot\u2019s embodiment (e.g., wheeled robot, gripper type, sensors on board).  \n- **Action Definition Module:** Defines the robot's available motor and manipulation actions in a platform-independent manner.  \n- **Task Specification Module:** Specifies warehouse tasks such as picking, placing, navigating aisles in natural language or structured instructions.  \n- **Three LLM/VLM-based Modules:**  \n  - **Monitors:** Process sensor data and provide perceptual understanding (e.g., obstacle detection, inventory state).  \n  - **Controller:** High-level planner and decision-maker that translates task specifications into sequences of robot actions.  \n  - **Memory Curator:** Maintains contextual and state information about the environment and the robot to support task execution continuity.  \n- Communication among these modules happens exclusively via natural language, enabling flexibility and robot-agnostic behavior planning. This allows the same system architecture to support diverse robotic platforms without retraining or source code modification.  \n\n**2. Perception and Vision-Language Integration:**  \n- Incorporate vision-language models for fast and slow system manipulation, allowing the robot to understand, associate, and correct its actions based on visual inputs and language instructions ([1],[12],[14]).  \n- Use multimodal behavior trees or planning frameworks to handle complex and dynamic task sequences in warehouse settings, integrating sensor data, and robotic actions ([1]).  \n\n**3. Task Planning and Execution:**  \n- Utilize adaptive task planning with dynamic role allocation to support human-robot collaboration where needed (e.g., shared workspaces in warehouses) ([1],[3],[11]).  \n- Employ autonomous behavior trees capable of handling varied tasks such as object recognition, picking, navigation, and placement.  \n- Enable high-level intuitive programming and task specification from non-expert users for flexible warehouse deployment ([1],[11]).  \n\n**4. Navigation and Social Compliance:**  \n- Integrate socially-compliant and safe navigation models for mobile manipulation within human-populated warehouse environments using vision-language models to interpret navigation goals and environment context ([14],[17],[19]).  \n\n**5. Human-Robot Interaction Layer:**  \n- Support mixed-initiative control allowing shared autonomy and collaboration, where the robot can take initiative or accept human input to resolve uncertainty or improve task fluency ([3]).  \n- Include interpretability and accountability mechanisms for robot actions to foster trust and effective collaboration between warehouse staff and robots ([3]).  \n\n---\n\n### Summary Diagram (Conceptual)\n\n```\n+-------------------------------------------------------+\n|                 Human-Robot Interaction Layer         |\n|    (Mixed Initiative, Shared Autonomy, Accountability)|\n+-------------------------------------------------------+\n                     \u2191                    \u2191\n+--------------------+--------------------+-------------+\n|  Navigation Module  |  Task Planning & Execution Module  |\n|  (Vision-Language   | (Multimodal Behavior Trees,       |\n|   Models, Socially  |  Adaptive Task Planning)          |\n|   Compliant Nav)    +-----------------------------------+\n+--------------------+                                   |\n                     \u2191                                   |\n+-------------------------------------------------------+\n|              Robot-Agnostic Control Layer (RACAS)     |\n|  - Monitors          - Controller           - Memory   |\n|  (Perception & State                           Curator  |\n|   Estimation)                                        |\n+-------------------------------------------------------+\n                     \u2191\n        +------------------------------+\n        |    Robot Hardware Platform   |\n        | (Sensors, Actuators, Grippers)|\n        +------------------------------+\n```\n\n---\n\nThis architecture leverages the flexibility of an agentic, language-based control framework from RACAS [2] for platform independence, integrates multimodal perception and planning capabilities for complex warehouse tasks from [1], and incorporates human-robot collaboration and navigation considerations from [3] and [14],[17],[19]. This approach reduces re-engineering effort across various robot types and warehouse setups, enabling scalable deployment.\n\n---\n\n**Note:** The above design synthesizes concepts from the described sources. Explicit architectural schematics or dedicated warehouse robot system designs were not directly detailed in the references, but the RACAS framework and other works provide foundational principles for this design.",
+      "answer_length": 593,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer accurately synthesizes key concepts from the retrieved sources, particularly the RACAS architecture from [2] for robot-agnostic control, multimodal behavior trees and vision-language integration from [1], and human-robot collaboration and navigation aspects from [3], [14], [17], and [19]. While no explicit warehouse robot architecture is directly detailed in the sources, the proposed design logically integrates these foundational principles as stated."
+      },
+      "retrieved_filenames": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "rbt.pdf"
+      ],
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "capa.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA047",
+      "question": "What would happen to the manufacturing use cases if the tactile sensors described failed?",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "failure-modes",
+        "reasoning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 1,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 15469.361782073975,
+      "answer": "If the tactile sensors described in the sources were to fail, the manufacturing use cases, especially those involving dexterous manipulation of deformable, fragile, or complex objects, would be significantly impacted. The sources emphasize that tactile sensing, often integrated with vision (tactile-vision fusion), is crucial for many advanced manufacturing tasks, such as force-sensitive manipulations, flexible cable routing, adhesive management, and placement of deformable rubber gaskets in consumer electronics assembly. The current capability levels for such tasks are limited by the immaturity of tactile-vision fusion technology, and these sensors are key to closing the \"last-mile gap\" in manufacturing automation, which involves handling tasks that have traditionally required human dexterity and sensitivity [1], [2].\n\nA failure in tactile sensors would reduce the dexterity index \u03b4 and the tactile-vision fusion index \u03c4, diminishing the robot's ability to perform high-precision, force-controlled tasks. This would likely increase failure rates and reduce reliability \u03c1 when attempting dexterous tasks, which is currently a bottleneck. For consumer electronics assembly, this would mean continuing reliance on a large human workforce for tasks like flexible cable routing and battery insertion, preventing the industry from reaching critical capability thresholds that would allow significantly reduced human labor and more autonomous, flexible manufacturing setups [2].\n\nFurthermore, the failure of tactile sensors would impede the ability to adapt quickly to new product models since precise tactile feedback supports complex insertion and assembly steps. This would maintain or increase the time and costs associated with reconfiguration and reduce the potential for automation to eliminate large human workforces and infrastructure, slowing or halting the paradigm shifts in manufacturing topology that are anticipated with advances in embodied intelligence [1], [2].\n\nIn summary, failure of tactile sensors would limit the progress toward full automation of dexterous manipulation tasks, sustain high human labor requirements, and obstruct achieving the high reliability and autonomy necessary for the new manufacturing topologies and economic benefits promised by advanced tactile sensing in robotics [1], [2].",
+      "answer_length": 320,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The sources describe that tactile sensing and tactile-vision fusion are critical for dexterous manipulation tasks in manufacturing, especially for deformable and fragile objects. Failure of these sensors would reduce dexterity and reliability, maintaining reliance on human labor and preventing automation advances, as detailed in the consumer electronics assembly case and the general capability space discussion."
+      },
+      "retrieved_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf"
+      ],
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA048",
+      "question": "How do the findings in the RAG papers challenge or support the retrieval approach used in the robotic systems papers?",
+      "difficulty": "hard",
+      "failure_category": "multi_hop_reasoning",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "rag",
+        "robotics",
+        "reasoning"
+      ],
+      "metrics": {
+        "precision_at_3": 0.3333333333333333,
+        "num_expected": 2,
+        "num_retrieved_correct": 1
+      },
+      "latency_ms": 33696.38514518738,
+      "answer": "The findings in the RAG (Retrieval-Augmented Generation) paper [1] highlight several key challenges and limitations with directly incorporating additional contextual information (like depth-based distance measurements and lab topology data) into visual-language model (VLM) prompts. Specifically, the paper shows that simply adding such information to prompts can confuse or mislead the model, decreasing overall accuracy despite resolving ambiguities in some cases. The paper suggests that future work should focus on using a more reliable RAG approach to supply extra information to the model, rather than embedding it inefficiently into the prompt.\n\nOn the other hand, the robotic systems papers describing RACAS [2][3] demonstrate a successful application of large language models (LLMs) and VLMs to achieve zero-training generalization for robotic control across diverse robot platforms and environments. RACAS achieves notable performance on navigation and target localization tasks by leveraging a unified system that confines embodiment-specific knowledge to declarative prompts and natural language descriptions, without requiring retraining or custom state engineering. One noted limitation in RACAS is the lack of explicit depth information, which led to suboptimal confidence in obstacle avoidance. Future work there also aims to incorporate more sophisticated sensing like LIDAR or architectures to better infer depth [3].\n\nIn comparing these, the RAG paper's identification of problems with simply appending extra sensor or topology data into prompts supports the robotic systems papers\u2019 observation that the absence or suboptimal use of depth data limits performance. Both suggest that improving integration of contextual information \u2014 using retrieval-augmented methods or dedicated sensing and modular system design \u2014 could better resolve ambiguities and improve reasoning in robot tasks.\n\nHence, the findings in the RAG paper challenge naive retrieval or prompting approaches used in current robotic systems by demonstrating that complex additional information can confuse models if not supplied properly. At the same time, they support the robotics approach of modular, declarative, and retrieval-augmented architectures as a promising direction to overcome these challenges, aligning with the planned future work to enhance both perception and reasoning capabilities via improved information retrieval and integration methods [1][3].\n\nIn summary, the RAG findings highlight limitations of current retrieval/prompting methods in robotics and motivate more robust retrieval-augmented integration approaches, strengthening the case for future improvements in robotic systems like RACAS.  \n\nReferences:  \n[1] hrb1.pdf  \n[2] cntrlrbt.pdf (first portion)  \n[3] cntrlrbt.pdf (second portion)",
+      "answer_length": 380,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The RAG paper [1] explicitly reports that simply adding additional contextual information like depth measurements into prompts can confuse models and reduce accuracy, recommending more reliable retrieval-augmented methods instead. The robotic systems papers [2][3] describe RACAS achieving zero-training generalization but note limitations due to lack of explicit depth information and suggest future work to incorporate better sensing or architectures. The answer accurately synthesizes these points, showing that RAG findings challenge naive prompting approaches in robotics while supporting modular, retrieval-augmented architectures as promising, aligning with the sources."
+      },
+      "retrieved_filenames": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "hrb1.pdf"
+      ],
+      "success": true,
+      "failure_reason": null,
+      "error": null
+    },
+    {
+      "query_id": "FA049",
+      "question": "What is two plus two?",
+      "difficulty": "easy",
+      "failure_category": "unanswerable_handling",
+      "answerable": false,
+      "requires_multi_hop": false,
+      "tags": [
+        "unanswerable",
+        "hallucination-test"
+      ],
+      "metrics": {
+        "precision_at_3": 1.0,
+        "num_expected": 0,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 19269.169807434082,
+      "answer": "The sources provided do not contain information about the basic arithmetic sum \"two plus two.\" Therefore, I cannot provide an answer based on the given sources.",
+      "answer_length": 26,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer correctly states that the provided sources do not contain information about the arithmetic sum 'two plus two,' which is supported by the content of the retrieved sources."
+      },
+      "retrieved_filenames": [
+        "pg16713.txt",
+        "pg16713.txt",
+        "pg16713.txt"
+      ],
+      "expected_sources": [],
+      "success": false,
+      "failure_reason": "hallucination_on_unanswerable",
+      "error": null
+    },
+    {
+      "query_id": "FA050",
+      "question": "What are the most cited works referenced across all papers in the corpus?",
+      "difficulty": "hard",
+      "failure_category": "cross_document_synthesis",
+      "answerable": true,
+      "requires_multi_hop": true,
+      "tags": [
+        "citations",
+        "synthesis"
+      ],
+      "metrics": {
+        "precision_at_3": 0.0,
+        "num_expected": 3,
+        "num_retrieved_correct": 0
+      },
+      "latency_ms": 16144.941091537476,
+      "answer": "The sources provided do not contain a summarized list or explicit statement about the most cited works referenced across all papers in the corpus. Source [2] includes a list of many works cited within a single paper, such as Mildenhall et al. (2020) on Neural Radiance Fields (NeRF) and Radford et al. (2021) on learning transferable visual models from natural language supervision, among others. However, there is no compilation or ranking of the most cited works across the entire corpus formed by all the sources.\n\nTherefore, based on the available information, it is not possible to determine the most cited works referenced across all papers in the corpus [1], [2], [3].",
+      "answer_length": 111,
+      "verification": {
+        "verdict": "SUPPORTED",
+        "reason": "The answer correctly states that the sources do not provide a summarized list or explicit ranking of the most cited works across all papers in the corpus. Source [2] lists many cited works within a single paper but does not compile or rank citations across the entire corpus."
+      },
+      "retrieved_filenames": [
+        "pg35398.txt",
+        "triangulang.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "expected_sources": [
+        "rags.pdf",
+        "ailadeep.pdf",
+        "embodiedai1.pdf"
+      ],
+      "success": false,
+      "failure_reason": "complete_retrieval_miss",
+      "error": null
+    }
+  ]
+}
