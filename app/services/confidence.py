@@ -78,6 +78,25 @@ def calculate_confidence(
     }
 
 
+def is_above_confidence_threshold(query: str, threshold: float = 0.43) -> bool:
+    """
+    Returns True if retrieval confidence is high enough to generate an answer.
+
+    Uses raw cosine similarity (no keyword boost) to avoid false positives
+    from large off-topic documents (e.g. Gutenberg texts) that inflate hybrid
+    scores by matching common query words.
+
+    Threshold of 0.43 calibrated from failure analysis on 10 queries:
+    - Valid on-topic queries: raw vector score 0.434-0.692 (all pass)
+    - Off-topic / unanswerable queries: raw vector score 0.204-0.408 (all blocked)
+    """
+    from app.services.pgvector_store import get_max_vector_score
+    if not query:
+        return False
+    max_score = get_max_vector_score(query)
+    return max_score >= threshold
+
+
 def calculate_chunk_consistency(retrieved_chunks: list[tuple[str, str, float]]) -> float:
     """
     Calculate semantic consistency between retrieved chunks.

@@ -66,6 +66,28 @@ def store_document_chunks(filename: str, chunks: list[str]):
         db.close()
 
 
+def get_max_vector_score(query: str) -> float:
+    """
+    Returns the best raw cosine similarity score for a query (no keyword boost).
+    Used for hallucination prevention — keyword boost inflates scores for
+    off-topic queries that happen to share common words with large documents.
+    """
+    db = SessionLocal()
+    try:
+        query_embedding = generate_embedding(query)
+        stmt = (
+            select(Chunk.embedding.cosine_distance(query_embedding).label("distance"))
+            .order_by(Chunk.embedding.cosine_distance(query_embedding))
+            .limit(1)
+        )
+        row = db.execute(stmt).first()
+        if row is None:
+            return 0.0
+        return 1 - float(row.distance)
+    finally:
+        db.close()
+
+
 def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use_cache: bool = True):
     """
     Search for relevant chunks in the database with optional score filtering.

@@ -12,7 +12,7 @@ from app.services.pgvector_store import search_chunks_in_db, store_document_chun
 from app.services.reranker import rerank_chunks
 from app.services.generation import generate_answer, stream_answer, format_answer_with_references
 from app.services.verifier import verify_answer
-from app.services.confidence import calculate_confidence
+from app.services.confidence import calculate_confidence, is_above_confidence_threshold
 from app.services.chunking import chunk_text
 from app.utils.loaders import load_uploaded_text_file, load_uploaded_pdf_file
 
@@ -44,6 +44,17 @@ async def ingest_document(file: UploadFile = File(...)):
 def query_rag(request: QueryRequest):
     retrieved = search_chunks_in_db(request.question, top_k=6)
     reranked = rerank_chunks(request.question, retrieved, top_k=3)
+
+    # Confidence threshold check — refuse before generating if corpus has no relevant info
+    if not is_above_confidence_threshold(request.question):
+        return QueryResponse(
+            answer="I don't have enough relevant information in the provided documents to answer this question confidently.",
+            references=[],
+            confidence=0.0,
+            confidence_reasoning="Retrieval confidence below threshold — query likely out of corpus scope.",
+            verification=VerificationResult(verdict="UNSUPPORTED", reason="No sufficiently relevant documents found."),
+            retrieved_chunks=[],
+        )
 
     answer = generate_answer(request.question, reranked)
     verification = verify_answer(request.question, answer, reranked)
