@@ -29,7 +29,7 @@ def clear_database():
         db.close()
 
 
-def store_document_chunks(filename: str, chunks: list[str]):
+def store_document_chunks(filename: str, chunks: list[str], domain: str = "technical"):
     db = SessionLocal()
 
     try:
@@ -40,7 +40,7 @@ def store_document_chunks(filename: str, chunks: list[str]):
             db.delete(existing)
             db.commit()
 
-        document = Document(filename=filename)
+        document = Document(filename=filename, domain=domain)
         db.add(document)
         db.commit()
         db.refresh(document)
@@ -88,7 +88,7 @@ def get_max_vector_score(query: str) -> float:
         db.close()
 
 
-def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use_cache: bool = True):
+def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use_cache: bool = True, domain_filter: str | None = None):
     """
     Search for relevant chunks in the database with optional score filtering.
 
@@ -96,6 +96,8 @@ def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use
         query: The search query
         top_k: Number of top results to return
         min_score: Minimum score threshold (default from env or 0.5)
+        domain_filter: If set, restrict retrieval to documents with this domain tag
+                       ('technical' or 'literary'). Prevents corpus contamination.
 
     Returns:
         List of tuples (content, filename, score)
@@ -104,7 +106,7 @@ def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use
         min_score = float(os.getenv("RETRIEVAL_MIN_SCORE", "0.5"))
 
     # Check retrieval cache before hitting DB
-    cache_key = f"{query}::{top_k}::{min_score}"
+    cache_key = f"{query}::{top_k}::{min_score}::{domain_filter}"
     if use_cache:
         cached = _retrieval_cache.get(cache_key)
         if cached is not None:
@@ -126,6 +128,9 @@ def search_chunks_in_db(query: str, top_k: int = 4, min_score: float = None, use
             .order_by(Chunk.embedding.cosine_distance(query_embedding))
             .limit(10)
         )
+
+        if domain_filter is not None:
+            stmt = stmt.where(Document.domain == domain_filter)
 
         rows = db.execute(stmt).all()
 

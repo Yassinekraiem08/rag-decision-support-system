@@ -158,6 +158,29 @@ Full retrieval results (pgvector + hybrid scoring) cached with 10-minute TTL. Re
 
 ---
 
+## Finding 8: Domain Tagging — Corpus Contamination Fix
+
+**Recommendation from Finding 3 implemented:** A `domain` field was added to the Document model, classifying each document as `technical` (PDF papers) or `literary` (Gutenberg `.txt` files) at ingestion time. The `/query` endpoint now applies `domain_filter="technical"` by default.
+
+### Implementation
+- `Document.domain` column with `server_default="technical"`
+- `classify_domain(filename)`: returns `"literary"` for filenames matching `pg\d+\.txt`, else `"technical"`
+- `search_chunks_in_db(domain_filter="technical")`: adds `WHERE documents.domain = 'technical'` to the pgvector query
+- `scripts/migrate_add_domain.py`: one-time migration for existing databases
+
+### Benchmark Result
+
+| Condition | Avg P@3 | Contamination Rate |
+|-----------|---------|-------------------|
+| No domain filter | 0.244 | 0/15 (0.0%) |
+| domain_filter="technical" | 0.244 | 0/15 (0.0%) |
+
+**Finding:** On this query set, hybrid scoring already suppressed Gutenberg contamination in top-3 results. Zero contamination events were measured before or after filtering. The prior contamination analysis found the real risk is on *unanswerable general-knowledge queries* — where Gutenberg keyword overlap inflates hybrid scores by up to +10.2 — not on technical queries where vector similarity strongly favors the correct papers.
+
+**Value of the fix:** The domain filter is a **defensive architectural layer** — it eliminates the contamination pathway at the database level regardless of scoring behavior. It costs zero P@3 on the tested query set and adds zero latency (it's a SQL WHERE clause).
+
+---
+
 ## Methodology
 
 - **50 queries** across 6 failure categories, designed to stress-test known RAG weaknesses

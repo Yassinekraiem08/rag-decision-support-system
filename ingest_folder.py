@@ -1,9 +1,17 @@
 import os
+import re
 from app.utils.loaders import load_text_file, load_pdf_file
 from app.services.chunking import chunk_text
 from app.services.pgvector_store import store_document_chunks, clear_database
 
 DOCS_FOLDER = "docs"
+
+
+def classify_domain(filename: str) -> str:
+    """Classify a document as 'literary' (Gutenberg) or 'technical' based on filename."""
+    if re.match(r"pg\d+\.txt", filename):
+        return "literary"
+    return "technical"
 
 
 def ingest_folder(folder_path: str):
@@ -29,9 +37,10 @@ def ingest_folder(folder_path: str):
                     continue
 
                 chunks = chunk_text(text, chunk_size=500, overlap=50)
-                print(f"{filename} produced {len(chunks)} chunks")
+                domain = classify_domain(filename)
+                print(f"{filename} produced {len(chunks)} chunks (domain={domain})")
 
-                store_document_chunks(filename, chunks)
+                store_document_chunks(filename, chunks, domain=domain)
 
                 total_docs += 1
                 total_chunks += len(chunks)

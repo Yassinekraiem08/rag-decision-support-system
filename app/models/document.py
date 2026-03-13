@@ -7,3 +7,4 @@ class Document(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     filename = Column(String, nullable=False)
+    domain = Column(String, nullable=False, server_default="technical")

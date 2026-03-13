@@ -19,6 +19,14 @@ from app.utils.loaders import load_uploaded_text_file, load_uploaded_pdf_file
 router = APIRouter()
 
 
+def classify_domain(filename: str) -> str:
+    """Classify a document as 'literary' (Gutenberg) or 'technical' based on filename."""
+    import re
+    if re.match(r"pg\d+\.txt", filename):
+        return "literary"
+    return "technical"
+
+
 @router.post("/ingest", response_model=IngestResponse)
 async def ingest_document(file: UploadFile = File(...)):
     if file.filename.endswith(".txt"):
@@ -32,7 +40,8 @@ async def ingest_document(file: UploadFile = File(...)):
         )
 
     chunks = chunk_text(text, chunk_size=200, overlap=40)
-    store_document_chunks(file.filename, chunks)
+    domain = classify_domain(file.filename)
+    store_document_chunks(file.filename, chunks, domain=domain)
 
     return IngestResponse(
         filename=file.filename,
@@ -42,7 +51,7 @@ async def ingest_document(file: UploadFile = File(...)):
 
 @router.post("/query", response_model=QueryResponse)
 def query_rag(request: QueryRequest):
-    retrieved = search_chunks_in_db(request.question, top_k=6)
+    retrieved = search_chunks_in_db(request.question, top_k=6, domain_filter="technical")
     reranked = rerank_chunks(request.question, retrieved, top_k=3)
 
     # Confidence threshold check — refuse before generating if corpus has no relevant info
