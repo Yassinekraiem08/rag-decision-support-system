@@ -29,6 +29,6 @@ databases:
   - name: rag-postgres-db
     plan: free
     databaseName: ragdb
-    user: postgres
+    user: raguser
     region: oregon
     ipAllowList: []  # Allow all IPs
