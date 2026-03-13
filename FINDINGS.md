@@ -106,6 +106,24 @@ High latency on complex queries is driven by the LLM generation step, not retrie
 
 ---
 
+## Finding 6: Iterative Retrieval Benchmark (Standard vs Multi-Doc RAG)
+
+To validate the fix for cross-document synthesis failures, a dedicated benchmark was run comparing the standard single-pass pipeline against the iterative multi-document retrieval system across 24 synthesis, multi-hop, and comparative queries.
+
+| Metric | Standard RAG | Iterative RAG | Delta |
+|--------|-------------|--------------|-------|
+| Success Rate | 58.3% | 62.5% | **+4.2%** |
+| Avg Precision@3 | 0.250 | 0.264 | +0.014 |
+| Avg Unique Docs Retrieved | 1.9 | 2.2 | **+0.4** |
+| Avg Latency | 3,674ms | 5,741ms | +2,067ms |
+| Regressions | — | — | **0** |
+
+**Key Result:** Iterative retrieval improved success rate by 4.2 percentage points with zero regressions — no query that previously passed now fails. The cost is +2s latency per synthesis query, a reasonable tradeoff given these are the hardest query type.
+
+**How it works:** For queries containing synthesis signals ("all papers", "collectively", "across the corpus"), the system runs two retrieval passes. The first pass retrieves broadly; the LLM extracts underrepresented key terms; the second pass targets those terms. Results are merged with document diversity preference, maximizing unique source coverage before reranking.
+
+---
+
 ## Methodology
 
 - **50 queries** across 6 failure categories, designed to stress-test known RAG weaknesses

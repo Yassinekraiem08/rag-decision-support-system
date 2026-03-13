@@ -1,0 +1,903 @@
+{
+  "timestamp": "2026-03-13T01:02:59.040958",
+  "total_queries": 24,
+  "standard_rag": {
+    "success_rate": 0.5833333333333334,
+    "avg_precision_at_3": 0.25,
+    "avg_unique_docs": 1.875,
+    "avg_latency_ms": 3674.4928856690726
+  },
+  "iterative_rag": {
+    "success_rate": 0.625,
+    "avg_precision_at_3": 0.2638888888888889,
+    "avg_unique_docs": 2.25,
+    "avg_latency_ms": 5741.399457057317
+  },
+  "improvements": 1,
+  "regressions": 0,
+  "per_query": [
+    {
+      "query_id": "FA006",
+      "question": "How do the two embodied AI papers differ in their approach to robot learning?",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "embodiedai2.pdf",
+        "embodiedai1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "qya.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 4801.8012046813965
+      },
+      "iterative": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "qya.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 2872.699975967407,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA007",
+      "question": "Compare the approaches to AI collaboration described in the robotics papers versus the artistic creation paper.",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "bkbj.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 4808.174133300781
+      },
+      "iterative": {
+        "filenames": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 2926.727056503296,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA008",
+      "question": "How does embodied AI in manufacturing compare to embodied AI in education?",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "capa.pdf",
+          "capa.pdf",
+          "qya.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 3319.6160793304443
+      },
+      "iterative": {
+        "filenames": [
+          "capa.pdf",
+          "capa.pdf",
+          "qya.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 2971.2579250335693,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA009",
+      "question": "What are the similarities between carbon pathfinding and robot path planning algorithms?",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "carbonpathfinding.pdf",
+        "hrb1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "carbonpathfinding.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 3912.388801574707
+      },
+      "iterative": {
+        "filenames": [
+          "hrb1.pdf",
+          "carbonpathfinding.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 3114.3269538879395,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA010",
+      "question": "How do the RAG-related papers position their work relative to each other?",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "rags.pdf",
+        "probing more.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "hrb1.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3916.276216506958
+      },
+      "iterative": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "hrb1.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 4821.844100952148,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA011",
+      "question": "What do all the robotics papers collectively say about the future of human-robot collaboration?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "rbt.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "rbt.pdf",
+          "rbt.pdf",
+          "rbt.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3306.442975997925
+      },
+      "iterative": {
+        "filenames": [
+          "rbt.pdf",
+          "rbt.pdf",
+          "hrb1.pdf",
+          "rbt.pdf",
+          "rbt.pdf",
+          "rbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 5089.475870132446,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA012",
+      "question": "Synthesize the key themes across all embodied AI research in the corpus.",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "embodiedai2.pdf",
+        "embodiedintelligencelabs.pdf",
+        "embodiedai1.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "ailadeep.pdf",
+          "qya.pdf",
+          "rbt.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 5018.923997879028
+      },
+      "iterative": {
+        "filenames": [
+          "ailadeep.pdf",
+          "qya.pdf",
+          "rbt.pdf",
+          "qya.pdf",
+          "qya.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 4,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 6966.903924942017,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA013",
+      "question": "What are the common evaluation methodologies used across the AI papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "ailadeep.pdf",
+        "rags.pdf",
+        "probing more.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "embodiedai1.pdf",
+          "embodiedintelligencelabs.pdf",
+          "embodiedai1.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 2966.0542011260986
+      },
+      "iterative": {
+        "filenames": [
+          "embodiedintelligencelabs.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "cntrlrbt.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 5585.418939590454,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA014",
+      "question": "How do the papers collectively address the challenge of generalization in AI systems?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "rags.pdf",
+        "embodiedai1.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "ailadeep.pdf",
+          "cntrlrbt.pdf",
+          "ailadeep.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3220.7539081573486
+      },
+      "iterative": {
+        "filenames": [
+          "ailadeep.pdf",
+          "cntrlrbt.pdf",
+          "ailadeep.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "embodiedintelligencelabs.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 5328.83095741272,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA015",
+      "question": "What safety considerations appear across multiple papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "hrb1.pdf",
+          "hrb1.pdf",
+          "hrb1.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3346.4739322662354
+      },
+      "iterative": {
+        "filenames": [
+          "hrb1.pdf",
+          "hrb1.pdf",
+          "hrb1.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 6240.749835968018,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA016",
+      "question": "What does the corpus say about transformer architectures in robotics?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "rbt.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 4574.226140975952
+      },
+      "iterative": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "capa.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 4064.5852088928223,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA017",
+      "question": "Given what the papers say about embodied AI capabilities, what manufacturing tasks could be automated first?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "multi_hop",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3634.752035140991
+      },
+      "iterative": {
+        "filenames": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 6890.055179595947,
+        "strategy_used": "multi_hop"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA018",
+      "question": "Based on the robotic control paper, what sensors would be needed for the tasks described in the embodied AI papers?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "embodiedai1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3627.8390884399414
+      },
+      "iterative": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 2971.597194671631,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA019",
+      "question": "What learning algorithms mentioned in the deep learning paper are most applicable to the robot tasks in other papers?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "ailadeep.pdf",
+        "hrb1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "rags.pdf",
+          "cntrlrbt.pdf",
+          "rags.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 2781.230926513672
+      },
+      "iterative": {
+        "filenames": [
+          "rags.pdf",
+          "cntrlrbt.pdf",
+          "rags.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3025.6378650665283,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA020",
+      "question": "How would the RAG techniques described apply to improving robot decision-making?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "rags.pdf",
+        "hrb1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3790.4651165008545
+      },
+      "iterative": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3684.9100589752197,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA036",
+      "question": "How does imitation learning differ from reinforcement learning in robotics?",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "hrb1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "rags.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3187.05415725708
+      },
+      "iterative": {
+        "filenames": [
+          "rags.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 34067.392110824585,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA037",
+      "question": "What are the limitations acknowledged by the authors across the robotics papers?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "rbt.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "hrb1.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 4856.490135192871
+      },
+      "iterative": {
+        "filenames": [
+          "cntrlrbt.pdf",
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "rbt.pdf",
+          "rbt.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 6101.6199588775635,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA038",
+      "question": "What future research directions are proposed across all AI papers?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "ailadeep.pdf",
+        "rags.pdf",
+        "embodiedai1.pdf",
+        "probing more.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "ailadeep.pdf",
+          "rbt.pdf",
+          "ailadeep.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 2780.963182449341
+      },
+      "iterative": {
+        "filenames": [
+          "ailadeep.pdf",
+          "rbt.pdf",
+          "ailadeep.pdf",
+          "ailadeep.pdf",
+          "qya.pdf",
+          "rbt.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 7477.200984954834,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": false
+    },
+    {
+      "query_id": "FA039",
+      "question": "What datasets are referenced across all papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "ailadeep.pdf",
+        "rags.pdf",
+        "triangulang.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "triangulang.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 4403.460741043091
+      },
+      "iterative": {
+        "filenames": [
+          "embodiedai1.pdf",
+          "triangulang.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "triangulang.pdf",
+          "embodiedai1.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 4813.589811325073,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA040",
+      "question": "Which paper provides the most actionable framework for deploying AI in industrial settings?",
+      "category": "comparative_analysis",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "embodiedintelligencelabs.pdf",
+        "hrb1.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "ailadeep.pdf",
+          "capa.pdf",
+          "rbt.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3070.5490112304688
+      },
+      "iterative": {
+        "filenames": [
+          "ailadeep.pdf",
+          "rbt.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3375.3249645233154,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA046",
+      "question": "Given the papers on robotic control and embodied AI, design a system architecture for a warehouse robot.",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "embodiedai1.pdf",
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 3691.0951137542725
+      },
+      "iterative": {
+        "filenames": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.6666666666666666,
+        "success": true,
+        "latency_ms": 3096.1530208587646,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA047",
+      "question": "What would happen to the manufacturing use cases if the tactile sensors described failed?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 2944.5648193359375
+      },
+      "iterative": {
+        "filenames": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "unique_docs": 1,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 2763.9942169189453,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA048",
+      "question": "How do the findings in the RAG papers challenge or support the retrieval approach used in the robotic systems papers?",
+      "category": "multi_hop_reasoning",
+      "detected_strategy": "standard",
+      "expected_sources": [
+        "rags.pdf",
+        "hrb1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3053.593158721924
+      },
+      "iterative": {
+        "filenames": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 2,
+        "precision_at_3": 0.3333333333333333,
+        "success": true,
+        "latency_ms": 3090.808868408203,
+        "strategy_used": "standard"
+      },
+      "delta_unique_docs": 0,
+      "improved": false
+    },
+    {
+      "query_id": "FA050",
+      "question": "What are the most cited works referenced across all papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "detected_strategy": "synthesis",
+      "expected_sources": [
+        "ailadeep.pdf",
+        "rags.pdf",
+        "embodiedai1.pdf"
+      ],
+      "standard": {
+        "filenames": [
+          "pg35398.txt",
+          "triangulang.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "unique_docs": 3,
+        "precision_at_3": 0.0,
+        "success": false,
+        "latency_ms": 3174.64017868042
+      },
+      "iterative": {
+        "filenames": [
+          "pg35398.txt",
+          "triangulang.pdf",
+          "cntrlrbt.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf",
+          "embodiedai1.pdf"
+        ],
+        "unique_docs": 4,
+        "precision_at_3": 0.0,
+        "success": true,
+        "latency_ms": 6452.481985092163,
+        "strategy_used": "synthesis"
+      },
+      "delta_unique_docs": 1,
+      "improved": true
+    }
+  ]
+}
