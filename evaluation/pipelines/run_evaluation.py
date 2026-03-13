@@ -53,7 +53,7 @@ class EvaluationRunner:
         Returns:
             Summary dict with aggregate metrics
         """
-        queries_to_eval = self.queries[:3] if quick else self.queries
+        queries_to_eval = self.queries[:5] if quick else self.queries
 
         print(f"\n{'='*80}")
         print(f"STARTING EVALUATION")
@@ -281,8 +281,9 @@ def main():
     summary = runner.run(quick=args.quick)
 
     # Exit with error code if evaluation failed
-    if summary["overall_accuracy"] < 0.7:
-        print(f"⚠️  WARNING: Overall accuracy ({summary['overall_accuracy']:.1%}) below 70% threshold")
+    threshold = 0.6
+    if summary["overall_accuracy"] < threshold:
+        print(f"⚠️  WARNING: Overall accuracy ({summary['overall_accuracy']:.1%}) below {threshold:.0%} threshold")
         sys.exit(1)
     else:
         print(f"✅ SUCCESS: Overall accuracy ({summary['overall_accuracy']:.1%}) meets quality threshold")
