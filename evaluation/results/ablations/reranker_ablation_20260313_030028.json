@@ -1,0 +1,1161 @@
+{
+  "timestamp": "2026-03-13T03:00:28.234714",
+  "total_queries": 25,
+  "conditions": {
+    "no_reranker": {
+      "avg_p3": 0.18666666666666665,
+      "avg_latency_ms": 400.8922863006592
+    },
+    "with_reranker": {
+      "avg_p3": 0.19999999999999998,
+      "avg_latency_ms": 1366.4046096801758,
+      "rerank_only_ms": 965.5123233795166
+    },
+    "oracle": {
+      "avg_p3": 0.19999999999999998
+    }
+  },
+  "reranker_effect": {
+    "helped": 1,
+    "hurt": 0,
+    "neutral": 24,
+    "helped_pct": 0.04,
+    "hurt_pct": 0.0,
+    "neutral_pct": 0.96,
+    "order_changed_pct": 0.52,
+    "p3_delta": 0.013333333333333336,
+    "latency_overhead_ms": 965.5123233795166
+  },
+  "oracle_gap": {
+    "no_rerank": 0.013333333333333336,
+    "with_rerank": 0.0
+  },
+  "by_category": {
+    "specificity_stress": {
+      "avg_p3_no_rerank": 0.19999999999999998,
+      "avg_p3_reranked": 0.19999999999999998,
+      "avg_p3_oracle": 0.19999999999999998,
+      "delta": 0.0
+    },
+    "comparative_analysis": {
+      "avg_p3_no_rerank": 0.26666666666666666,
+      "avg_p3_reranked": 0.3333333333333333,
+      "avg_p3_oracle": 0.3333333333333333,
+      "delta": 0.06666666666666665
+    },
+    "cross_document_synthesis": {
+      "avg_p3_no_rerank": 0.13333333333333333,
+      "avg_p3_reranked": 0.13333333333333333,
+      "avg_p3_oracle": 0.13333333333333333,
+      "delta": 0.0
+    },
+    "multi_hop_reasoning": {
+      "avg_p3_no_rerank": 0.13333333333333333,
+      "avg_p3_reranked": 0.13333333333333333,
+      "avg_p3_oracle": 0.13333333333333333,
+      "delta": 0.0
+    }
+  },
+  "key_insight": "The reranker IMPROVES P@3 by 0.013 (7.1% relative) at a cost of 966ms. Worth the latency for quality-critical applications.",
+  "per_query": [
+    {
+      "query_id": "FA001",
+      "question": "What is embodied AI?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "pool_filenames": [
+        "capa.pdf",
+        "qya.pdf",
+        "qya.pdf",
+        "qya.pdf",
+        "bkbj.pdf",
+        "ailadeep.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "capa.pdf",
+          "qya.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "latency_ms": 935.6253147125244
+      },
+      "with_reranker": {
+        "top3": [
+          "qya.pdf",
+          "qya.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "latency_ms": 2093.773365020752,
+        "rerank_only_ms": 1158.1480503082275
+      },
+      "oracle": {
+        "precision_at_3": 0.6666666666666666
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0.25
+    },
+    {
+      "query_id": "FA002",
+      "question": "What role do tactile sensors play in embodied AI systems?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "pool_filenames": [
+        "bkbj.pdf",
+        "rbt.pdf",
+        "qya.pdf",
+        "qya.pdf",
+        "qya.pdf",
+        "qya.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "bkbj.pdf",
+          "rbt.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 264.50419425964355
+      },
+      "with_reranker": {
+        "top3": [
+          "bkbj.pdf",
+          "qya.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1347.6669788360596,
+        "rerank_only_ms": 1083.162784576416
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA003",
+      "question": "How does deep learning contribute to robot path planning?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "hrb1.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "rags.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 256.50620460510254
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1590.3010368347168,
+        "rerank_only_ms": 1333.7948322296143
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA004",
+      "question": "What are the key findings about carbon pathfinding optimization?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "pool_filenames": [
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 572.2110271453857
+      },
+      "with_reranker": {
+        "top3": [
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf",
+          "carbonpathfinding.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 1152.9178619384766,
+        "rerank_only_ms": 580.7068347930908
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA005",
+      "question": "What is the main contribution of the embodied intelligence labs paper?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "embodiedintelligencelabs.pdf"
+      ],
+      "pool_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "qya.pdf",
+        "qya.pdf",
+        "capa.pdf",
+        "bkbj.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "qya.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 235.17203330993652
+      },
+      "with_reranker": {
+        "top3": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 902.7018547058105,
+        "rerank_only_ms": 667.529821395874
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA006",
+      "question": "How do the two embodied AI papers differ in their approach to robot learning?",
+      "category": "comparative_analysis",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "embodiedai2.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "rbt.pdf",
+        "cntrlrbt.pdf",
+        "qya.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "rbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 694.3569183349609
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "rbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1892.9097652435303,
+        "rerank_only_ms": 1198.5528469085693
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA007",
+      "question": "Compare the approaches to AI collaboration described in the robotics papers versus the artistic creation paper.",
+      "category": "comparative_analysis",
+      "expected_sources": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "bkbj.pdf"
+      ],
+      "pool_filenames": [
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "bkbj.pdf",
+        "rbt.pdf",
+        "rbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 632.7862739562988
+      },
+      "with_reranker": {
+        "top3": [
+          "bkbj.pdf",
+          "bkbj.pdf",
+          "bkbj.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 1305.1061630249023,
+        "rerank_only_ms": 672.3198890686035
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA008",
+      "question": "How does embodied AI in manufacturing compare to embodied AI in education?",
+      "category": "comparative_analysis",
+      "expected_sources": [
+        "qya.pdf",
+        "capa.pdf"
+      ],
+      "pool_filenames": [
+        "capa.pdf",
+        "qya.pdf",
+        "capa.pdf",
+        "cntrlrbt.pdf",
+        "capa.pdf",
+        "qya.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "capa.pdf",
+          "qya.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "latency_ms": 201.81512832641602
+      },
+      "with_reranker": {
+        "top3": [
+          "capa.pdf",
+          "qya.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "latency_ms": 734.9839210510254,
+        "rerank_only_ms": 533.1687927246094
+      },
+      "oracle": {
+        "precision_at_3": 0.6666666666666666
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA009",
+      "question": "What are the similarities between carbon pathfinding and robot path planning algorithms?",
+      "category": "comparative_analysis",
+      "expected_sources": [
+        "hrb1.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "pool_filenames": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 216.14313125610352
+      },
+      "with_reranker": {
+        "top3": [
+          "hrb1.pdf",
+          "carbonpathfinding.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.6666666666666666,
+        "latency_ms": 769.0310478210449,
+        "rerank_only_ms": 552.8879165649414
+      },
+      "oracle": {
+        "precision_at_3": 0.6666666666666666
+      },
+      "order_changed": true,
+      "reranker_helped": true,
+      "reranker_hurt": false,
+      "reranker_neutral": false,
+      "avg_rank_movement_of_correct_docs": 1.5
+    },
+    {
+      "query_id": "FA010",
+      "question": "How do the RAG-related papers position their work relative to each other?",
+      "category": "comparative_analysis",
+      "expected_sources": [
+        "probing more.pdf",
+        "rags.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "hrb1.pdf",
+        "hrb1.pdf",
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 239.88604545593262
+      },
+      "with_reranker": {
+        "top3": [
+          "hrb1.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 831.0871124267578,
+        "rerank_only_ms": 591.2010669708252
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA011",
+      "question": "What do all the robotics papers collectively say about the future of human-robot collaboration?",
+      "category": "cross_document_synthesis",
+      "expected_sources": [
+        "hrb1.pdf",
+        "rbt.pdf",
+        "embodiedai1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "pool_filenames": [
+        "rbt.pdf",
+        "rbt.pdf",
+        "rbt.pdf",
+        "rbt.pdf",
+        "probing more.pdf",
+        "hrb1.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "rbt.pdf",
+          "rbt.pdf",
+          "rbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 380.5041313171387
+      },
+      "with_reranker": {
+        "top3": [
+          "rbt.pdf",
+          "rbt.pdf",
+          "rbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 2186.723232269287,
+        "rerank_only_ms": 1806.2191009521484
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA012",
+      "question": "Synthesize the key themes across all embodied AI research in the corpus.",
+      "category": "cross_document_synthesis",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "embodiedintelligencelabs.pdf",
+        "capa.pdf",
+        "embodiedai2.pdf"
+      ],
+      "pool_filenames": [
+        "ailadeep.pdf",
+        "qya.pdf",
+        "rbt.pdf",
+        "qya.pdf",
+        "qya.pdf",
+        "bkbj.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "ailadeep.pdf",
+          "qya.pdf",
+          "rbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 165.8952236175537
+      },
+      "with_reranker": {
+        "top3": [
+          "qya.pdf",
+          "rbt.pdf",
+          "ailadeep.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 922.4503040313721,
+        "rerank_only_ms": 756.5550804138184
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA013",
+      "question": "What are the common evaluation methodologies used across the AI papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "expected_sources": [
+        "probing more.pdf",
+        "ailadeep.pdf",
+        "rags.pdf"
+      ],
+      "pool_filenames": [
+        "embodiedintelligencelabs.pdf",
+        "cntrlrbt.pdf",
+        "embodiedai1.pdf",
+        "embodiedai1.pdf",
+        "embodiedai1.pdf",
+        "embodiedai1.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "embodiedintelligencelabs.pdf",
+          "cntrlrbt.pdf",
+          "embodiedai1.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 207.75294303894043
+      },
+      "with_reranker": {
+        "top3": [
+          "embodiedintelligencelabs.pdf",
+          "embodiedai1.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1533.9899063110352,
+        "rerank_only_ms": 1326.2369632720947
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA014",
+      "question": "How do the papers collectively address the challenge of generalization in AI systems?",
+      "category": "cross_document_synthesis",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "capa.pdf",
+        "rags.pdf"
+      ],
+      "pool_filenames": [
+        "ailadeep.pdf",
+        "ailadeep.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "ailadeep.pdf",
+          "ailadeep.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 227.10514068603516
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "ailadeep.pdf",
+          "ailadeep.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1229.6481132507324,
+        "rerank_only_ms": 1002.5429725646973
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA015",
+      "question": "What safety considerations appear across multiple papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "expected_sources": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf",
+        "capa.pdf"
+      ],
+      "pool_filenames": [
+        "hrb1.pdf",
+        "hrb1.pdf",
+        "hrb1.pdf",
+        "embodiedai1.pdf",
+        "embodiedai1.pdf",
+        "embodiedai1.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "hrb1.pdf",
+          "hrb1.pdf",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 432.873010635376
+      },
+      "with_reranker": {
+        "top3": [
+          "hrb1.pdf",
+          "hrb1.pdf",
+          "hrb1.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 1535.0711345672607,
+        "rerank_only_ms": 1102.1981239318848
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA016",
+      "question": "What does the corpus say about transformer architectures in robotics?",
+      "category": "multi_hop_reasoning",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "rbt.pdf"
+      ],
+      "pool_filenames": [
+        "capa.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "capa.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 326.08532905578613
+      },
+      "with_reranker": {
+        "top3": [
+          "capa.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1425.2824783325195,
+        "rerank_only_ms": 1099.1971492767334
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA017",
+      "question": "Given what the papers say about embodied AI capabilities, what manufacturing tasks could be automated first?",
+      "category": "multi_hop_reasoning",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "capa.pdf"
+      ],
+      "pool_filenames": [
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf",
+        "capa.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 754.6207904815674
+      },
+      "with_reranker": {
+        "top3": [
+          "capa.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 1645.223617553711,
+        "rerank_only_ms": 890.6028270721436
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA018",
+      "question": "Based on the robotic control paper, what sensors would be needed for the tasks described in the embodied AI papers?",
+      "category": "multi_hop_reasoning",
+      "expected_sources": [
+        "embodiedai1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "rbt.pdf",
+        "rbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 943.9220428466797
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 1538.7091636657715,
+        "rerank_only_ms": 594.7871208190918
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA019",
+      "question": "What learning algorithms mentioned in the deep learning paper are most applicable to the robot tasks in other papers?",
+      "category": "multi_hop_reasoning",
+      "expected_sources": [
+        "ailadeep.pdf",
+        "hrb1.pdf"
+      ],
+      "pool_filenames": [
+        "rags.pdf",
+        "cntrlrbt.pdf",
+        "rags.pdf",
+        "cntrlrbt.pdf",
+        "rags.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "rags.pdf",
+          "cntrlrbt.pdf",
+          "rags.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 240.65899848937988
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "rags.pdf",
+          "rags.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 956.0210704803467,
+        "rerank_only_ms": 715.3620719909668
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA020",
+      "question": "How would the RAG techniques described apply to improving robot decision-making?",
+      "category": "multi_hop_reasoning",
+      "expected_sources": [
+        "hrb1.pdf",
+        "rags.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 216.6121006011963
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 889.2710208892822,
+        "rerank_only_ms": 672.6589202880859
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA026",
+      "question": "What specific dataset sizes were used in the triangulation paper experiments?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "triangulang.pdf"
+      ],
+      "pool_filenames": [
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "triangulang.pdf",
+          "triangulang.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 267.7481174468994
+      },
+      "with_reranker": {
+        "top3": [
+          "triangulang.pdf",
+          "triangulang.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 835.9389305114746,
+        "rerank_only_ms": 568.1908130645752
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA027",
+      "question": "What exact accuracy numbers does the probing paper report?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "probing more.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "carbonpathfinding.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "rags.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "carbonpathfinding.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 414.25609588623047
+      },
+      "with_reranker": {
+        "top3": [
+          "triangulang.pdf",
+          "cntrlrbt.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1311.2461566925049,
+        "rerank_only_ms": 896.9900608062744
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA028",
+      "question": "What specific robot hardware platforms are mentioned in the control robotics paper?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "cntrlrbt.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "cntrlrbt.pdf",
+        "rbt.pdf",
+        "rbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 636.8792057037354
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf",
+          "cntrlrbt.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 2459.4690799713135,
+        "rerank_only_ms": 1822.5898742675781
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": false,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA029",
+      "question": "What are the exact threshold values or hyperparameters mentioned in the deep learning paper?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "ailadeep.pdf"
+      ],
+      "pool_filenames": [
+        "cntrlrbt.pdf",
+        "triangulang.pdf",
+        "rags.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf",
+        "triangulang.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "triangulang.pdf",
+          "rags.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 325.09469985961914
+      },
+      "with_reranker": {
+        "top3": [
+          "cntrlrbt.pdf",
+          "triangulang.pdf",
+          "triangulang.pdf"
+        ],
+        "precision_at_3": 0.0,
+        "latency_ms": 1015.0818824768066,
+        "rerank_only_ms": 689.9871826171875
+      },
+      "oracle": {
+        "precision_at_3": 0.0
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": 0
+    },
+    {
+      "query_id": "FA030",
+      "question": "What specific cities or geographic locations are mentioned in the carbon pathfinding paper?",
+      "category": "specificity_stress",
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "pool_filenames": [
+        "carbonpathfinding.pdf",
+        "capa.pdf",
+        "capa.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "no_rerank": {
+        "top3": [
+          "carbonpathfinding.pdf",
+          "capa.pdf",
+          "capa.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 233.2930564880371
+      },
+      "with_reranker": {
+        "top3": [
+          "capa.pdf",
+          "capa.pdf",
+          "carbonpathfinding.pdf"
+        ],
+        "precision_at_3": 0.3333333333333333,
+        "latency_ms": 2055.5100440979004,
+        "rerank_only_ms": 1822.2169876098633
+      },
+      "oracle": {
+        "precision_at_3": 0.3333333333333333
+      },
+      "order_changed": true,
+      "reranker_helped": false,
+      "reranker_hurt": false,
+      "reranker_neutral": true,
+      "avg_rank_movement_of_correct_docs": -2
+    }
+  ]
+}
