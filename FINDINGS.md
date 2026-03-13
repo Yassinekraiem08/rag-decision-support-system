@@ -181,6 +181,50 @@ Full retrieval results (pgvector + hybrid scoring) cached with 10-minute TTL. Re
 
 ---
 
+## Finding 9: Confidence Calibration — The System Is Overconfident Within the Answered Set
+
+**ECE (Expected Calibration Error): 0.256 — Poorly Calibrated**
+
+A calibration study was run across all 50 queries to test whether the system's confidence score actually predicts correctness. A perfectly calibrated system with confidence=0.8 is right exactly 80% of the time. ECE measures the average gap across all confidence bins.
+
+### The Bimodal Collapse Problem
+
+| Confidence Bin | Queries | Avg Confidence | Actual Accuracy | Gap |
+|---------------|---------|----------------|-----------------|-----|
+| 0.0–0.2 (refused) | 16 | 0.000 | 0.438 | **-0.438** (underconfident) |
+| 0.2–0.6 | 0 | — | — | — |
+| 0.6–0.8 (answered) | 34 | 0.671 | 0.500 | **+0.171** (overconfident) |
+| 0.8–1.0 | 0 | — | — | — |
+
+**The distribution is bimodal, not continuous.** Queries are either refused (confidence=0.0) or answered (confidence≈0.67) with nothing in between. Within the answered set, confidence is near-constant regardless of correctness — the system cannot distinguish "confident and right" from "confident and wrong."
+
+### Root Cause
+
+The confidence formula is `0.5 × retrieval_quality + 0.3 × verification + 0.2 × consistency`. In practice:
+- Refused queries: forced to 0.0 by threshold check (before confidence is computed)
+- Answered queries: all receive similar retrieval scores (~0.67) and the same default verification, producing near-identical confidence regardless of actual answer quality
+
+### Category-Level Calibration
+
+| Category | Avg Confidence | Accuracy | Gap |
+|----------|---------------|----------|-----|
+| comparative_analysis | 0.574 | 0.429 | +0.145 overconfident |
+| cross_document_synthesis | 0.446 | 0.333 | +0.113 overconfident |
+| unanswerable_handling | 0.192 | 0.714 | -0.522 underconfident |
+| specificity_stress | 0.516 | 0.385 | +0.131 overconfident |
+| multi_hop_reasoning | 0.671 | 0.625 | +0.046 (best calibrated) |
+
+### Fix Direction
+
+To create a meaningful confidence gradient within the answered set:
+1. Run actual LLM verification (SUPPORTED/PARTIALLY/UNSUPPORTED) per query — this adds spread to the 0.3× verification component
+2. Use retrieval score variance across top-3 chunks — high variance = uncertain retrieval, lower confidence
+3. Add a query-type penalty: synthesis and multi-hop queries systematically underperform — applying a category-based prior would improve calibration
+
+**Impact:** Fixing calibration means users can actually trust the confidence badge in the UI. Currently, a displayed confidence of "67%" is no more informative than a coin flip within the answered set.
+
+---
+
 ## Methodology
 
 - **50 queries** across 6 failure categories, designed to stress-test known RAG weaknesses

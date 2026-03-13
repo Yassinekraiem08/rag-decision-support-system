@@ -1,0 +1,709 @@
+{
+  "timestamp": "2026-03-13T03:30:34.061443",
+  "total_queries": 50,
+  "overall": {
+    "accuracy": 0.48,
+    "avg_confidence": 0.45628570428193066,
+    "confidence_gap": -0.023714295718069323,
+    "ece": 0.25628570428193065,
+    "ece_verdict": "POORLY CALIBRATED (ECE \u2265 0.10) \u2014 confidence scores mislead users"
+  },
+  "bins": [
+    {
+      "label": "0.0\u20130.2",
+      "count": 16,
+      "avg_confidence": 0.0,
+      "accuracy": 0.4375,
+      "gap": -0.4375
+    },
+    {
+      "label": "0.2\u20130.4",
+      "count": 0,
+      "avg_confidence": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "label": "0.4\u20130.6",
+      "count": 0,
+      "avg_confidence": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "label": "0.6\u20130.8",
+      "count": 34,
+      "avg_confidence": 0.671008388649898,
+      "accuracy": 0.5,
+      "gap": 0.17100838864989798
+    },
+    {
+      "label": "0.8\u20131.0",
+      "count": 0,
+      "avg_confidence": 0.0,
+      "accuracy": 0.0
+    }
+  ],
+  "by_category": {
+    "specificity_stress": {
+      "count": 13,
+      "avg_confidence": 0.5159391293445135,
+      "accuracy": 0.38461538461538464,
+      "gap": 0.13132374472912883
+    },
+    "comparative_analysis": {
+      "count": 7,
+      "avg_confidence": 0.5738539178907838,
+      "accuracy": 0.42857142857142855,
+      "gap": 0.14528248931935522
+    },
+    "cross_document_synthesis": {
+      "count": 9,
+      "avg_confidence": 0.44649717159372626,
+      "accuracy": 0.3333333333333333,
+      "gap": 0.11316383826039295
+    },
+    "multi_hop_reasoning": {
+      "count": 8,
+      "avg_confidence": 0.670729252536935,
+      "accuracy": 0.625,
+      "gap": 0.04572925253693505
+    },
+    "unanswerable_handling": {
+      "count": 7,
+      "avg_confidence": 0.19194551522993383,
+      "accuracy": 0.7142857142857143,
+      "gap": -0.5223401990557804
+    },
+    "domain_confusion": {
+      "count": 6,
+      "avg_confidence": 0.227028656022303,
+      "accuracy": 0.5,
+      "gap": -0.272971343977697
+    }
+  },
+  "key_insight": "The system is reasonably calibrated (ECE=0.2563, gap=-0.024). Confidence scores track accuracy well overall.",
+  "per_query": [
+    {
+      "id": "FA001",
+      "question": "What is embodied AI?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "capa.pdf",
+        "qya.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6721967049352976,
+      "correct": true
+    },
+    {
+      "id": "FA002",
+      "question": "What role do tactile sensors play in embodied AI systems?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6706218824491068,
+      "correct": false
+    },
+    {
+      "id": "FA003",
+      "question": "How does deep learning contribute to robot path planning?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6640191713421654,
+      "correct": false
+    },
+    {
+      "id": "FA004",
+      "question": "What are the key findings about carbon pathfinding optimization?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6709605912798434,
+      "correct": true
+    },
+    {
+      "id": "FA005",
+      "question": "What is the main contribution of the embodied intelligence labs paper?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "embodiedintelligencelabs.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6778812094322759,
+      "correct": false
+    },
+    {
+      "id": "FA006",
+      "question": "How do the two embodied AI papers differ in their approach to robot learning?",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "embodiedai2.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6693229872686579,
+      "correct": false
+    },
+    {
+      "id": "FA007",
+      "question": "Compare the approaches to AI collaboration described in the robotics papers versus the artistic creation paper.",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "bkbj.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6793883051759467,
+      "correct": true
+    },
+    {
+      "id": "FA008",
+      "question": "How does embodied AI in manufacturing compare to embodied AI in education?",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "capa.pdf",
+        "qya.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6754543243405923,
+      "correct": true
+    },
+    {
+      "id": "FA009",
+      "question": "What are the similarities between carbon pathfinding and robot path planning algorithms?",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "carbonpathfinding.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6650650365421551,
+      "correct": true
+    },
+    {
+      "id": "FA010",
+      "question": "How do the RAG-related papers position their work relative to each other?",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "probing more.pdf",
+        "rags.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA011",
+      "question": "What do all the robotics papers collectively say about the future of human-robot collaboration?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "rbt.pdf",
+        "embodiedai1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.67604579824719,
+      "correct": true
+    },
+    {
+      "id": "FA012",
+      "question": "Synthesize the key themes across all embodied AI research in the corpus.",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "embodiedai2.pdf",
+        "capa.pdf",
+        "embodiedintelligencelabs.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6679238094618712,
+      "correct": false
+    },
+    {
+      "id": "FA013",
+      "question": "What are the common evaluation methodologies used across the AI papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf",
+        "probing more.pdf",
+        "rags.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6649044381265414,
+      "correct": false
+    },
+    {
+      "id": "FA014",
+      "question": "How do the papers collectively address the challenge of generalization in AI systems?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "capa.pdf",
+        "embodiedai1.pdf",
+        "rags.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6706394659424213,
+      "correct": false
+    },
+    {
+      "id": "FA015",
+      "question": "What safety considerations appear across multiple papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "capa.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA016",
+      "question": "What does the corpus say about transformer architectures in robotics?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "rbt.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6709391032228177,
+      "correct": false
+    },
+    {
+      "id": "FA017",
+      "question": "Given what the papers say about embodied AI capabilities, what manufacturing tasks could be automated first?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "capa.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6745672529797123,
+      "correct": true
+    },
+    {
+      "id": "FA018",
+      "question": "Based on the robotic control paper, what sensors would be needed for the tasks described in the embodied AI papers?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6791223629324943,
+      "correct": true
+    },
+    {
+      "id": "FA019",
+      "question": "What learning algorithms mentioned in the deep learning paper are most applicable to the robot tasks in other papers?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "ailadeep.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.666400709114767,
+      "correct": false
+    },
+    {
+      "id": "FA020",
+      "question": "How would the RAG techniques described apply to improving robot decision-making?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "rags.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6763316919555092,
+      "correct": false
+    },
+    {
+      "id": "FA021",
+      "question": "What is the current price of NVIDIA stock?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA022",
+      "question": "Who won the 2025 Nobel Prize in Physics?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA023",
+      "question": "What is the recipe for making sourdough bread?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA024",
+      "question": "How does quantum entanglement relate to robot locomotion?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": false,
+      "confidence": 0.6792823716152806,
+      "correct": false
+    },
+    {
+      "id": "FA025",
+      "question": "What does GPT-5 say about embodied intelligence?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": false,
+      "confidence": 0.6643362349942563,
+      "correct": false
+    },
+    {
+      "id": "FA026",
+      "question": "What specific dataset sizes were used in the triangulation paper experiments?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "triangulang.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6802227143211772,
+      "correct": true
+    },
+    {
+      "id": "FA027",
+      "question": "What exact accuracy numbers does the probing paper report?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "probing more.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA028",
+      "question": "What specific robot hardware platforms are mentioned in the control robotics paper?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "cntrlrbt.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6774845629304289,
+      "correct": true
+    },
+    {
+      "id": "FA029",
+      "question": "What are the exact threshold values or hyperparameters mentioned in the deep learning paper?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6654960454998509,
+      "correct": false
+    },
+    {
+      "id": "FA030",
+      "question": "What specific cities or geographic locations are mentioned in the carbon pathfinding paper?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA031",
+      "question": "What do the AI papers say about attention mechanisms in neural networks?",
+      "category": "domain_confusion",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf",
+        "rags.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA032",
+      "question": "What does the corpus say about language and communication?",
+      "category": "domain_confusion",
+      "answerable": true,
+      "expected_sources": [
+        "probing more.pdf",
+        "triangulang.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA033",
+      "question": "Tell me about love and human relationships.",
+      "category": "domain_confusion",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA034",
+      "question": "What stories or narratives are discussed in the corpus?",
+      "category": "domain_confusion",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA035",
+      "question": "What are the moral and ethical themes discussed?",
+      "category": "domain_confusion",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": false,
+      "confidence": 0.6841070653686754,
+      "correct": false
+    },
+    {
+      "id": "FA036",
+      "question": "How does imitation learning differ from reinforcement learning in robotics?",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.663355423165059,
+      "correct": false
+    },
+    {
+      "id": "FA037",
+      "question": "What are the limitations acknowledged by the authors across the robotics papers?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "rbt.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6729546159331146,
+      "correct": true
+    },
+    {
+      "id": "FA038",
+      "question": "What future research directions are proposed across all AI papers?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf",
+        "probing more.pdf",
+        "embodiedai1.pdf",
+        "rags.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6660064166323978,
+      "correct": true
+    },
+    {
+      "id": "FA039",
+      "question": "What datasets are referenced across all papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf",
+        "triangulang.pdf",
+        "rags.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA040",
+      "question": "Which paper provides the most actionable framework for deploying AI in industrial settings?",
+      "category": "comparative_analysis",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "capa.pdf",
+        "embodiedintelligencelabs.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6643913487430753,
+      "correct": false
+    },
+    {
+      "id": "FA041",
+      "question": "What is the capital of France?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA042",
+      "question": "What programming language is most used in the implementations described?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "cntrlrbt.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    },
+    {
+      "id": "FA043",
+      "question": "What is the relationship between the robotic art paper and classical aesthetics?",
+      "category": "domain_confusion",
+      "answerable": true,
+      "expected_sources": [
+        "bkbj.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6780648707651425,
+      "correct": true
+    },
+    {
+      "id": "FA044",
+      "question": "How many parameters do the neural network models in the corpus use?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6569126305750227,
+      "correct": false
+    },
+    {
+      "id": "FA045",
+      "question": "What does the corpus say about energy consumption in AI systems?",
+      "category": "specificity_stress",
+      "answerable": true,
+      "expected_sources": [
+        "carbonpathfinding.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6714131687135056,
+      "correct": true
+    },
+    {
+      "id": "FA046",
+      "question": "Given the papers on robotic control and embodied AI, design a system architecture for a warehouse robot.",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "cntrlrbt.pdf",
+        "capa.pdf",
+        "embodiedai1.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6597259705217742,
+      "correct": true
+    },
+    {
+      "id": "FA047",
+      "question": "What would happen to the manufacturing use cases if the tactile sensors described failed?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "capa.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6672550114456732,
+      "correct": true
+    },
+    {
+      "id": "FA048",
+      "question": "How do the findings in the RAG papers challenge or support the retrieval approach used in the robotic systems papers?",
+      "category": "multi_hop_reasoning",
+      "answerable": true,
+      "expected_sources": [
+        "hrb1.pdf",
+        "rags.pdf"
+      ],
+      "refused": false,
+      "confidence": 0.6714919181227325,
+      "correct": true
+    },
+    {
+      "id": "FA049",
+      "question": "What is two plus two?",
+      "category": "unanswerable_handling",
+      "answerable": false,
+      "expected_sources": [],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": true
+    },
+    {
+      "id": "FA050",
+      "question": "What are the most cited works referenced across all papers in the corpus?",
+      "category": "cross_document_synthesis",
+      "answerable": true,
+      "expected_sources": [
+        "ailadeep.pdf",
+        "embodiedai1.pdf",
+        "rags.pdf"
+      ],
+      "refused": true,
+      "confidence": 0.0,
+      "correct": false
+    }
+  ]
+}
