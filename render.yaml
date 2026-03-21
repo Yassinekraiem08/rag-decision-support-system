@@ -43,7 +43,7 @@ services:
 # PostgreSQL Database with pgvector
 databases:
   - name: rag-postgres-db
-    plan: starter
+    plan: free
     databaseName: ragdb
     user: raguser
     region: oregon
