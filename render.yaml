@@ -1,17 +1,20 @@
 services:
-  # FastAPI Web Service
+  # FastAPI Backend
   - type: web
     name: rag-decision-support-api
     env: python
     region: oregon
-    plan: free
+    plan: starter
     buildCommand: pip install -r requirements.txt
+    # migrate_add_domain is idempotent (safe to re-run).
+    # ingest_folder is idempotent too — skips if docs already indexed.
     startCommand: python scripts/migrate_add_domain.py && python ingest_folder.py && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
       - key: OPENAI_API_KEY
-        sync: false  # Set this in Render dashboard
+        sync: false  # Set in Render dashboard
       - key: EMBEDDING_MODEL
         value: text-embedding-3-small
       - key: LLM_MODEL
@@ -22,12 +25,25 @@ services:
         fromDatabase:
           name: rag-postgres-db
           property: connectionString
-    healthCheckPath: /health
+
+  # Streamlit Frontend
+  - type: web
+    name: rag-decision-support-ui
+    env: python
+    region: oregon
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run streamlit_app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: API_URL
+        sync: false  # Set to your FastAPI service URL, e.g. https://rag-decision-support-api.onrender.com
 
 # PostgreSQL Database with pgvector
 databases:
   - name: rag-postgres-db
-    plan: free
+    plan: starter
     databaseName: ragdb
     user: raguser
     region: oregon

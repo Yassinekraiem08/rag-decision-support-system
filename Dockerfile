@@ -8,8 +8,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY app/ ./app/
+COPY scripts/ ./scripts/
+COPY docs/ ./docs/
 COPY init_db.py .
-COPY .env .env
+COPY ingest_folder.py .
+COPY streamlit_app.py .
+
+# Never copy .env — pass secrets via environment variables at runtime
 
 # Expose port
 EXPOSE 8000

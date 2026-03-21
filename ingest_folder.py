@@ -3,6 +3,8 @@ import re
 from app.utils.loaders import load_text_file, load_pdf_file
 from app.services.chunking import chunk_text
 from app.services.pgvector_store import store_document_chunks, clear_database
+from app.core.database import SessionLocal
+from app.models.document import Document
 
 DOCS_FOLDER = "docs"
 
@@ -18,8 +20,19 @@ def ingest_folder(folder_path: str):
     total_docs = 0
     total_chunks = 0
 
+    # Skip ingestion if documents are already indexed (idempotency guard).
+    # This prevents wiping and re-ingesting on every service restart.
+    db = SessionLocal()
+    try:
+        existing_count = db.query(Document).count()
+    finally:
+        db.close()
+
+    if existing_count > 0:
+        print(f"Database already contains {existing_count} document(s). Skipping ingestion.")
+        return
+
     print(f"Scanning folder: {folder_path}")
-    clear_database()
 
     for root, _, files in os.walk(folder_path):
         for filename in files:
