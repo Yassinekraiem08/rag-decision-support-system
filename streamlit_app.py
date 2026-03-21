@@ -25,7 +25,7 @@ def render_verification_badge(verdict: str):
         st.info(f"Verification: {verdict}")
 
 
-st.title("🧠 RAG Knowledge Assistant")
+st.title("RAG Knowledge Assistant")
 st.caption("Production-style Retrieval-Augmented Generation system with groundedness verification")
 
 tab1, tab2 = st.tabs(["Ask Questions", "Upload Documents"])
