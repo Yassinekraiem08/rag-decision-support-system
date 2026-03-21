@@ -1,12 +1,6 @@
 """
 RAG Decision Support System — Interactive Demo
 
-A recruiter-facing chat interface that demonstrates:
-- Citation-grounded answers from technical documents
-- Live confidence scoring and groundedness verification
-- Hallucination prevention (system refuses out-of-corpus questions)
-- Retrieved source transparency
-
 Usage:
     streamlit run demo/chat_demo.py
     (requires FastAPI backend: uvicorn app.main:app --reload)
@@ -24,7 +18,7 @@ from datetime import datetime
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="AI Decision Support System",
-    page_icon="🧠",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
